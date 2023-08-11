@@ -1,6 +1,5 @@
 
-const canvas_width = document.getElementById('canvas').width
-const canvas_height = document.getElementById('canvas').height
+
 
 function init(){
   window.requestAnimationFrame(draw);
@@ -32,6 +31,8 @@ class Particle{
     this.color_change_speed = color_change_speed
   }
   check_coords(){
+    const canvas_width = document.getElementById('canvas').width
+    const canvas_height = document.getElementById('canvas').height
     return (this.x >= 0 && this.x < canvas_width && this.y >= 0 && this.y < canvas_height) ? true : false 
   }
   move(){
@@ -120,3 +121,31 @@ function draw(){
   window.requestAnimationFrame(draw)
 }
 init()
+
+var animation = anime.timeline({
+  targets: '.selector-box',
+  translateX: -1000, 
+  easing: 'easeInOutExpo', 
+  autoplay: false
+})
+animation.add({
+  targets: '.start-button', 
+  translateY: 300, 
+  easing: 'easeInOutExpo',
+}, 0)
+animation.add({
+  targets: '.header', 
+  translateY: -100, 
+  easing: 'easeInOutExpo', 
+}, 0)
+animation.add({
+  targets: '.canvas', 
+  easing: 'easeInOutExpo', 
+  duration: 1500, 
+  width: 1920, 
+  height: 1080, 
+  left: 0, 
+  top: 0
+}, 500)
+
+document.getElementById('start-button').addEventListener('click', animation.play)

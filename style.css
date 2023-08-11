@@ -15,6 +15,7 @@
 
 body{
     background-color: #1E1E1E;
+    overflow: hidden;
 }
 
 .main-space{
@@ -45,11 +46,17 @@ body{
     margin: 100px auto;
     border-radius: 10px;
     font-size: 30pt;
-    font-family: 'Open Sans Bold'
+    font-family: 'Open Sans Bold';
+    outline: none;
+    transition: 0.2s;
+}
+.start-button:active{
+    background-color: grey;
 }
 
 .canvas{
-    border: 2px solid black;
+    border: 2px solid white;
+    position: absolute;
 }
 
 .header{
@@ -58,4 +65,28 @@ body{
     font-weight: lighter;
     font-size: 30pt;
     color: white;
+}
+
+.collider{
+    width: 960px;
+    height: 960px;
+}
+
+.particle1{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: green;
+    top: -500px;
+    position: relative;
+}
+
+.particle2{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: blue;
+    top: -530px;
+    
+    position: relative;
 }
