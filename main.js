@@ -1,4 +1,7 @@
 
+const canvas_width = document.getElementById('canvas').width
+const canvas_height = document.getElementById('canvas').height
+
 function init(){
   window.requestAnimationFrame(draw);
 }
@@ -7,18 +10,70 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+function max(a, b){
+  return (a > b) ? a : b
+}
+
+function min(a, b){
+  return (a > b) ? b : a
+}
+
+
+class Particle{
+  constructor (x, y, angle, speed, angle_speed, color, color_change_speed){
+    this.x = x
+    this.y = y
+    this.xnext = this.x + this.speed * Math.cos(this.angle)
+    this.ynext = this.y + this.speed * Math.sin(this.angle)
+    this.angle = angle
+    this.speed = speed
+    this.angle_speed = angle_speed
+    this.color = color, 
+    this.color_change_speed = color_change_speed
+  }
+  check_coords(){
+    return (this.x >= 0 && this.x < canvas_width && this.y >= 0 && this.y < canvas_height) ? true : false 
+  }
+  move(){
+    this.x += this.speed * Math.cos(this.angle)
+    this.y += this.speed * Math.sin(this.angle)
+    this.speed *= 0.99
+    this.angle += this.angle_speed
+    this.angle_speed *= 0.99
+    this.xnext = this.x + this.speed * Math.cos(this.angle)
+    this.ynext = this.y + this.speed * Math.sin(this.angle)
+    this.color[0] = max(0, this.color[0] - 66 * this.color_change_speed)
+    this.color[1] = min(255, this.color[1] + (255 - 117) * this.color_change_speed)
+    this.color[2] = max(128, this.color[2] - (245 - 128) * ( this.color_change_speed))
+  }
+  draw(ctx){
+    ctx.lineTo(this.x, this.y)
+    
+    ctx.lineTo(this.xnext, this.ynext)
+  }
+}
+
+
 const particles = []
 
 function add_explosion(x, y, count){
   for (let i = 0; i < count; ++i){
-    particles.push([x, y, Math.random() * 2 * Math.PI, 2 + Math.random() * 3, (-0.5 + Math.random()) * 0.02])
+    particles.push(new Particle(
+      x, 
+      y, 
+      Math.random() * 2 * Math.PI,   // angle
+      2 + Math.random() * 3,         // speed
+      (-0.5 + Math.random()) * 0.02, // angle speed
+      [66, 117, 245],                // color
+      Math.random() * 0.03     // color change speed
+    ))
   }
 }
 
 function update_particles(){
   const newParticles = []
   for (let i = 0; i < particles.length; ++i){
-    if (particles[i][0] >= 0 && particles[i][0] < 800 && particles[i][1] >= 0 && particles[i][1] < 800){
+    if (particles[i].check_coords()){
       newParticles.push(particles[i])
     }
   }
@@ -43,26 +98,18 @@ function draw(){
   var ctx = document.getElementById('canvas').getContext('2d');
   //ctx.clearRect(0, 0, 800, 800);
   
-  ctx.fillStyle = 'black'
+  ctx.fillStyle = 'white'
+  
   
   for (let i = 0; i < particles.length; ++i){
     ctx.beginPath()
+    color = particles[i].color
+    ctx.strokeStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+    particles[i].draw(ctx)
+    particles[i].move()
     
-    var xnow = particles[i][0]
-    var ynow = particles[i][1]
-    var xnext = particles[i][0] + particles[i][3] * Math.cos(particles[i][2])
-    var ynext = particles[i][1] + particles[i][3] * Math.sin(particles[i][2])
-    particles[i][0] = xnext
-    particles[i][1] = ynext
-    particles[i][3] *= 0.99
-    particles[i][2] += particles[i][4]
-    ctx.lineTo(xnow, ynow)
-    ctx.lineTo(xnext, ynext)
     ctx.closePath()
     ctx.stroke()
-    //ctx.arc(particles[i][0], particles[i][1], 5, 0, 2 * Math.PI, true)
-
-    
     
     ctx.fill()
     

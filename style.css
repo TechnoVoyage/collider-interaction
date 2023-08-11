@@ -1,3 +1,61 @@
+@font-face {
+    font-family: 'Open Sans'; 
+    src: url('fonts/Open_Sans/OpenSans-Regular.ttf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url('fonts/Open_Sans/OpenSans-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans Bold';
+    src: url('fonts/Open_Sans/OpenSans-Bold.ttf');
+}
+
+body{
+    background-color: #1E1E1E;
+}
+
+.main-space{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.selector{
+    margin: 0 auto;
+    width: 700px;
+    height: 250px;
+    background-color: grey;
+}
+
+.particle-name{
+    text-align: center;
+    color: white;
+    font-family: 'Open Sans Light';
+    font-size: 30pt;
+}
+
+.start-button{
+    display: block;
+    width: 300px;
+    height: 80px;
+    background-color: white;
+    color: #1E1E1E;
+    margin: 100px auto;
+    border-radius: 10px;
+    font-size: 30pt;
+    font-family: 'Open Sans Bold'
+}
+
 .canvas{
     border: 2px solid black;
+}
+
+.header{
+    text-align: center;
+    font-family: 'Open Sans Light';
+    font-weight: lighter;
+    font-size: 30pt;
+    color: white;
 }
