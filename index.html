@@ -3,18 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Collider</title>
 </head>
 <body>
-    <canvas width="1920" height="1080" class="canvas" id="canvas"></canvas>
     <h1 class="header">Ускоритель частиц</h1>
     
     <div class="main-space">
-        
         <div>
             <div class="selector-box">
-                <div class="selector" id="selector1"></div>
+                <div class="selector" id="selector1">
+
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="first_atom.gif">
+                          </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                      </div>
+
+                </div>
                 <h2 class="particle-name"> Нейтрон</h2>
             </div>
             <div class="selector-box">
@@ -24,16 +54,17 @@
             
             <button class="start-button" id="start-button">Старт</button>
         </div>
-        
-        
-        
+        <div>
+            <canvas width="960" height="960" class="canvas" id="canvas"></canvas>
+            
+        </div>
     </div>
     
 
 
-
+    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
     <script 
-        src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js">
+        src="node_modules/animejs/lib/anime.min.js">
     </script>
     <script src="main.js"></script>
 </body>

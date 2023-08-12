@@ -138,5 +138,36 @@ animation.add({
   translateY: -100, 
   easing: 'easeInOutExpo', 
 }, 0)
+animation.add({
+  targets: '.canvas', 
+  easing: 'easeInOutExpo', 
+  duration: 1500, 
+  width: 1920, 
+  height: 1080, 
+  left: 0, 
+  top: 0
+}, 500)
 
 document.getElementById('start-button').addEventListener('click', animation.play)
+
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  effect: "coverflow",
+  coverflowEffect: {
+    rotate: 15,
+    stretch: 10,
+    depth: 150,
+    modifier: 1,
+    slideShadows: true,
+  },
+  freeMode: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});

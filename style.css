@@ -27,7 +27,7 @@ body{
     margin: 0 auto;
     width: 700px;
     height: 250px;
-    background-color: grey;
+    background-color: transparent;
 }
 
 .particle-name{
@@ -57,8 +57,6 @@ body{
 .canvas{
     border: 2px solid white;
     position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .header{
@@ -92,3 +90,31 @@ body{
     
     position: relative;
 }
+
+
+swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+  }
