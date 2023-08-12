@@ -33,6 +33,7 @@ body{
     width: 700px;
     height: 250px;
     background-color: transparent;
+    position: relative;
 }   
 
 .particle-name{
