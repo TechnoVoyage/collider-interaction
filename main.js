@@ -139,14 +139,12 @@ animation.add({
   easing: 'easeInOutExpo', 
 }, 0)
 animation.add({
-  targets: '.canvas', 
-  easing: 'easeInOutExpo', 
-  duration: 1500, 
-  width: 1920, 
-  height: 1080, 
-  left: 0, 
-  top: 0
-}, 500)
+  targets: '.collider', 
+  width: 950, 
+  height: 950, 
+  left: 460, 
+  top: 20
+})
 
 document.getElementById('start-button').addEventListener('click', animation.play)
 

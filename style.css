@@ -23,6 +23,10 @@ body{
     grid-template-columns: 1fr 1fr;
 }
 
+.left-space{
+    z-index: 3;
+}
+
 .selector{
     margin: 0 auto;
     width: 700px;
@@ -55,8 +59,12 @@ body{
 }
 
 .canvas{
+
     border: 2px solid white;
     position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .header{
@@ -68,27 +76,10 @@ body{
 }
 
 .collider{
-    width: 960px;
-    height: 960px;
-}
-
-.particle1{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: green;
-    top: -500px;
-    position: relative;
-}
-
-.particle2{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: blue;
-    top: -530px;
-    
-    position: relative;
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    z-index: 1;
 }
 
 
