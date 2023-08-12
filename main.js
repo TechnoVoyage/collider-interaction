@@ -138,14 +138,5 @@ animation.add({
   translateY: -100, 
   easing: 'easeInOutExpo', 
 }, 0)
-animation.add({
-  targets: '.canvas', 
-  easing: 'easeInOutExpo', 
-  duration: 1500, 
-  width: 1920, 
-  height: 1080, 
-  left: 0, 
-  top: 0
-}, 500)
 
 document.getElementById('start-button').addEventListener('click', animation.play)
