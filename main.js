@@ -20,7 +20,7 @@ function min(a, b){
 document.getElementById("canvas").width = 1920;
 document.getElementById("canvas").height = 1080;
 class Particle{
-  constructor (x, y, angle, speed, angle_speed, color, color_change_speed){
+  constructor (x, y, angle, speed, angle_speed, color, color_change_speed, color_fading_speed){
     this.x = x
     this.y = y
     this.xnext = this.x + this.speed * Math.cos(this.angle)
@@ -30,6 +30,7 @@ class Particle{
     this.angle_speed = angle_speed
     this.color = color, 
     this.color_change_speed = color_change_speed
+    this.color_fading_speed = color_fading_speed
   }
   check_coords(){
     const canvas_width = document.getElementById('canvas').width
@@ -46,7 +47,8 @@ class Particle{
     this.ynext = this.y + this.speed * Math.sin(this.angle)
     this.color[0] = max(0, this.color[0] - 66 * this.color_change_speed)
     this.color[1] = min(255, this.color[1] + (255 - 117) * this.color_change_speed)
-    this.color[2] = max(128, this.color[2] - (245 - 128) * ( this.color_change_speed))
+    this.color[2] = max(128, this.color[2] - (245 - 128) * this.color_change_speed)
+    this.color[3] = min(1, this.color[3] * this.color_fading_speed)
   }
   draw(ctx){
     ctx.lineTo(this.x, this.y)
@@ -113,8 +115,9 @@ function add_explosion(x, y, count){
       Math.random() * 2 * Math.PI,   // angle
       2 + Math.random() * 3,         // speed
       (-0.5 + Math.random()) * 0.02, // angle speed
-      [66, 117, 245],                // color
-      Math.random() * 0.03     // color change speed
+      [66, 117, 245, 0.01],                // color
+      Math.random() * 0.03,     // color change speed
+      1.01 + Math.random() * 0.04 
     ))
   }
 }
@@ -153,7 +156,7 @@ function draw(){
   for (let i = 0; i < particles.length; ++i){
     ctx.beginPath()
     color = particles[i].color
-    ctx.strokeStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+    ctx.strokeStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`
     particles[i].draw(ctx)
     particles[i].move()
     
@@ -170,31 +173,36 @@ function draw(){
 }
 init()
 
-var animation = anime.timeline({
-  targets: '.selector-box',
-  translateX: -1000, 
-  easing: 'easeInOutExpo', 
-  autoplay: false
-})
-animation.add({
-  targets: '.start-button', 
-  translateY: 300, 
-  easing: 'easeInOutExpo',
-}, 0)
-animation.add({
-  targets: '.header', 
-  translateY: -100, 
-  easing: 'easeInOutExpo', 
-}, 0)
-animation.add({
-  targets: '.collider', 
-  width: 950, 
-  height: 950, 
-  left: 460, 
-  top: 20
-})
 
-document.getElementById('start-button').addEventListener('click', animation.play)
+function hide_elements(){
+  var animation = anime.timeline({
+    targets: '.selector-box',
+    translateX: -1000,
+    easing: 'easeInOutExpo', 
+    autoplay: false
+  })
+  animation.add({
+    targets: '.start-button', 
+    translateY: 300, 
+    easing: 'easeInOutExpo',
+  }, 0)
+  animation.add({
+    targets: '.header', 
+    translateY: -100, 
+    easing: 'easeInOutExpo', 
+  }, 0)
+  animation.add({
+    targets: '.collider', 
+    width: 950, 
+    height: 950, 
+    left: 460, 
+    top: 20
+  })
+  animation.play()
+}
+
+
+document.getElementById('start-button').addEventListener('click', hide_elements)
 
 
 var swiper = new Swiper(".mySwiper", {
