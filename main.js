@@ -17,7 +17,8 @@ function min(a, b){
   return (a > b) ? b : a
 }
 
-
+document.getElementById("canvas").width = 1920;
+document.getElementById("canvas").height = 1080;
 class Particle{
   constructor (x, y, angle, speed, angle_speed, color, color_change_speed){
     this.x = x
@@ -56,7 +57,54 @@ class Particle{
 
 
 const particles = []
+var new_particle_tl = anime.timeline({
+  easing: 'easeInOutExpo',
+  duration: 1500,
+  autoplay: false,
+  begin: function() {
+    var text= document.querySelector(".new-particle-text");
+    text.style.top = "1000px"
+  }
+});
+new_particle_tl.add({
+  targets: ".new-particle-window",
+  scale: 10,
+  opacity: 1,
+})
+new_particle_tl.add({
+  targets: ".new-particle-window",
+  translateX: -500
+})
+new_particle_tl.add({
+  begin: function() {
+    var text= document.querySelector(".new-particle-text");
+    text.style.visibility = "visible";
+  },
+  targets: ".new-particle-text",
+  translateY: -1050
+})
 
+function new_particle_popup() {
+  new_particle_tl.play()
+}
+function new_particle_hide() {
+  var hide_tl = anime.timeline({
+    easing: 'easeInOutExpo',
+    duration: 1000,
+  });
+  hide_tl.add({
+    targets: ".new-particle-window",
+    translateY: -1500
+  });
+  hide_tl.add({
+    targets: ".new-particle-window",
+    begin: function() {
+      new_particle_tl.seek(0);
+      var text= document.querySelector(".new-particle-text");
+      text.style.visibility = "hidden";
+    }
+  })
+}
 function add_explosion(x, y, count){
   for (let i = 0; i < count; ++i){
     particles.push(new Particle(
