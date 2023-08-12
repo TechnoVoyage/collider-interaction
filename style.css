@@ -43,11 +43,13 @@ body{
     font-family: 'Open Sans Light';
     
 }
-
 .start-button{
-    display: block;
     width: 300px;
     height: 80px;
+}
+button{
+    display: block;
+    
     background-color: white;
     color: #1E1E1E;
     margin: 100px auto;
@@ -57,7 +59,7 @@ body{
     outline: none;
     transition: 0.2s;
 }
-.start-button:active{
+button:active{
     background-color: grey;
 }
 
