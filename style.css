@@ -29,16 +29,19 @@ body{
 
 .selector{
     margin: 0 auto;
+    margin-top: 80px;
     width: 700px;
     height: 250px;
     background-color: transparent;
-}
+}   
 
 .particle-name{
     text-align: center;
+    vertical-align: top;
+    font-size: 30pt;
     color: white;
     font-family: 'Open Sans Light';
-    font-size: 30pt;
+    
 }
 
 .start-button{
@@ -82,6 +85,12 @@ body{
     z-index: 1;
 }
 
+.swiper-slide-inside {
+    background-color: transparent;    
+    font-size: 30pt;
+    color: white;
+    font-family: 'Open Sans Light';
+}
 
 swiper {
     width: 100%;
@@ -91,7 +100,7 @@ swiper {
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    /* background: #fff; */
     display: flex;
     height: 250px;
     justify-content: center;
@@ -105,7 +114,16 @@ swiper {
     object-fit: cover;
   }
 
+
   .swiper {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .swiper-button-prev {
+    color: white;
+  }
+
+  .swiper-button-next {
+    color: white;
   }

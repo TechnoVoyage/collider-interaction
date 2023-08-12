@@ -150,8 +150,6 @@ document.getElementById('start-button').addEventListener('click', animation.play
 
 
 var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  spaceBetween: 30,
   loop: true,
   slidesPerView: 3,
   spaceBetween: 30,
