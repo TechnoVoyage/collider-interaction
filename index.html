@@ -6,8 +6,28 @@
     <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Collider</title>
+
+    <style>
+      
+
+      .point-wrapper1{
+        position: relative;
+      }
+
+      .point-wrapper2{
+        position: relative;
+      }
+  </style>
+
+
+
+  
 </head>
 <body>
+
+
+
+    
     <canvas class="canvas" id="canvas"></canvas>
     <h1 class="header">Ускоритель частиц</h1>
     
@@ -149,6 +169,22 @@
         </div>
         <div>
             <img src="images/collider.png" class="collider">
+
+            <div id="point-wrapper1">
+              <div style="position: absolute; right: 3000px; top: 250px;" class="emoji1"></div>
+            <svg id="point-svg1" width="1000" height="500">
+              <path fill="transparent" d="M 280 240 A 50 50 0 1 1 1200 240 A 50 50 0 1 1 280 240"></path>
+            </svg>
+            </div>
+
+            <div id="point-wrapper2">
+              <div style="position: absolute; left: 2000px; top: 250px;" class="emoji2"></div>
+            <svg id="point-svg2" width="1000" height="500">
+              <path fill="transparent" d="M 1150 250 A 50 50 0 1 1 250 210 A 50 50 0 1 1 1150 250"></path>
+            </svg>
+            </div>
+            
+            
         </div>
     </div>
     <div class="new-particle-window" style="opacity: 0%; scale: 0.1"> 
@@ -170,5 +206,7 @@
         src="node_modules/animejs/lib/anime.min.js">
     </script>
     <script src="main.js"></script>
+
+
 </body>
 </html>

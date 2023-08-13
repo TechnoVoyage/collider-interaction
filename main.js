@@ -174,32 +174,82 @@ function draw(){
 init()
 
 
+
 function hide_elements(){
-  var animation = anime.timeline({
+  var hide_animation = anime.timeline({
     targets: '.selector-box',
     translateX: -1000,
     easing: 'easeInOutExpo', 
     autoplay: false
   })
-  animation.add({
+  hide_animation.add({
     targets: '.start-button', 
     translateY: 300, 
     easing: 'easeInOutExpo',
   }, 0)
-  animation.add({
+  hide_animation.add({
     targets: '.header', 
     translateY: -100, 
     easing: 'easeInOutExpo', 
   }, 0)
-  animation.add({
+  hide_animation.add({
     targets: '.collider', 
     width: 950, 
     height: 950, 
     left: 460, 
     top: 20
   })
-  animation.play()
+
+  hide_animation.add({
+    targets: '.emoji1',  
+    right: 1625,
+    
+  })
+
+  hide_animation.add({
+    targets: '.emoji2',  
+    left: 215,
+  }) 
+
+
+  let path1 = anime.path('#point-svg1 path');
+  let path2 = anime.path('#point-svg2 path');
+  var dur = 2000;
+
+
+  for (let i = 0; i < 15; i++){
+    hide_animation.add({
+      targets: '.emoji1',
+      translateX: path1('x'),
+      translateY: path1('y'),
+      easing: 'linear',
+      duration: dur,     
+    })
+    var par = '-=' + dur; 
+    hide_animation.add({
+      targets: '.emoji2',
+      translateX: path2('x'),
+      translateY: path2('y'),
+      easing: 'linear',
+      duration: dur,  
+        
+    }, par) 
+    if (dur > 1000){
+      dur -= 200
+    }
+    else if (dur > 200){
+      dur -= 75;
+    }
 }
+
+
+hide_animation.play();  
+document.getElementById("emoji1").style.display = "none";
+document.getElementById("emoji2").style.display = "none";
+
+}
+
+
 
 
 document.getElementById('start-button').addEventListener('click', hide_elements)
@@ -223,3 +273,8 @@ var swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+
+
+
+
