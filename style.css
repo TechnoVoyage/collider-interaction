@@ -118,6 +118,15 @@ button:active{
     font-size: 30pt;
     color: white;
 }
+.timer-header {
+    font-family: 'Open Sans Light';
+    font-weight: lighter;
+    font-size: 25pt;
+    color: white;
+    left: 30px;
+    top: -20px;
+    position: relative;
+}
 
 .collider{
     position: absolute;
