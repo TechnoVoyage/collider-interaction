@@ -1,5 +1,4 @@
-
-const TIME_CHOOSE = 10
+const TIME_CHOOSE = 5
 const TIME_ACCELERATING = 10
 const TIME_READ = 10
 var current_timer = TIME_CHOOSE
@@ -240,16 +239,120 @@ move_collider_tl.add({
 })
 function hide_collider() {
   move_collider_tl.direction = "reverse"
+  back_points()
   move_collider_tl.play()
 }
 function show_collider() {
   move_collider_tl.direction = "normal"
+
+
   move_collider_tl.play()
+  setTimeout(() => {  run_collider(); }, 1000);
+  
+}
+
+function back_points(){
+  var back_points_tl = anime.timeline({
+    targets: '.selector-box',
+    translateX: -1000,
+    easing: 'easeInOutExpo',
+    autoplay: false
+  })
+  back_points_tl.add({
+    targets: '.emoji1',  
+    right: 3000,
+    top: 250,
+    
+  })
+  back_points_tl.add({
+    targets: '.emoji2',  
+    left: 2000,
+    top: 250,
+  },'-=1000')
+  back_points_tl.play()
+}
+
+function explosion(){
+  var explosion_tl = anime.timeline({
+    targets: '.selector-box',
+    translateX: -1000,
+    easing: 'easeInOutExpo',
+    autoplay: false
+  })
+  explosion_tl.add({
+    targets: '.emoji1',  
+    right: 850,
+    top: 550,
+    duration: 1,
+    
+  })
+
+  explosion_tl.add({
+    targets: '.emoji2',  
+    left: 100,
+    top: 520,
+    duration: 1,
+  }) 
+  explosion_tl.play()
+  add_explosion(1250, 820, 100);
+}
+  
+
+function run_collider(){
+  var run_collider_tl = anime.timeline({
+    targets: '.selector-box',
+    translateX: -1000,
+    easing: 'easeInOutExpo',
+    autoplay: false
+  })
+  run_collider_tl.add({
+    targets: '.emoji1',  
+    right: 1625,
+    
+  })
+
+  run_collider_tl.add({
+    targets: '.emoji2',  
+    left: 215,
+  }) 
+  let path1 = anime.path('#point-svg1 path');
+  let path2 = anime.path('#point-svg2 path');
+  var dur = 2400;
+
+
+  for (let i = 0; i < 4; i++){
+    run_collider_tl.add({
+      targets: '.emoji1',
+      translateX: path1('x'),
+      translateY: path1('y'),
+      easing: 'linear',
+      duration: dur,     
+    })
+    var par = '-=' + dur; 
+    run_collider_tl.add({
+      targets: '.emoji2',
+      translateX: path2('x'),
+      translateY: path2('y'),
+      easing: 'linear',
+      duration: dur,  
+        
+    }, par) 
+    if (i == 0){
+      dur = 1900;
+    }
+    if (i == 1){
+      dur = 1100;
+    }
+    if (i == 2){
+      dur = 400
+    }
+  }
+  run_collider_tl.play()
 }
 
 function phase_choose() { //phase 1
     new_particle_hide()
-    hide_collider()
+
 }
 function phase_accelerating() { //phase 2
     show_collider()
@@ -278,7 +381,12 @@ function phase_timer_update() {
         break;
   }
 
+
+
   if (current_timer == 0) {
+    if (current_phase == 2){
+      explosion()
+    }
     current_phase += 1
     switch (current_phase) {
       case 1:
@@ -292,6 +400,7 @@ function phase_timer_update() {
         break;
       case 4:
         current_timer = TIME_CHOOSE;
+        hide_collider()
         current_phase = 1;
         break;
     }
@@ -299,5 +408,3 @@ function phase_timer_update() {
   }
 }
 setInterval(() => phase_timer_update(), 1000)
-
-
