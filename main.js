@@ -1,6 +1,7 @@
 const TIME_CHOOSE = 5
-const TIME_ACCELERATING = 10
+const TIME_ACCELERATING = 25
 const TIME_READ = 10
+const RUNNING_DURATION = 21000
 var current_timer = TIME_CHOOSE
 var current_phase = 1
 const particle_id = {1: 2 }
@@ -237,6 +238,7 @@ move_collider_tl.add({
   left: 460,
   top: 20
 })
+
 function hide_collider() {
   move_collider_tl.direction = "reverse"
   back_points()
@@ -259,46 +261,28 @@ function back_points(){
     autoplay: false
   })
   back_points_tl.add({
-    targets: '.emoji1',  
-    right: 3000,
+    targets: '.emoji1', 
+    backgroundColor: '#FF0000', 
+    right: 3500,
     top: 250,
     
   })
   back_points_tl.add({
     targets: '.emoji2',  
+    backgroundColor: '#0000FF', 
     left: 2000,
     top: 250,
   },'-=1000')
   back_points_tl.play()
 }
-
-function explosion(){
-  var explosion_tl = anime.timeline({
-    targets: '.selector-box',
-    translateX: -1000,
-    easing: 'easeInOutExpo',
-    autoplay: false
-  })
-  explosion_tl.add({
-    targets: '.emoji1',  
-    right: 850,
-    top: 550,
-    duration: 1,
-    
-  })
-
-  explosion_tl.add({
-    targets: '.emoji2',  
-    left: 100,
-    top: 520,
-    duration: 1,
-  }) 
-  explosion_tl.play()
-  add_explosion(1250, 820, 100);
-}
   
 
 function run_collider(){
+  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 280 220 A 50 50 0 1 1 1190 220 A 50 50 0 1 1 280 220 ".repeat(10) + "A 50 50 0 1 1 1190 180")
+  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 1150 220 A 50 50 0 1 1 240 220 A 50 50 0 1 1 1150 220 ".repeat(10))
+  let path1 = anime.path('#point-svg1 path');
+  let path2 = anime.path('#point-svg2 path');
+
   var run_collider_tl = anime.timeline({
     targets: '.selector-box',
     translateX: -1000,
@@ -315,40 +299,42 @@ function run_collider(){
     targets: '.emoji2',  
     left: 215,
   }) 
-  let path1 = anime.path('#point-svg1 path');
-  let path2 = anime.path('#point-svg2 path');
-  var dur = 2400;
-
-
-  for (let i = 0; i < 4; i++){
-    run_collider_tl.add({
-      targets: '.emoji1',
-      translateX: path1('x'),
-      translateY: path1('y'),
-      easing: 'linear',
-      duration: dur,     
-    })
-    var par = '-=' + dur; 
-    run_collider_tl.add({
-      targets: '.emoji2',
-      translateX: path2('x'),
-      translateY: path2('y'),
-      easing: 'linear',
-      duration: dur,  
-        
-    }, par) 
-    if (i == 0){
-      dur = 1900;
+  
+  run_collider_tl.add({
+    targets: '.emoji1',
+    translateX: path1('x'),
+    translateY: path1('y'),
+    duration: RUNNING_DURATION,   
+    backgroundColor: '#FFF',
+    easing: function(el, i, total) {
+      return function(t) {
+        // return Math.pow(Math.tan(t*Math.PI/4), 3)
+        return Math.pow(t, 5)
+      }
     }
-    if (i == 1){
-      dur = 1100;
+      
+  })
+  var no_delay = '-=' + RUNNING_DURATION; 
+  run_collider_tl.add({
+    targets: '.emoji2',
+    translateX: path2('x'),
+    translateY: path2('y'),
+    duration: RUNNING_DURATION,   
+    backgroundColor: '#FFF',
+    easing: function(el, i, total) {
+      return function(t) {
+        return Math.pow(t, 5)
+      }
     }
-    if (i == 2){
-      dur = 400
-    }
-  }
+      
+  }, no_delay) 
   run_collider_tl.play()
+  run_collider_tl.finished.then(function(){
+    add_explosion(1400, 500, 200);
+  })
 }
+
+
 
 function phase_choose() { //phase 1
     new_particle_hide()
@@ -384,9 +370,6 @@ function phase_timer_update() {
 
 
   if (current_timer == 0) {
-    if (current_phase == 2){
-      explosion()
-    }
     current_phase += 1
     switch (current_phase) {
       case 1:
