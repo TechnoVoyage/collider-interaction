@@ -2,9 +2,13 @@ const TIME_CHOOSE = 5
 const TIME_ACCELERATING = 25
 const TIME_READ = 10
 const RUNNING_DURATION = 21000
+const PARTICLE_COLOR = {"electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000"}
+const PARTICLE_NAMES = [{"name": "Бозон Хиггса", "link": "images/particles/bozon.gif"}]
 var current_timer = TIME_CHOOSE
 var current_phase = 1
 const particle_id = {1: 2 }
+var particle_emoji1_color = PARTICLE_COLOR["electron"]
+var particle_emoji2_color = PARTICLE_COLOR["antielectron"]
 function init() {
   window.requestAnimationFrame(draw);
 }
@@ -262,14 +266,14 @@ function back_points(){
   })
   back_points_tl.add({
     targets: '.emoji1', 
-    backgroundColor: '#FF0000', 
+    backgroundColor: particle_emoji1_color, 
     right: 3500,
     top: 250,
     
   })
   back_points_tl.add({
     targets: '.emoji2',  
-    backgroundColor: '#0000FF', 
+    backgroundColor: particle_emoji2_color, 
     left: 2000,
     top: 250,
   },'-=1000')
@@ -278,7 +282,9 @@ function back_points(){
   
 
 function run_collider(){
-  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 280 220 A 50 50 0 1 1 1190 220 A 50 50 0 1 1 280 220 ".repeat(10) + "A 50 50 0 1 1 1190 180")
+  document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
+  document.getElementsByClassName("emoji2")[0].style.backgroundColor = particle_emoji2_color;
+  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 210 220 A 50 50 0 1 1 1120 220 A 50 50 0 1 1 210 220 ".repeat(10) + "A 50 50 0 1 1 1120 180")
   document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 1150 220 A 50 50 0 1 1 240 220 A 50 50 0 1 1 1150 220 ".repeat(10))
   let path1 = anime.path('#point-svg1 path');
   let path2 = anime.path('#point-svg2 path');
@@ -344,8 +350,10 @@ function phase_accelerating() { //phase 2
     show_collider()
 }
 function phase_reading() { //phase 3
+  document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
   new_particle_popup()
 }
+
 var animation_started = false
 function phase_timer_update() {
   current_timer -= 1

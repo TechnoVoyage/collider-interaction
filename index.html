@@ -1,199 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Collider</title>
 
-    <style>
-      .point-wrapper1{
-        position: relative;
-      }
-      .point-wrapper2{
-        position: relative;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Collider</title>
+
+  <style>
+    .point-wrapper1 {
+      position: relative;
+    }
+
+    .point-wrapper2 {
+      position: relative;
+    }
   </style>
 </head>
+
 <body>
-    <canvas class="canvas" id="canvas"></canvas>
-    <h1 class="header">Ускоритель частиц</h1>
-    <h1 class="timer-header">Запуск коллайдера через: 10с.</h1>
-    
-    <div class="main-space">
-        <div class="left-space">
-            <div class="selector-box">
-                <div class="selector" id="selector1">
+  <canvas class="canvas" id="canvas"></canvas>
+  <h1 class="header">Ускоритель частиц</h1>
+  <h1 class="timer-header">Запуск коллайдера через: 10с.</h1>
 
-                    <div class="swiper mySwiperTop">
-                        <div class="swiper-wrapper">
+  <div class="main-space">
+    <div class="left-space">
+      <div class="selector-box">
+        <div class="selector" id="selector1">
 
-                          <div class="swiper-slide index6">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              <div class="particle-name">
-                                Нейтрон 6
-                              </div> 
-                            </div>
-                          </div>
+          <div class="swiper mySwiperTop">
+            <div class="swiper-wrapper">
 
-                          <div class="swiper-slide index0">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              Нейтрон 0
-                            </div>
-                          </div>
+              <div class="swiper-slide index6">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  <div class="particle-name">
+                    Нейтрон 6
+                  </div>
+                </div>
+              </div>
 
-                          <div class="swiper-slide index1">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              Нейтрон 1
-                            </div>
-                          </div>
+              <div class="swiper-slide index0">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 0
+                </div>
+              </div>
 
-                          <div class="swiper-slide index2">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              Нейтрон 2
-                            </div>
-                          </div>
-                          <div class="swiper-slide index3">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              Нейтрон 3
-                            </div>
-                          </div>
-                          <div class="swiper-slide index4">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              Нейтрон 4
-                            </div>
-                          </div>
-                          <div class="swiper-slide index5">
-                            <div class="swiper-slide-inside">
-                              <img src="first_atom.gif">
-                              Нейтрон 5
-                            </div>
-                          </div>
-<!-- 
+              <div class="swiper-slide index1">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 1
+                </div>
+              </div>
+
+              <div class="swiper-slide index2">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 2
+                </div>
+              </div>
+              <div class="swiper-slide index3">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 3
+                </div>
+              </div>
+              <div class="swiper-slide index4">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 4
+                </div>
+              </div>
+              <div class="swiper-slide index5">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 5
+                </div>
+              </div>
+              <!-- 
                           <div class="swiper-slide">
                             <img src="first_atom.gif">
                           </div> -->
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-pagination"></div>
-                      </div>
-
-                </div>
-                <!-- <h2 class="particle-name"> Нейтрон</h2> -->
             </div>
-            <div class="selector-box">
-                <div class="selector" id="selector1">
-                  <div class="swiper mySwiperBottom">
-                    <div class="swiper-wrapper">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
 
-                      <div class="swiper-slide index6">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          <div class="particle-name">
-                            Нейтрон 6
-                          </div> 
-                        </div>
-                      </div>
+        </div>
+        <!-- <h2 class="particle-name"> Нейтрон</h2> -->
+      </div>
+      <div class="selector-box">
+        <div class="selector" id="selector1">
+          <div class="swiper mySwiperBottom">
+            <div class="swiper-wrapper">
 
-                      <div class="swiper-slide index0">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          Нейтрон 0
-                        </div>
-                      </div>
+              <div class="swiper-slide index6">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  <div class="particle-name">
+                    Нейтрон 6
+                  </div>
+                </div>
+              </div>
 
-                      <div class="swiper-slide index1">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          Нейтрон 1
-                        </div>
-                      </div>
+              <div class="swiper-slide index0">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 0
+                </div>
+              </div>
 
-                      <div class="swiper-slide index2">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          Нейтрон 2
-                        </div>
-                      </div>
-                      <div class="swiper-slide index3">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          Нейтрон 3
-                        </div>
-                      </div>
-                      <div class="swiper-slide index4">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          Нейтрон 4
-                        </div>
-                      </div>
-                      <div class="swiper-slide index5">
-                        <div class="swiper-slide-inside">
-                          <img src="first_atom.gif">
-                          Нейтрон 5
-                        </div>
-                      </div>
-<!-- 
+              <div class="swiper-slide index1">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 1
+                </div>
+              </div>
+
+              <div class="swiper-slide index2">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 2
+                </div>
+              </div>
+              <div class="swiper-slide index3">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 3
+                </div>
+              </div>
+              <div class="swiper-slide index4">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 4
+                </div>
+              </div>
+              <div class="swiper-slide index5">
+                <div class="swiper-slide-inside">
+                  <img src="first_atom.gif">
+                  Нейтрон 5
+                </div>
+              </div>
+              <!-- 
                       <div class="swiper-slide">
                         <img src="first_atom.gif">
                       </div> -->
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-pagination"></div>
-                  </div>
-                </div>
-                <!-- <h2 class="particle-name">Протон</h2> -->
             </div>
-            
-            <button class="start-button" id="start-button" onclick="show_collider()">Старт</button>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
-        <div>
-            <img src="images/collider.png" class="collider">
-
-            <div id="point-wrapper1">
-              <div style="position: absolute; right: 3000px; top: 250px;" class="emoji1"></div>
-            <svg id="point-svg1" width="1920" height="1080" style = "position: absolute; top: 0px; left: 0px;">
-              
-              <path id="EMOJI_PATH_1" fill="transparent" d="M 280 220 A 50 50 0 1 1 1190 220 A 50 50 0 1 1 280 220"></path>
-              <!-- <circle cx="930" cy="490" r="450" stroke="black" stroke-width="3" fill="red" /> -->
-            </svg>
-            </div>
-
-            <div id="point-wrapper2">
-              <div style="position: absolute; left: 2000px; top: 250px;" class="emoji2"></div>
-            <svg id="point-svg2" width="1000" height="500">
-              <path id="EMOJI_PATH_2" fill="transparent" d="M 1150 220 A 50 50 0 1 1 250 220 A 50 50 0 1 1 1150 220" ></path>
-            </svg>
-            </div>
-        </div>
-    </div>
-    <div class="new-particle-window" style="opacity: 0%; scale: 0.1"> 
-      <div style= "visibility: hidden;"class="new-particle-text"> 
-       <p style="color: white; width: 80%; position: relative; left: 5%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-       </p>
+        <!-- <h2 class="particle-name">Протон</h2> -->
       </div>
-        <h2 class="new-particle-header">Получена новая частица!</h2>
-        <img style="width: 50%; left:170px; top: 70px; position: relative;" src="first_atom.gif">
-        <h2 style="position: relative; top: 70px; font-size: 30pt;" class="new-particle-header">Бозон Хиггса</h2>
-        <button style="width: 370px; height: 90px; position: relative; top: 30px; font-family: 'Open Sans Light';
-        font-weight: lighter;" onclick="new_particle_hide()" disabled="true" id="continue-new-particle">Продолжить</button>
-    </div>
 
-    <button onclick="new_particle_popup()">start anim</button>
-    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
-    <script 
-        src="node_modules/animejs/lib/anime.min.js">
-    </script>
-    <script src="main.js"></script>
+      <button class="start-button" id="start-button" onclick="show_collider()">Старт</button>
+    </div>
+    <div>
+      <img src="images/collider.png" class="collider">
+
+      <div id="point-wrapper1">
+        <div style="position: absolute; right: 3000px; top: 250px;" class="emoji1"></div>
+        <svg id="point-svg1" width="1920" height="1080" style="position: absolute; top: 0px; left: 0px;">
+
+          <path id="EMOJI_PATH_1" fill="transparent" d="M 280 220 A 50 50 0 1 1 1190 220 A 50 50 0 1 1 280 220"></path>
+          <!-- <circle cx="930" cy="490" r="450" stroke="black" stroke-width="3" fill="red" /> -->
+        </svg>
+      </div>
+
+      <div id="point-wrapper2">
+        <div style="position: absolute; left: 2000px; top: 250px;" class="emoji2"></div>
+        <svg id="point-svg2" width="1000" height="500">
+          <path id="EMOJI_PATH_2" fill="transparent" d="M 1150 220 A 50 50 0 1 1 250 220 A 50 50 0 1 1 1150 220"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="new-particle-window" style="opacity: 0%; scale: 0.1">
+    <div style="visibility: hidden;" class="new-particle-text">
+      <p style="color: white; width: 80%; position: relative; left: 5%">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      </p>
+    </div>
+    <h2 class="new-particle-header">Получена новая частица!</h2>
+    <img id = "new-particle-image" style="width: 50%; left:170px; top: 70px; position: relative;" src="first_atom.gif">
+    <h2 style="position: relative; top: 70px; font-size: 30pt;" class="new-particle-header">Бозон Хиггса</h2>
+    <button style="width: 370px; height: 90px; position: relative; top: 30px; font-family: 'Open Sans Light';
+        font-weight: lighter;" onclick="new_particle_hide()" disabled="true"
+      id="continue-new-particle">Продолжить</button>
+  </div>
+
+  <button onclick="new_particle_popup()">start anim</button>
+  <script src="node_modules/swiper/swiper-bundle.min.js"></script>
+  <script src="node_modules/animejs/lib/anime.min.js">
+  </script>
+  <script src="main.js"></script>
 </body>
+
 </html>
