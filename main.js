@@ -32,13 +32,15 @@ class Particle {
   constructor(x, y, angle, speed, angle_speed, color, color_change_speed, color_fading_speed) {
     this.x = x
     this.y = y
+    this.speed = speed
+    this.angle = angle
     this.xnext = this.x + this.speed * Math.cos(this.angle)
     this.ynext = this.y + this.speed * Math.sin(this.angle)
-    this.angle = angle
-    this.speed = speed
+    
+    
     this.angle_speed = angle_speed
-    this.color = color,
-      this.color_change_speed = color_change_speed
+    this.color = color
+    this.color_change_speed = color_change_speed
     this.color_fading_speed = color_fading_speed
   }
   check_coords() {
@@ -47,6 +49,7 @@ class Particle {
     return (this.x >= 0 && this.x < canvas_width && this.y >= 0 && this.y < canvas_height) ? true : false
   }
   move() {
+    
     this.x += this.speed * Math.cos(this.angle)
     this.y += this.speed * Math.sin(this.angle)
     this.speed *= 0.99
@@ -54,15 +57,19 @@ class Particle {
     this.angle_speed *= 0.99
     this.xnext = this.x + this.speed * Math.cos(this.angle)
     this.ynext = this.y + this.speed * Math.sin(this.angle)
+    
+    
+    
     this.color[0] = max(0, this.color[0] - 66 * this.color_change_speed)
     this.color[1] = min(255, this.color[1] + (255 - 117) * this.color_change_speed)
     this.color[2] = max(128, this.color[2] - (245 - 128) * this.color_change_speed)
-    this.color[3] = min(1, this.color[3] * this.color_fading_speed)
+    this.color[3] = max(0, this.color[3] * this.color_fading_speed)
   }
   draw(ctx) {
     ctx.lineTo(this.x, this.y)
 
     ctx.lineTo(this.xnext, this.ynext)
+    
   }
 }
 
@@ -124,11 +131,11 @@ function add_explosion(x, y, count) {
       x,
       y,
       Math.random() * 2 * Math.PI,   // angle
-      2 + Math.random() * 3,         // speed
-      (-0.5 + Math.random()) * 0.02, // angle speed
-      [66, 117, 245, 0.01],                // color
-      Math.random() * 0.03,     // color change speed
-      1.01 + Math.random() * 0.04
+      20 + Math.random() * 3,         // speed
+      (-0.5 + Math.random()) * 0.03, // angle speed
+      [66, 117, 245, 1],                // color
+      Math.random() * 0.1,     // color change speed
+      0.97 - Math.random() * 0.2  // color fading speed
     ))
   }
 }
@@ -146,16 +153,15 @@ function update_particles() {
   }
 }
 
-function getCursorPosition(canvas, event) {
+function explosion_in_cursos_position(canvas, event) {
   const rect = canvas.getBoundingClientRect()
   const x = event.clientX - rect.left
   const y = event.clientY - rect.top
   add_explosion(x, y, 100)
 }
 
-document.getElementById('canvas').addEventListener("click", function (e) {
-  getCursorPosition(document.getElementById('canvas'), e)
-})
+
+
 var swiper_top = new Swiper(".mySwiperTop", {
   loop: true,
   slidesPerView: 3,
@@ -192,25 +198,26 @@ var swiper_bot = new Swiper(".mySwiperBottom", {
     prevEl: ".swiper-button-prev",
   },
 });
+
+function clear_canvas(){
+  ctx = document.getElementById('canvas').getContext('2d')
+  ctx.clearRect(0, 0, 1920, 1080);
+}
+
 function draw() {
   var ctx = document.getElementById('canvas').getContext('2d');
-  //ctx.clearRect(0, 0, 800, 800);
-
-  ctx.fillStyle = 'white'
-
 
   for (let i = 0; i < particles.length; ++i) {
     ctx.beginPath()
     color = particles[i].color
     ctx.strokeStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`
+    
+
     particles[i].draw(ctx)
-    particles[i].move()
-
-    ctx.closePath()
     ctx.stroke()
-
     ctx.fill()
-
+    ctx.closePath()
+    particles[i].move()
   }
 
   update_particles()
@@ -340,12 +347,10 @@ function run_collider(){
   })
 }
 
-
-
 function phase_choose() { //phase 1
     //hide_collider()
+    clear_canvas()
     new_particle_hide()
-
 }
 function phase_accelerating() { //phase 2
     show_collider()

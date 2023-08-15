@@ -103,8 +103,6 @@ button:active{
     z-index: 3;
 }
 .canvas{
-
-    border: 2px solid white;
     position: absolute;
     top: 0;
     left: 0;
