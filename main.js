@@ -343,6 +343,7 @@ function run_collider(){
 
 
 function phase_choose() { //phase 1
+    //hide_collider()
     new_particle_hide()
 
 }
@@ -350,7 +351,7 @@ function phase_accelerating() { //phase 2
     show_collider()
 }
 function phase_reading() { //phase 3
-  document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
+  //document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
   new_particle_popup()
 }
 
@@ -365,12 +366,12 @@ function phase_timer_update() {
       break;
     case 2:
       document.getElementsByClassName("timer-header")[0].textContent = "Столкновение через: "+current_timer+"с."
-      if(!animation_started) phase_accelerating();;
+      if(!animation_started) phase_accelerating();
       animation_started = true
       break;
     case 3:
         document.getElementsByClassName("timer-header")[0].textContent = "Возврат через: "+current_timer+"с."
-        if(!animation_started) phase_reading();;
+        if(!animation_started) phase_reading();
       animation_started = true
         break;
   }
