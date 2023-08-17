@@ -161,38 +161,19 @@ function explosion_in_cursos_position(canvas, event) {
 }
 
 
-
-var swiper_top = new Swiper(".mySwiperTop", {
+var swiper = new Swiper(".swiper", {
   loop: true,
-  slidesPerView: 3,
-  spaceBetween: 30,
-  effect: "coverflow",
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 2,
   coverflowEffect: {
-    rotate: 15,
-    stretch: 10,
-    depth: 150,
-    modifier: 1,
-    slideShadows: true,
+      rotate: 0,
+      stretch: 25,
+      depth: 230,
+      modifier: 1.2,
+      slideShadows: false,
   },
-  freeMode: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
-var swiper_bot = new Swiper(".mySwiperBottom", {
-  loop: true,
-  slidesPerView: 3,
-  spaceBetween: 30,
-  effect: "coverflow",
-  coverflowEffect: {
-    rotate: 15,
-    stretch: 10,
-    depth: 150,
-    modifier: 1,
-    slideShadows: true,
-  },
-  freeMode: true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -223,7 +204,7 @@ function draw() {
   update_particles()
 
   window.requestAnimationFrame(draw)
-  //console.log("top: ", swiper_top.realIndex, "bot: ", swiper_bot.realIndex)
+  alert("top: ", swiper_top.realIndex, "bot: ", swiper_bot.realIndex)
 }
 init()
 var move_collider_tl = anime.timeline({
@@ -256,6 +237,7 @@ function hide_collider() {
   move_collider_tl.play()
 }
 function show_collider() {
+  // alert("top: ", swiper.realIndex)
   move_collider_tl.direction = "normal"
 
 
@@ -265,6 +247,7 @@ function show_collider() {
 }
 
 function back_points(){
+
   var back_points_tl = anime.timeline({
     targets: '.selector-box',
     translateX: -1000,

@@ -32,9 +32,9 @@ body{
 
 .selector{
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 20px;
     width: 700px;
-    height: 250px;
+    /* height: 600px; */
     background-color: transparent;
     position: relative;
 }   
@@ -66,6 +66,10 @@ body{
     text-align: center;
     font-weight: 300;
 }
+img.atom-gif{
+    width: 10px;
+    height: auto;
+}
 h2 {
     font-family: 'Open Sans Light';
     font-weight: lighter;
@@ -81,7 +85,7 @@ button{
     
     background-color: white;
     color: #1E1E1E;
-    margin: 100px auto;
+    margin: 10px auto;
     border-radius: 10px;
     font-size: 30pt;
     font-family: 'Open Sans Bold';
@@ -150,15 +154,15 @@ swiper {
     font-size: 18px;
     /* background: #fff; */
     display: flex;
-    height: 250px;
+    height: 600px;
     justify-content: center;
     align-items: center;
   }
 
   .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
+    display: inline-block;
+    width: 65%;
+    height: 65%;
     object-fit: cover;
   }
 
