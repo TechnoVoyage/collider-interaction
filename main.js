@@ -8,7 +8,7 @@ var current_timer = TIME_CHOOSE
 var current_phase = 1
 const particle_id = {1: 2 }
 var particle_emoji1_color = PARTICLE_COLOR["electron"]
-var particle_emoji2_color = PARTICLE_COLOR["antielectron"]
+var particle_emoji2_color = PARTICLE_COLOR["proton"]
 function init() {
   window.requestAnimationFrame(draw);
 }
@@ -73,6 +73,24 @@ class Particle {
   }
 }
 
+var swiper = new Swiper(".swiper", {
+  loop: true,
+  effect: 'coverflow',
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 2,
+  coverflowEffect: {
+      rotate: 0,
+      stretch: 25,
+      depth: 230,
+      modifier: 1.2,
+      slideShadows: false,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 
 const particles = []
 
@@ -161,24 +179,7 @@ function explosion_in_cursos_position(canvas, event) {
 }
 
 
-var swiper = new Swiper(".swiper", {
-  loop: true,
-  effect: 'coverflow',
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: 2,
-  coverflowEffect: {
-      rotate: 0,
-      stretch: 25,
-      depth: 230,
-      modifier: 1.2,
-      slideShadows: false,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+
 
 function clear_canvas(){
   ctx = document.getElementById('canvas').getContext('2d')
@@ -204,7 +205,7 @@ function draw() {
   update_particles()
 
   window.requestAnimationFrame(draw)
-  alert("top: ", swiper_top.realIndex, "bot: ", swiper_bot.realIndex)
+
 }
 init()
 var move_collider_tl = anime.timeline({
@@ -236,8 +237,26 @@ function hide_collider() {
   back_points()
   move_collider_tl.play()
 }
+
 function show_collider() {
-  // alert("top: ", swiper.realIndex)
+  switch (swiper.realIndex) {
+    case 0:
+      particle_emoji1_color = PARTICLE_COLOR["electron"]
+      particle_emoji2_color = PARTICLE_COLOR["electron"]
+      break;
+    case 1:
+      particle_emoji1_color = PARTICLE_COLOR["proton"]
+      particle_emoji2_color = PARTICLE_COLOR["proton"]
+      break;
+    case 2:
+      particle_emoji1_color = PARTICLE_COLOR["antielectron"]
+      particle_emoji2_color = PARTICLE_COLOR["antielectron"]
+        break;
+    case 3:
+      particle_emoji1_color = PARTICLE_COLOR["electron "]
+      particle_emoji2_color = PARTICLE_COLOR["electron"]
+      break;
+  }
   move_collider_tl.direction = "normal"
 
 
