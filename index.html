@@ -34,12 +34,12 @@
               <div class="swiper-slide">
                 <div class="swiper-slide-inside">
                   <div class="particle-name">
-                    электрон+
+                    Электрон
                   </div>
                   <img src="first_atom.gif">
                   <img src="first_atom.gif">
                   <div class="particle-name">
-                    антиэлектрон
+                    Позитрон
                   </div>
                 </div>
               </div>
@@ -47,12 +47,12 @@
               <div class="swiper-slide">
                 <div class="swiper-slide-inside">
                   <div class="particle-name">
-                    протон
+                    Протон
                   </div>
                   <img class="atom-gif" src="first_atom.gif">
                   <img class="atom-gif" src="first_atom.gif">
                   <div class="particle-name">
-                    антипротон
+                    Протон
                   </div>
                 </div>
               </div>
@@ -60,12 +60,12 @@
               <div class="swiper-slide">
                 <div class="swiper-slide-inside">
                   <div class="particle-name">
-                    электрон
+                    Электрон
                   </div>
                   <img src="first_atom.gif">
                   <img src="first_atom.gif">
                   <div class="particle-name">
-                    протон
+                    Протон
                   </div>
                 </div>
               </div>
@@ -73,12 +73,12 @@
               <div class="swiper-slide">
                 <div class="swiper-slide-inside">
                   <div class="particle-name">
-                    антиэлектрон
+                    Позитрон
                   </div>
                   <img src="first_atom.gif">
                   <img src="first_atom.gif">
                   <div class="particle-name">
-                    протон
+                    Протон
                   </div>
                 </div>
               </div>
@@ -104,7 +104,6 @@
         </div>
       </div>
 
-      <button class="start-button" id="start-button" onclick="show_collider()">Старт</button>
     </div>
     <div>
       <img src="images/collider.png" class="collider">
@@ -119,7 +118,7 @@
       </div>
 
       <div id="point-wrapper2">
-        <div style="position: absolute; left: 2000px; top: 250px;" class="emoji2"></div>
+        <div style="position: absolute; left: 2000px; top: 250px; " class="emoji2"></div>
         <svg id="point-svg2" width="1000" height="500">
           <path id="EMOJI_PATH_2" fill="transparent" d="M 1150 220 A 50 50 0 1 1 250 220 A 50 50 0 1 1 1150 220"></path>
         </svg>
@@ -141,11 +140,10 @@
     <img id = "new-particle-image" style="width: 50%; left:170px; top: 70px; position: relative;" src="first_atom.gif">
     <h2 style="position: relative; top: 70px; font-size: 30pt;" class="new-particle-header">Бозон Хиггса</h2>
     <button style="width: 370px; height: 90px; position: relative; top: 30px; font-family: 'Open Sans Light';
-        font-weight: lighter;" onclick="new_particle_hide()" disabled="true"
+        font-weight: lighter;" onclick="continue_button()" disabled="true"
       id="continue-new-particle">Продолжить</button>
   </div>
 
-  <button onclick="new_particle_popup()">start anim</button>
   <script src="node_modules/swiper/swiper-bundle.min.js"></script>
   <script src="node_modules/animejs/lib/anime.min.js">
   </script>

@@ -1,6 +1,6 @@
-const TIME_CHOOSE = 5
+const TIME_CHOOSE = 13
 const TIME_ACCELERATING = 25
-const TIME_READ = 10
+const TIME_READ = 15
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = {"electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000"}
 const PARTICLE_NAMES = [{"name": "Бозон Хиггса", "link": "images/particles/bozon.gif"}]
@@ -239,22 +239,23 @@ function hide_collider() {
 }
 
 function show_collider() {
+  console.log(swiper.realIndex)
   switch (swiper.realIndex) {
     case 0:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
-      particle_emoji2_color = PARTICLE_COLOR["electron"]
+      particle_emoji2_color = PARTICLE_COLOR["antielectron"]
       break;
     case 1:
       particle_emoji1_color = PARTICLE_COLOR["proton"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
       break;
     case 2:
-      particle_emoji1_color = PARTICLE_COLOR["antielectron"]
-      particle_emoji2_color = PARTICLE_COLOR["antielectron"]
-        break;
+      particle_emoji1_color = PARTICLE_COLOR["electron"]
+      particle_emoji2_color = PARTICLE_COLOR["proton"]
+      break;
     case 3:
-      particle_emoji1_color = PARTICLE_COLOR["electron "]
-      particle_emoji2_color = PARTICLE_COLOR["electron"]
+      particle_emoji1_color = PARTICLE_COLOR["antielectron"]
+      particle_emoji2_color = PARTICLE_COLOR["proton"]
       break;
   }
   move_collider_tl.direction = "normal"
@@ -266,7 +267,7 @@ function show_collider() {
 }
 
 function back_points(){
-
+  
   var back_points_tl = anime.timeline({
     targets: '.selector-box',
     translateX: -1000,
@@ -287,6 +288,8 @@ function back_points(){
     top: 250,
   },'-=1000')
   back_points_tl.play()
+  document.getElementsByClassName("emoji1")[0].style.visibility = "visible";
+    document.getElementsByClassName("emoji2")[0].style.visibility = "visible";
 }
   
 
@@ -345,6 +348,8 @@ function run_collider(){
   }, no_delay) 
   run_collider_tl.play()
   run_collider_tl.finished.then(function(){
+    document.getElementsByClassName("emoji1")[0].style.visibility = "hidden";
+    document.getElementsByClassName("emoji2")[0].style.visibility = "hidden";
     add_explosion(1400, 500, 200);
   })
 }
@@ -361,7 +366,13 @@ function phase_reading() { //phase 3
   //document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
   new_particle_popup()
 }
-
+function continue_button() {
+  animation_started = false;
+  current_timer += TIME_CHOOSE;
+  current_phase = 1;
+  hide_collider()
+  console.log(current_phase)
+}
 var animation_started = false
 function phase_timer_update() {
   current_timer -= 1
