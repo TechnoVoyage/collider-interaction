@@ -1,9 +1,24 @@
-const TIME_CHOOSE = 5
+const TIME_CHOOSE = 2
 const TIME_ACCELERATING = 25
 const TIME_READ = 10
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = {"electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000"}
-const PARTICLE_NAMES = [{"name": "Бозон Хиггса", "link": "images/particles/bozon.gif"}]
+const PARTICLE_NAMES = [{"name": "Бозон Хиггса", "link": "first_atom.gif", "text": ""}, {"name": "Нижний", "link": "first_atom.gif", "text": ""},
+{"name": "Верхний", "link": "first_atom.gif", "text": ""}, {"name": "Очарованный", "link": "first_atom.gif", "text": ""},
+{"name": "Истинный", "link": "first_atom.gif", "text": ""}, {"name": "Странный", "link": "first_atom.gif", "text": ""},
+{"name": "Прелестный", "link": "first_atom.gif", "text": ""}, {"name": "Глюон", "link": "first_atom.gif", "text": ""},
+{"name": "Фотон", "link": "first_atom.gif", "text": ""}, {"name": "Z Бозон", "link": "first_atom.gif", "text": ""},
+{"name": "W Бозон", "link": "first_atom.gif", "text": ""}, {"name": "Электрон", "link": "first_atom.gif", "text": ""}, 
+{"name": "Мюон", "link": "first_atom.gif", "text": ""}, {"name": "Тау", "link": "first_atom.gif", "text": ""},
+{"name": "Элейтронное Нейтрино", "link": "first_atom.gif", "text": ""}, {"name": "Мюонное Нейтрино", "link": "first_atom.gif", "text": ""},
+{"name": "Тау Нейтрино", "link": "first_atom.gif", "text": ""}
+]
+
+element_index = getRandomInt(17)
+document.getElementsByClassName('new-particle-header')[1].innerHTML = PARTICLE_NAMES[element_index]['name'];
+document.getElementsByClassName('new-particle-text')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
+// document.getElementsByClassName('new-particle-image')[0].src = PARTICLE_NAMES[element_index]['link'];
+
 var current_timer = TIME_CHOOSE
 var current_phase = 1
 const particle_id = {1: 2 }
@@ -70,6 +85,7 @@ class Particle {
 const particles = []
 
 var new_particle_tl = anime.timeline({
+  
   easing: 'easeInOutExpo',
   duration: 1500,
   autoplay: false,
@@ -78,6 +94,7 @@ var new_particle_tl = anime.timeline({
       document.getElementById("continue-new-particle").disabled = true
   }
 });
+
 new_particle_tl.add({
   targets: ".new-particle-window",
   scale: 10,
@@ -260,22 +277,21 @@ function show_collider() {
 function back_points(){
   var back_points_tl = anime.timeline({
     targets: '.selector-box',
-    translateX: -1000,
     easing: 'easeInOutExpo',
     autoplay: false
   })
   back_points_tl.add({
     targets: '.emoji1', 
+    opacity: [1, 0],
     backgroundColor: particle_emoji1_color, 
-    right: 3500,
-    top: 250,
+    duration: 1000,
     
   })
   back_points_tl.add({
     targets: '.emoji2',  
+    opacity: [1, 0],
     backgroundColor: particle_emoji2_color, 
-    left: 2000,
-    top: 250,
+    duration: 1000,
   },'-=1000')
   back_points_tl.play()
 }
@@ -291,19 +307,20 @@ function run_collider(){
 
   var run_collider_tl = anime.timeline({
     targets: '.selector-box',
-    translateX: -1000,
     easing: 'easeInOutExpo',
     autoplay: false
   })
   run_collider_tl.add({
     targets: '.emoji1',  
-    right: 1625,
+    opacity: [0, 1],
+    duration: 1000,
     
   })
 
   run_collider_tl.add({
     targets: '.emoji2',  
-    left: 215,
+    opacity: [0, 1],
+    duration: 1000,
   }) 
   
   run_collider_tl.add({
