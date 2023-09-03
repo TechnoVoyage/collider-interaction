@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 1
+const TIME_CHOOSE = 13
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -139,7 +139,12 @@ new_particle_tl.add({
   translateY: -1050
 })
 function new_particle_popup() {
-
+  anime({
+    targets: '.right-space',
+    translateX: 200,
+    duration: 2000,
+    easing: 'easeInOutExpo',
+    });
   new_particle_tl.play()
 }
 function new_particle_hide() {
