@@ -54,7 +54,7 @@ html, body {
     padding: 0 !important;
 }
 body{
-    background-color: #1E1E1E;
+    background-color: #000000;
     overflow: hidden;
 }
 
@@ -179,7 +179,6 @@ button:active{
 .collider{
     position: absolute;
     width: 900px;
-    height: 900px;
     z-index: 1;
 }
 

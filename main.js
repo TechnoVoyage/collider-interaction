@@ -3,15 +3,16 @@ const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
-const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "first_atom.gif", "text": "" }, { "name": "Нижний", "link": "first_atom.gif", "text": "" },
-{ "name": "Верхний", "link": "first_atom.gif", "text": "" }, { "name": "Очарованный", "link": "first_atom.gif", "text": "" },
-{ "name": "Истинный", "link": "first_atom.gif", "text": "" }, { "name": "Странный", "link": "first_atom.gif", "text": "" },
-{ "name": "Прелестный", "link": "first_atom.gif", "text": "" }, { "name": "Глюон", "link": "first_atom.gif", "text": "" },
-{ "name": "Фотон", "link": "first_atom.gif", "text": "" }, { "name": "Z Бозон", "link": "first_atom.gif", "text": "" },
-{ "name": "W Бозон", "link": "first_atom.gif", "text": "" }, { "name": "Электрон", "link": "first_atom.gif", "text": "" },
-{ "name": "Мюон", "link": "first_atom.gif", "text": "" }, { "name": "Тау", "link": "first_atom.gif", "text": "" },
-{ "name": "Элейтронное Нейтрино", "link": "first_atom.gif", "text": "" }, { "name": "Мюонное Нейтрино", "link": "first_atom.gif", "text": "" },
-{ "name": "Тау Нейтрино", "link": "first_atom.gif", "text": "" }
+const LOREMIPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Нижний", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Верхний", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Очарованный", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Истинный", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Странный", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Прелестный", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Глюон", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Фотон", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Z Бозон", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "W Бозон", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Электрон", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Мюон", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Тау", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Элейтронное Нейтрино", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Мюонное Нейтрино", "link": "first_atom.gif", "text": LOREMIPSUM },
+{ "name": "Тау Нейтрино", "link": "first_atom.gif", "text": LOREMIPSUM }
 ]
 
 element_index = getRandomInt(17)
@@ -182,14 +183,7 @@ function update_particles() {
       newParticles.push(particles[i])
     }
   }
-  particles.length = 0
-  for (let i = 0; i < newParticles.length; ++i) {
-    particles.push(newParticles[i])
-  }
-}
-
-function explosion_in_cursos_position(canvas, event) {
-  const rect = canvas.getBoundingClientRect()
+  particles.length = ClientRect()
   const x = event.clientX - rect.left
   const y = event.clientY - rect.top
   add_explosion(x, y, 100)
@@ -225,7 +219,11 @@ function draw() {
 
 }
 init()
-
+function particle_explode(hide = false) {
+    const explode_gif = document.getElementById("explode");
+    if (!hide) explode_gif.src = "images/boom.gif";
+    else explode_gif.src = "images/boom.gif";
+}
 
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
@@ -369,7 +367,7 @@ function run_collider() {
   run_collider_tl.finished.then(function () {
     document.getElementsByClassName("emoji1")[0].style.visibility = "hidden";
     document.getElementsByClassName("emoji2")[0].style.visibility = "hidden";
-    add_explosion(1400, 500, 200);
+    particle_explode(hide=false)
   })
 }
 
@@ -383,6 +381,7 @@ function phase_accelerating() { //phase 2
 }
 function phase_reading() { //phase 3
   //document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
+  particle_explode(hide=true)
   new_particle_popup()
 }
 function continue_button() {
