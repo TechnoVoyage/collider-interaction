@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 13
+const TIME_CHOOSE = 1
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -276,8 +276,7 @@ function show_collider() {
       break;
   }
   move_collider_tl.direction = "normal"
-
-
+  right_selected_particles()
   move_collider_tl.play()
   setTimeout(() => { run_collider(); }, 1000);
 
@@ -308,6 +307,15 @@ function back_points() {
   document.getElementsByClassName("emoji2")[0].style.visibility = "visible";
 }
 
+
+let right_selected_particles = function() {
+  setTimeout(function(){
+    anime({
+      targets: '.right-space',
+      translateX: -200,
+      });
+    }, 1500);
+}
 
 function run_collider() {
   document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
@@ -390,6 +398,12 @@ function continue_button() {
   hide_collider()
   console.log(current_phase)
 }
+
+
+
+
+
+
 var animation_started = false
 function phase_timer_update() {
   current_timer -= 1
@@ -435,3 +449,4 @@ function phase_timer_update() {
   }
 }
 setInterval(() => phase_timer_update(), 1000)
+
