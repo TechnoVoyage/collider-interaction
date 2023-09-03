@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
     src: url('fonts/Open_Sans/OpenSans-Light.ttf');
 }
 
@@ -81,7 +81,7 @@ body{
     vertical-align: top;
     font-size: 30pt;
     color: white;
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
     
 }
 .new-particle-text {
@@ -95,7 +95,7 @@ body{
     height: 1000px;
     z-index: 3;
     font-size: 30pt;
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
 }
 .new-particle-header{
     color: white;
@@ -108,7 +108,7 @@ img.atom-gif{
     height: auto;
 }
 h2 {
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
     font-weight: lighter;
     color: white;
     
@@ -152,7 +152,7 @@ button:active{
 
 .header{
     text-align: center;
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
     font-weight: lighter;
     font-size: 30pt;
     color: white;
@@ -187,7 +187,7 @@ button:active{
     background-color: transparent;    
     font-size: 30pt;
     color: white;
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
 }
 
 swiper {
