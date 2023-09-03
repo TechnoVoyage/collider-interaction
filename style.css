@@ -12,6 +12,43 @@
     font-family: 'Open Sans Bold';
     src: url('fonts/Open_Sans/OpenSans-Bold.ttf');
 }
+
+@font-face {
+    font-family: 'Journal Sans New';
+    src: url('fonts/JournalSansNew/JournalSansNew.ttf');
+}
+
+@font-face {
+    font-family: 'Journal Sans New Display';
+    src: url('fonts/JournalSansNew/JournalSansNewDisplay.ttf');
+}
+
+@font-face {
+    font-family: 'Journal Sans New Oblique';
+    src: url('fonts/JournalSansNew/JournalSansNewOblique.ttf');
+}
+
+@font-face {
+    font-family: 'Journal Sans New Inline';
+    src: url('fonts/JournalSansNew/JournalSansNewInline.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Journal Sans New Italic';
+    src: url('fonts/JournalSansNew/JournalSansNewItalic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Journal Sans New Bold';
+    src: url('fonts/JournalSansNew/JournalSansNewBold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
 html, body {
     margin: 0 !important;
     padding: 0 !important;
@@ -121,12 +158,21 @@ button:active{
     color: white;
 }
 .timer-header {
-    font-family: 'Open Sans Light';
+    font-family: 'Journal Sans New';
     font-weight: lighter;
-    font-size: 25pt;
+    font-size: 70pt;
     color: white;
     left: 30px;
     top: -20px;
+    position: relative;
+}
+.timer-header-word {
+    font-family: 'Journal Sans New';
+    font-weight: lighter;
+    font-size: 40pt;
+    color: white;
+    left: 30px;
+    top: -110px;
     position: relative;
 }
 

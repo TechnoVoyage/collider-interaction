@@ -40,7 +40,7 @@ function min(a, b) {
   return (a > b) ? b : a
 }
 
-document.getElementsByClassName("timer-header")[0].textContent = "Запуск коллайдера через: " + current_timer + "с."
+document.getElementsByClassName("timer-header")[0].textContent = current_timer
 document.getElementById("canvas").width = 1920;
 document.getElementById("canvas").height = 1080;
 class Particle {
@@ -225,6 +225,8 @@ function draw() {
 
 }
 init()
+
+
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
   translateX: -1000,
@@ -395,12 +397,12 @@ function phase_timer_update() {
   current_timer -= 1
   switch (current_phase) {
     case 1:
-      document.getElementsByClassName("timer-header")[0].textContent = "Запуск коллайдера через: " + current_timer + "с."
+      document.getElementsByClassName("timer-header")[0].textContent = current_timer
       if (!animation_started) phase_choose();
       animation_started = true
       break;
     case 2:
-      document.getElementsByClassName("timer-header")[0].textContent = "Столкновение через: " + current_timer + "с."
+      document.getElementsByClassName("timer-header")[0].textContent = current_timer
       if (!animation_started) phase_accelerating();
       animation_started = true
       break;
@@ -435,3 +437,4 @@ function phase_timer_update() {
   }
 }
 setInterval(() => phase_timer_update(), 1000)
+
