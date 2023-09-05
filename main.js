@@ -319,7 +319,7 @@ let right_selected_particles = function() {
   setTimeout(function(){
     anime({
       targets: '.right-space',
-      translateX: -200,
+      translateX: -215,
       });
     }, 1500);
 }

@@ -61,6 +61,7 @@ body {
 }
 
 .main-space {
+    margin-top: 125px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -265,12 +266,31 @@ swiper {
     /* background-color: aquamarine; */
 }   
 
-img.animated-gif{
-    width: 120px;
+img.animated-gif-up{
+    width: 200px;
     height: auto;
+    border:400px;
+    padding: 5px;
+    background-color: red;
 }
 
-img.selected-arrows{
-    width: 120px;
+img.animated-gif-down{
+    width: 200px;
     height: auto;
+    border:400px;
+    padding: 5px;
+    background-color: blue;
+}
+
+
+.selected-arrow-down{
+    width: 200px;
+    height: 200px;
+    margin-bottom:-60px;
+}
+
+.selected-arrow-up{
+    width: 200px;
+    height: 200px;
+    margin-top:-60px;
   }
