@@ -1,5 +1,5 @@
-const TIME_CHOOSE = 13
-const TIME_ACCELERATING = 25
+const TIME_CHOOSE = 1
+const TIME_ACCELERATING = 5
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
@@ -327,6 +327,14 @@ let right_selected_particles = function() {
 function run_collider() {
   document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("emoji2")[0].style.backgroundColor = particle_emoji2_color;
+
+  document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
+  document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
+
+  document.getElementsByClassName("selected-arrow-down")[0].style.stroke = particle_emoji1_color;
+  document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
+
+
   document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 210 220 A 50 50 0 1 1 1120 220 A 50 50 0 1 1 210 220 ".repeat(10) + "A 50 50 0 1 1 1120 180")
   document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 1150 220 A 50 50 0 1 1 240 220 A 50 50 0 1 1 1150 220 ".repeat(10))
   let path1 = anime.path('#point-svg1 path');
