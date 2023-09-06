@@ -140,7 +140,12 @@ new_particle_tl.add({
   translateY: -1050
 })
 function new_particle_popup() {
-
+  anime({
+    targets: '.right-space',
+    translateX: 200,
+    duration: 2000,
+    easing: 'easeInOutExpo',
+    });
   new_particle_tl.play()
 }
 function new_particle_hide() {
@@ -276,8 +281,7 @@ function show_collider() {
       break;
   }
   move_collider_tl.direction = "normal"
-
-
+  right_selected_particles()
   move_collider_tl.play()
   setTimeout(() => { run_collider(); }, 1000);
 
@@ -309,11 +313,28 @@ function back_points() {
 }
 
 
+let right_selected_particles = function() {
+  setTimeout(function(){
+    anime({
+      targets: '.right-space',
+      translateX: -215,
+      });
+    }, 1500);
+}
+
 function run_collider() {
   document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("emoji2")[0].style.backgroundColor = particle_emoji2_color;
-  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 436 118 A 50 50 0 1 1 450 780 A 50 50 0 1 1 436 118 ".repeat(12) + "A 50 50 0 1 1 450 780")
-  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 450 780 A 50 50 0 1 1 436 118 A 50 50 0 1 1 450 780 ".repeat(12))
+
+  document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
+  document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
+
+  document.getElementsByClassName("selected-arrow-down")[0].style.stroke = particle_emoji1_color;
+  document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
+
+
+  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 210 220 A 50 50 0 1 1 1120 220 A 50 50 0 1 1 210 220 ".repeat(10) + "A 50 50 0 1 1 1120 180")
+  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 1150 220 A 50 50 0 1 1 240 220 A 50 50 0 1 1 1150 220 ".repeat(10))
   let path1 = anime.path('#point-svg1 path');
   let path2 = anime.path('#point-svg2 path');
 
@@ -391,6 +412,12 @@ function continue_button() {
   hide_collider()
   console.log(current_phase)
 }
+
+
+
+
+
+
 var animation_started = false
 function phase_timer_update() {
   current_timer -= 1
