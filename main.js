@@ -224,11 +224,11 @@ function draw() {
 
 }
 init()
-function particle_explode(hide = false) {
-    const explode_gif = document.getElementById("explode");
-    if (!hide) explode_gif.src = "images/boom.gif";
-    else explode_gif.src = "images/boom.gif";
-}
+// function particle_explode(hide = false) {
+//     const explode_gif = document.getElementById("explode");
+//     if (!hide) explode_gif.src = "images/boom.gif";
+//     else explode_gif.src = "images/boom.gif";
+// }
 
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
@@ -333,8 +333,8 @@ function run_collider() {
   document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
 
 
-  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 210 220 A 50 50 0 1 1 1120 220 A 50 50 0 1 1 210 220 ".repeat(10) + "A 50 50 0 1 1 1120 180")
-  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 1150 220 A 50 50 0 1 1 240 220 A 50 50 0 1 1 1150 220 ".repeat(10))
+  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 436 118 A 50 50 0 1 1 450 780 A 50 50 0 1 1 436 118 ".repeat(12) + "A 50 50 0 1 1 450 780")
+  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 450 780 A 50 50 0 1 1 436 118 A 50 50 0 1 1 450 780 ".repeat(12))
   let path1 = anime.path('#point-svg1 path');
   let path2 = anime.path('#point-svg2 path');
 
