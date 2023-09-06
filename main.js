@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 13
+const TIME_CHOOSE = 1
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -312,8 +312,8 @@ function back_points() {
 function run_collider() {
   document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("emoji2")[0].style.backgroundColor = particle_emoji2_color;
-  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 210 220 A 50 50 0 1 1 1120 220 A 50 50 0 1 1 210 220 ".repeat(10) + "A 50 50 0 1 1 1120 180")
-  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 1150 220 A 50 50 0 1 1 240 220 A 50 50 0 1 1 1150 220 ".repeat(10))
+  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 436 118 A 50 50 0 1 1 450 780 A 50 50 0 1 1 436 118 ".repeat(10) + "A 50 50 0 1 1 450 780")
+  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 450 780 A 50 50 0 1 1 436 118 A 50 50 0 1 1 450 780 ".repeat(10))
   let path1 = anime.path('#point-svg1 path');
   let path2 = anime.path('#point-svg2 path');
 
