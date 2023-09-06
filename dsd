@@ -1,0 +1,212 @@
+[33mcommit 4e813518601b09d49459a54f124a8ed9971462b1[m[33m ([m[1;36mHEAD -> [m[1;32mhuina[m[33m, [m[1;31morigin/huina[m[33m)[m
+Author: keee3131 <egor.timskrin@gmail.com>
+Date:   Thu Sep 7 00:10:04 2023 +0300
+
+    balls
+
+[33mcommit b074598261d23163ed22e291679bd3870fb92c9d[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sun Sep 3 22:56:33 2023 +0300
+
+    huina not working
+
+[33mcommit a49bcdc335f6f9f29b12c530b3349001bc8f520f[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sun Sep 3 22:27:37 2023 +0300
+
+    new font everywhere
+
+[33mcommit 72a9ad3b322552c779aa8861b8a7b2eb49076e5b[m[33m ([m[1;31morigin/New_timer[m[33m)[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sun Sep 3 19:55:14 2023 +0300
+
+    Timer position changed
+
+[33mcommit 5fa440a60ce1fef82383230d68fd12a6e8837e0f[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sun Sep 3 18:27:16 2023 +0300
+
+    Timer style changed
+
+[33mcommit 97ff791dcd3bf6cf2b132ce21792410518d5d723[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Tue Aug 22 18:33:09 2023 +0300
+
+    changed distance
+
+[33mcommit d9bbd198d39e76d906a886164838d2c8b62e744d[m
+Merge: eda61b6 9eca64a
+Author: ippishio <waterlava535@gmail.com>
+Date:   Tue Aug 22 18:30:30 2023 +0300
+
+    Merge branch 'egor' of https://github.com/TechnoVoyage/collider-interaction
+
+[33mcommit 9eca64a489172e3d82deb99f502b8e6962289c0e[m[33m ([m[1;31morigin/egor[m[33m)[m
+Author: keee3131 <egor.timskrin@gmail.com>
+Date:   Mon Aug 21 22:51:24 2023 +0000
+
+    changed collider animation & random read content
+
+[33mcommit eda61b635656068381e0e7360800e657f4bb7de4[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sat Aug 19 18:12:01 2023 +0300
+
+    small fixes to swiper and timer
+
+[33mcommit 592291f428df267e58a6cd9c0958a713f1a9fc62[m
+Author: IlyasIshmullin <ilyas.ishmul@gmail.com>
+Date:   Fri Aug 18 23:23:03 2023 +0500
+
+    update colors in particles
+
+[33mcommit 947783362cafd46da5a1aba19cdca47b583b0223[m
+Author: IlyasIshmullin <ilyas.ishmul@gmail.com>
+Date:   Fri Aug 18 04:18:13 2023 +0500
+
+    changed particler animation to twice
+
+[33mcommit ee630c4c6339ca88464b57f1c31ed2cb02de7cae[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Tue Aug 15 19:22:15 2023 +0300
+
+    Explosion changed, clear canvas function added
+
+[33mcommit 70feea79b59e831e488025b3104d859f38b667dd[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Tue Aug 15 17:12:38 2023 +0300
+
+    small comments
+
+[33mcommit 2f50506ada20d939d4841a3f3d55091065d9ae77[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Tue Aug 15 17:04:20 2023 +0300
+
+    merging and adding some constants
+
+[33mcommit 87ea64642211ddd534720e44353cb99fe99c0475[m
+Author: keee3131 <egor.timskrin@gmail.com>
+Date:   Tue Aug 15 01:14:33 2023 +0300
+
+    collider acceleration animation
+
+[33mcommit 904bc56334380c559479b3c801efd88bc57f5e7d[m
+Author: keee3131 <egor.timskrin@gmail.com>
+Date:   Mon Aug 14 03:34:31 2023 +0300
+
+    collider animation & linking animations
+
+[33mcommit f3a44f20852b697d1660740a0ed2cd7fd7d5be3a[m[33m ([m[1;31morigin/test[m[33m)[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sun Aug 13 21:29:33 2023 +0300
+
+    timing
+
+[33mcommit da08874416ecd1573871b9d0b06e77ce4c73a22d[m
+Merge: 42ced4f 3370781
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sun Aug 13 02:40:59 2023 +0300
+
+    Merge branch 'maxim' of https://github.com/TechnoVoyage/collider-interaction
+
+[33mcommit 42ced4f7a89521690fcb633c73b7d22722000c8c[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sun Aug 13 02:40:42 2023 +0300
+
+    new particle popup
+
+[33mcommit 3370781378f1e1d8b2100ab1dca4780b7df7304c[m[33m ([m[1;31morigin/maxim[m[33m)[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sun Aug 13 00:43:24 2023 +0300
+
+    Explosion animation changed
+
+[33mcommit 1f6ad935271dc080e84f9375c7056e3ddc4f2938[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sat Aug 12 23:12:43 2023 +0300
+
+    again slightly updated readme
+
+[33mcommit 34238b56861365ac7cc7e8d75a44a62ca1a6ae8e[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sat Aug 12 23:09:59 2023 +0300
+
+    slightly updated readme
+
+[33mcommit 4fc246afce95aefcf36cb4cd55162b3cca2dbac6[m
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sat Aug 12 23:06:29 2023 +0300
+
+    merged slider & particles branches
+
+[33mcommit 3e6a9dd7dde29ca2c2485e71b894480bfe485088[m
+Merge: 6b1d354 2cf4f93
+Author: ippishio <waterlava535@gmail.com>
+Date:   Sat Aug 12 22:53:50 2023 +0300
+
+    Merge branch 'selection_animation' of https://github.com/TechnoVoyage/collider-interaction
+
+[33mcommit 2cf4f9370737561f025ff9348d4ef05de774debc[m[33m ([m[1;31morigin/selection_animation[m[33m)[m
+Author: Ilyas <ilyas.ishmul@gmail.com>
+Date:   Sun Aug 13 00:37:42 2023 +0500
+
+    animation of atom names
+
+[33mcommit 6b1d354fe02d3e7f4c114c421a2c30d1ae19bba8[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sat Aug 12 22:08:50 2023 +0300
+
+    Collider moving animation added
+
+[33mcommit 284afa5ac9862ba70341f2bb3d6d98270686c179[m
+Author: Ilyas <ilyas.ishmul@gmail.com>
+Date:   Sat Aug 12 20:37:50 2023 +0500
+
+    animation of selection
+
+[33mcommit d88022f4267eebb53f81c85283a754153d458c12[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sat Aug 12 18:19:22 2023 +0300
+
+    Canvas in fullscreen
+
+[33mcommit 126f1d34ee84ae52e458b6351dd7af02f3c44852[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sat Aug 12 02:57:17 2023 +0300
+
+    Animations added
+
+[33mcommit 686da5115263e52cdd9ece4b3acc8907d44afda2[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sat Aug 12 01:15:49 2023 +0300
+
+    Explostion animation changed
+
+[33mcommit 63789c7b0e1fd6c024ecc61d241e62925de7e901[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Sat Aug 12 01:15:29 2023 +0300
+
+    Explosion animation changed
+
+[33mcommit ec4b0ba6b3dfa52b047a17f0ac0d17ca2d670fa0[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Fri Aug 11 23:24:12 2023 +0300
+
+    Separate function created
+
+[33mcommit 528dc316611d257bf68e31b3a8ef99aab31cb291[m
+Author: Maxim <olzeevmax@gmail.com>
+Date:   Fri Aug 11 22:50:24 2023 +0300
+
+    Explosion animation
+
+[33mcommit 4ba4670909a585a483ff15daab1fca29c5768520[m
+Author: Ilyas <ilyas.ishmul@gmail.com>
+Date:   Fri Aug 11 22:49:13 2023 +0500
+
+    animejs
+
+[33mcommit 32ea8e81be2c8b9f09c8fef8aa440e570d53c3c1[m
+Author: Ilya Timofeev <waterlava535@gmail.com>
+Date:   Fri Aug 11 12:47:29 2023 +0300
+
+    Initial commit
