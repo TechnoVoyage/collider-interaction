@@ -44,50 +44,7 @@ function min(a, b) {
 document.getElementsByClassName("timer-header")[0].textContent = current_timer
 document.getElementById("canvas").width = 1920;
 document.getElementById("canvas").height = 1080;
-class Particle {
-  constructor(x, y, angle, speed, angle_speed, color, color_change_speed, color_fading_speed) {
-    this.x = x
-    this.y = y
-    this.speed = speed
-    this.angle = angle
-    this.xnext = this.x + this.speed * Math.cos(this.angle)
-    this.ynext = this.y + this.speed * Math.sin(this.angle)
 
-
-    this.angle_speed = angle_speed
-    this.color = color
-    this.color_change_speed = color_change_speed
-    this.color_fading_speed = color_fading_speed
-  }
-  check_coords() {
-    const canvas_width = document.getElementById('canvas').width
-    const canvas_height = document.getElementById('canvas').height
-    return (this.x >= 0 && this.x < canvas_width && this.y >= 0 && this.y < canvas_height) ? true : false
-  }
-  move() {
-
-    this.x += this.speed * Math.cos(this.angle)
-    this.y += this.speed * Math.sin(this.angle)
-    this.speed *= 0.99
-    this.angle += this.angle_speed
-    this.angle_speed *= 0.99
-    this.xnext = this.x + this.speed * Math.cos(this.angle)
-    this.ynext = this.y + this.speed * Math.sin(this.angle)
-
-
-
-    this.color[0] = max(0, this.color[0] - 66 * this.color_change_speed)
-    this.color[1] = min(255, this.color[1] + (255 - 117) * this.color_change_speed)
-    this.color[2] = max(128, this.color[2] - (245 - 128) * this.color_change_speed)
-    this.color[3] = max(0, this.color[3] * this.color_fading_speed)
-  }
-  draw(ctx) {
-    ctx.lineTo(this.x, this.y)
-
-    ctx.lineTo(this.xnext, this.ynext)
-
-  }
-}
 
 var swiper = new Swiper(".swiper", {
   loop: true,
@@ -108,7 +65,6 @@ var swiper = new Swiper(".swiper", {
   },
 });
 
-const particles = []
 
 var new_particle_tl = anime.timeline({
 
@@ -166,65 +122,12 @@ function new_particle_hide() {
     }
   })
 }
-function add_explosion(x, y, count) {
-  for (let i = 0; i < count; ++i) {
-    particles.push(new Particle(
-      x,
-      y,
-      Math.random() * 2 * Math.PI,   // angle
-      20 + Math.random() * 3,         // speed
-      (-0.5 + Math.random()) * 0.03, // angle speed
-      [66, 117, 245, 1],                // color
-      Math.random() * 0.1,     // color change speed
-      0.97 - Math.random() * 0.2  // color fading speed
-    ))
-  }
-}
-
-function update_particles() {
-  const newParticles = []
-  for (let i = 0; i < particles.length; ++i) {
-    if (particles[i].check_coords()) {
-      newParticles.push(particles[i])
-    }
-  }
-  particles.length = ClientRect()
-  const x = event.clientX - rect.left
-  const y = event.clientY - rect.top
-  add_explosion(x, y, 100)
-}
 
 
 
 
-function clear_canvas() {
-  ctx = document.getElementById('canvas').getContext('2d')
-  ctx.clearRect(0, 0, 1920, 1080);
-}
-
-function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
-
-  for (let i = 0; i < particles.length; ++i) {
-    ctx.beginPath()
-    color = particles[i].color
-    ctx.strokeStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`
 
 
-    particles[i].draw(ctx)
-    ctx.stroke()
-    ctx.fill()
-    ctx.closePath()
-    particles[i].move()
-  }
-
-  update_particles()
-
-  window.requestAnimationFrame(draw)
-
-}
-init()
-// function particle_explode(hide = false) {
 //     const explode_gif = document.getElementById("explode");
 //     if (!hide) explode_gif.src = "images/boom.gif";
 //     else explode_gif.src = "images/boom.gif";
@@ -394,7 +297,6 @@ function run_collider() {
 
 function phase_choose() { //phase 1
   //hide_collider()
-  clear_canvas()
   new_particle_hide()
 }
 function phase_accelerating() { //phase 2
@@ -402,7 +304,6 @@ function phase_accelerating() { //phase 2
 }
 function phase_reading() { //phase 3
   //document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
-  particle_explode(hide=true)
   new_particle_popup()
 }
 function continue_button() {
