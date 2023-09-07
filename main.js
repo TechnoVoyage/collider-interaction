@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 23
+const TIME_CHOOSE = 2
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -80,7 +80,7 @@ var new_particle_tl = anime.timeline({
 new_particle_tl.add({
   targets: ".new-particle-window",
   scale: 10,
-  opacity: 1,
+  opacity: 0.6,
 })
 new_particle_tl.add({
   targets: ".new-particle-window",
@@ -135,7 +135,7 @@ function new_particle_hide() {
 
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
-  translateX: -1000,
+  translateX: 1000,
   easing: 'easeInOutExpo',
   autoplay: false
 })
@@ -313,11 +313,6 @@ function continue_button() {
   hide_collider()
   console.log(current_phase)
 }
-
-
-
-
-
 
 var animation_started = false
 function phase_timer_update() {

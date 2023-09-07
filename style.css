@@ -61,6 +61,7 @@ body{
 
 .main-space {
     margin-top: 125px;
+    margin-left: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -112,6 +113,10 @@ body{
 img.atom-gif {
     width: 10px;
     height: auto;
+    border-style: solid;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 2px;
 }
 
 h2 {
@@ -201,6 +206,8 @@ button:active {
     position: absolute;
     width: 900px;
     z-index: 1;
+    left: 100px;
+    bottom:100px;
 }
 
 .swiper-slide-inside {
