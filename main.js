@@ -312,8 +312,8 @@ function back_points() {
 function run_collider() {
   document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("emoji2")[0].style.backgroundColor = particle_emoji2_color;
-  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 436 118 A 50 50 0 1 1 450 780 A 50 50 0 1 1 436 118 ".repeat(10) + "A 50 50 0 1 1 450 780")
-  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 450 780 A 50 50 0 1 1 436 118 A 50 50 0 1 1 450 780 ".repeat(10))
+  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 436 118 A 50 50 0 1 1 450 780 A 50 50 0 1 1 436 118 ".repeat(12) + "A 50 50 0 1 1 450 780")
+  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 450 780 A 50 50 0 1 1 436 118 A 50 50 0 1 1 450 780 ".repeat(12))
   let path1 = anime.path('#point-svg1 path');
   let path2 = anime.path('#point-svg2 path');
 
