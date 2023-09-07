@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 2
+const TIME_CHOOSE = 23
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -429,11 +429,25 @@ function phase_timer_update() {
       break;
     case 2:
       document.getElementsByClassName("timer-header")[0].textContent = current_timer
+      setTimeout(function(){
+        anime({
+          targets: '.timer-header',
+        translateX: 730,
+        duration: 1000,
+        translateY: -470,
+        })
+        anime({
+          targets: '.timer-header-word',
+          translateX: 500,
+          duration: 1000,
+          translateY: -380,
+        })
+      }, 2000);
       if (!animation_started) phase_accelerating();
       animation_started = true
       break;
     case 3:
-      document.getElementsByClassName("timer-header")[0].textContent = "Возврат через: " + current_timer + "с."
+      document.getElementsByClassName("timer-header")[0].textContent = current_timer
       if (!animation_started) phase_reading();
       animation_started = true
       break;
