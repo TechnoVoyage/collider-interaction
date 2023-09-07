@@ -1,6 +1,7 @@
 @font-face {
-    font-family: 'Open Sans'; 
-    src: url('fonts/Open_Sans/OpenSans-Regular.ttf'); /*URL to font*/
+    font-family: 'Open Sans';
+    src: url('fonts/Open_Sans/OpenSans-Regular.ttf');
+    /*URL to font*/
 }
 
 @font-face {
@@ -58,25 +59,26 @@ body{
     overflow: hidden;
 }
 
-.main-space{
+.main-space {
+    margin-top: 125px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.left-space{
+.left-space {
     z-index: 3;
 }
 
-.selector{
+.selector {
     margin: 0 auto;
     margin-top: 20px;
     width: 700px;
     /* height: 600px; */
     background-color: transparent;
     position: relative;
-}   
+}
 
-.particle-name{
+.particle-name {
     text-align: center;
     vertical-align: top;
     font-size: 30pt;
@@ -84,6 +86,7 @@ body{
     font-family: 'Journal Sans New';
     
 }
+
 .new-particle-text {
     position: absolute;
     top: -50px;
@@ -97,29 +100,34 @@ body{
     font-size: 30pt;
     font-family: 'Journal Sans New';
 }
-.new-particle-header{
+
+.new-particle-header {
     color: white;
     font-size: 40pt;
     text-align: center;
     font-weight: 300;
 }
-img.atom-gif{
+
+img.atom-gif {
     width: 10px;
     height: auto;
 }
+
 h2 {
     font-family: 'Journal Sans New';
     font-weight: lighter;
     color: white;
-    
+
 }
-.start-button{
+
+.start-button {
     width: 300px;
     height: 80px;
 }
-button{
+
+button {
     display: block;
-    
+
     background-color: white;
     color: #1E1E1E;
     margin: 10px auto;
@@ -129,9 +137,11 @@ button{
     outline: none;
     transition: 0.2s;
 }
-button:active{
+
+button:active {
     background-color: grey;
 }
+
 .new-particle-window {
     position: absolute;
     top: 100px;
@@ -143,14 +153,15 @@ button:active{
     height: 900px;
     z-index: 3;
 }
-.canvas{
+
+.canvas {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 2;
 }
 
-.header{
+.header {
     text-align: center;
     font-family: 'Journal Sans New';
     font-weight: lighter;
@@ -185,14 +196,14 @@ button:active{
     position: absolute;
 }
 
-.collider{
+.collider {
     position: absolute;
     width: 900px;
     z-index: 1;
 }
 
 .swiper-slide-inside {
-    background-color: transparent;    
+    background-color: transparent;
     font-size: 30pt;
     color: white;
     font-family: 'Journal Sans New';
@@ -201,9 +212,9 @@ button:active{
 swiper {
     width: 100%;
     height: 100%;
-  }
+}
 
-  .swiper-slide {
+.swiper-slide {
     text-align: center;
     font-size: 18px;
     /* background: #fff; */
@@ -211,41 +222,82 @@ swiper {
     height: 600px;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .swiper-slide img {
+.swiper-slide img {
     display: inline-block;
     width: 65%;
     height: 65%;
     object-fit: cover;
-  }
+}
 
 
-  .swiper {
+.swiper {
     margin-left: auto;
     margin-right: auto;
-  }
+}
 
-  .swiper-button-prev {
+.swiper-button-prev {
     color: white;
-  }
+}
 
-  .swiper-button-next {
+.swiper-button-next {
     color: white;
-  }
-  .emoji1 {
+}
+
+.emoji1 {
     display: block;
     margin: auto;
     width: 20px;
     height: 20px;
     background: #ff0000;
     border-radius: 50%;
-  }
-  .emoji2 {
+}
+
+.emoji2 {
     display: block;
     margin: auto;
     width: 20px;
     height: 20px;
     background: #0000ff;
     border-radius: 50%;
+}
+
+
+.right-space {
+    width: 200px;
+    height: 600px;
+    position: absolute;
+    right: -200px;
+
+    /* background-color: aquamarine; */
+}   
+
+img.animated-gif-up{
+    width: 200px;
+    height: auto;
+    border:400px;
+    padding: 5px;
+    background-color: red;
+}
+
+img.animated-gif-down{
+    width: 200px;
+    height: auto;
+    border:400px;
+    padding: 5px;
+    background-color: blue;
+}
+
+
+.selected-arrow-down{
+    width: 200px;
+    height: 200px;
+    margin-bottom:-60px;
+}
+
+.selected-arrow-up{
+    width: 200px;
+    height: 200px;
+    margin-top:-60px;
   }
