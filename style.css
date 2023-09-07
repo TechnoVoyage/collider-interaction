@@ -157,23 +157,32 @@ button:active{
     font-size: 30pt;
     color: white;
 }
+
+.timer-head{
+    display: inline;
+}
 .timer-header {
     font-family: 'Journal Sans New';
     font-weight: lighter;
     font-size: 70pt;
     color: white;
-    left: 190px;
-    top: 150px;
-    position: relative;
+    bottom: 50px;
+    left: 160px;
+    /* left: 190px; */
+    /* top: 150px; */
+    position: absolute;
 }
 .timer-header-word {
     font-family: 'Journal Sans New';
     font-weight: lighter;
-    font-size: 40pt;
+    font-size: 70pt;
     color: white;
-    left: 140px;
-    top: 60px;
-    position: relative;
+    bottom: 55px;
+    margin-left: 290px;
+    /* left: 10px; */
+    /* left: 140px; */
+    /* top: 60px; */
+    position: absolute;
 }
 
 .collider{
