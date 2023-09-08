@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 300
+const TIME_CHOOSE = 23
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -330,7 +330,7 @@ function phase_reading() { //phase 3
 }
 function continue_button() {
   animation_started = false;
-  current_timer += TIME_CHOOSE;
+  current_timer = TIME_CHOOSE;
   current_phase = 1;
   hide_collider()
   console.log(current_phase)
