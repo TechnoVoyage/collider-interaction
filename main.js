@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 2
+const TIME_CHOOSE = 5
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -25,9 +25,7 @@ var current_phase = 1
 const particle_id = { 1: 2 }
 var particle_emoji1_color = PARTICLE_COLOR["electron"]
 var particle_emoji2_color = PARTICLE_COLOR["proton"]
-function init() {
-  window.requestAnimationFrame(draw);
-}
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -42,8 +40,7 @@ function min(a, b) {
 }
 
 document.getElementsByClassName("timer-header")[0].textContent = current_timer
-document.getElementById("canvas").width = 1920;
-document.getElementById("canvas").height = 1080;
+
 
 
 var swiper = new Swiper(".swiper", {
@@ -65,9 +62,7 @@ var swiper = new Swiper(".swiper", {
   },
 });
 
-
 var new_particle_tl = anime.timeline({
-
   easing: 'easeInOutExpo',
   duration: 1500,
   autoplay: false,
@@ -80,7 +75,7 @@ var new_particle_tl = anime.timeline({
 new_particle_tl.add({
   targets: ".new-particle-window",
   scale: 10,
-  opacity: 0.6,
+  opacity: 1,
 })
 new_particle_tl.add({
   targets: ".new-particle-window",
@@ -145,7 +140,12 @@ move_collider_tl.add({
   easing: 'easeInOutExpo',
 }, 0)
 move_collider_tl.add({
-  targets: '.header',
+  targets: '.header-name',
+  translateY: -100,
+  easing: 'easeInOutExpo',
+}, 0)
+move_collider_tl.add({
+  targets: '.header-choose',
   translateY: -100,
   easing: 'easeInOutExpo',
 }, 0)
@@ -153,11 +153,15 @@ move_collider_tl.add({
   targets: '.collider',
   width: 950,
   height: 950,
-  left: 460,
-  top: 20
+  left: 260,
+  top: 50,
+  begin: function () {
+    document.getElementsByClassName("collider")[0].src = "images/collider_hole.png";
+  }
 })
 
 function hide_collider() {
+  document.getElementsByClassName("collider")[0].src = "images/collider.png";
   move_collider_tl.direction = "reverse"
   back_points()
   move_collider_tl.play()
@@ -165,6 +169,7 @@ function hide_collider() {
 
 function show_collider() {
   console.log(swiper.realIndex)
+  
   switch (swiper.realIndex) {
     case 0:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
@@ -220,7 +225,7 @@ let right_selected_particles = function() {
   setTimeout(function(){
     anime({
       targets: '.right-space',
-      translateX: -215,
+      translateX: -350,
       });
     }, 1500);
 }
@@ -291,7 +296,6 @@ function run_collider() {
   run_collider_tl.finished.then(function () {
     document.getElementsByClassName("emoji1")[0].style.visibility = "hidden";
     document.getElementsByClassName("emoji2")[0].style.visibility = "hidden";
-    particle_explode(hide=false)
   })
 }
 
@@ -330,11 +334,11 @@ function phase_timer_update() {
           targets: '.timer-header',
         translateX: 730,
         duration: 1000,
-        translateY: -470,
+        translateY: -430,
         })
         anime({
           targets: '.timer-header-word',
-          translateX: 500,
+          translateX: 700,
           duration: 1000,
           translateY: -380,
         })

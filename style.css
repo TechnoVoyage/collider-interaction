@@ -60,8 +60,8 @@ body{
 }
 
 .main-space {
-    margin-top: 125px;
-    margin-left: 1200px;
+    margin-top: 200px;
+    margin-left: 1150px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -85,7 +85,7 @@ body{
     vertical-align: top;
     font-size: 30pt;
     color: white;
-    font-family: 'Journal Sans New';
+    font-family: 'Journal Sans New Bold';
     
 }
 
@@ -112,7 +112,7 @@ body{
 
 img.atom-gif {
     width: 10px;
-    height: auto;
+    
     border-style: solid;
     border-color: white;
     border-width: 3px;
@@ -167,17 +167,27 @@ button:active {
     z-index: 2;
 }
 
-.header {
+.header-name {
+    top: -20px;
+    position: absolute;
+    left: 280px;
     text-align: center;
-    font-family: 'Journal Sans New';
+    font-family: 'Journal Sans New Bold';
     font-weight: lighter;
-    font-size: 30pt;
+    font-size: 50pt;
+    color: white;
+}
+.header-choose {
+    top: -20px;
+    position: absolute;
+    right: 200px;
+    text-align: center;
+    font-family: 'Journal Sans New Bold';
+    font-weight: lighter;
+    font-size: 50pt;
     color: white;
 }
 
-.timer-head{
-    display: inline;
-}
 .timer-header {
     font-family: 'Journal Sans New';
     font-weight: lighter;
@@ -185,10 +195,22 @@ button:active {
     color: white;
     bottom: 50px;
     left: 160px;
+    text-align: center;
     /* left: 190px; */
     /* top: 150px; */
     position: absolute;
 }
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
 .timer-header-word {
     font-family: 'Journal Sans New';
     font-weight: lighter;
@@ -277,7 +299,7 @@ swiper {
     height: 600px;
     position: absolute;
     right: -200px;
-
+    top: 150px;
     /* background-color: aquamarine; */
 }   
 
