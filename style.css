@@ -94,9 +94,10 @@ body{
     position: absolute;
     top: -50px;
     left: 800px;
-    background-color: #3D3D3D;
+    background-color: #000000;
     border-style: solid;
     border-radius: 20px;
+    border-color: white;
     width: 1000px;
     height: 1000px;
     z-index: 3;
@@ -153,9 +154,10 @@ button:active {
     position: absolute;
     top: 100px;
     left: 550px;
-    background-color: #3D3D3D;
+    background-color: #000000;
     border-style: solid;
     border-radius: 20px;
+    border-color: white;
     width: 700px;
     height: 900px;
     z-index: 3;
@@ -181,13 +183,12 @@ button:active {
 .header-choose {
     top: -20px;
     position: absolute;
-    right: 200px;
+    right: 290px;
     text-align: center;
     font-family: 'Journal Sans New Bold';
-    font-weight: lighter;
     font-size: 50pt;
     color: white;
-    font-size: 17pt;
+
 }
 
 .header1{

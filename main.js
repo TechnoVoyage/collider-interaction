@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 5
+const TIME_CHOOSE = 23
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -17,7 +17,7 @@ const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "first_atom
 
 element_index = getRandomInt(17)
 document.getElementsByClassName('new-particle-header')[1].innerHTML = PARTICLE_NAMES[element_index]['name'];
-document.getElementsByClassName('new-particle-text')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
+document.getElementsByClassName('new-particle-plain')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
 // document.getElementsByClassName('new-particle-image')[0].src = PARTICLE_NAMES[element_index]['link'];
 
 var current_timer = TIME_CHOOSE
@@ -43,8 +43,6 @@ if (current_timer < 10)
   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
 else
   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-document.getElementById("canvas").width = 1920;
-document.getElementById("canvas").height = 1080;
 
 
 var swiper = new Swiper(".swiper", {
