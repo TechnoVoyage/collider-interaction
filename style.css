@@ -72,6 +72,7 @@ body{
 }
 
 .selector {
+    right: 70px;
     margin: 0 auto;
     margin-top: 20px;
     width: 700px;
@@ -245,10 +246,12 @@ button:active {
 }
 
 .swiper-button-prev {
+    left: -140px;
     color: white;
 }
 
 .swiper-button-next {
+    /* left: 10px; */
     color: white;
 }
 
