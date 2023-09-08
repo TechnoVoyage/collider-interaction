@@ -169,11 +169,20 @@ button:active {
 }
 
 .header {
-    text-align: center;
     font-family: 'Journal Sans New';
-    font-weight: lighter;
-    font-size: 30pt;
+    display: flex;
     color: white;
+    font-size: 17pt;
+}
+
+.header1{
+    position: relative;
+    left: 320px;
+}
+
+.header2{
+    position: relative;
+    left: 750px;
 }
 
 .timer-header {
@@ -318,3 +327,18 @@ img.animated-gif-down{
     height: 200px;
     margin-top:-60px;
   }
+
+.swiper-info{
+    color: white;
+    font-family: 'Journal Sans New';
+    font-size: 17pt;
+    border: 2px solid white;
+    position: relative;
+    top: 20px;
+    right: 100px;  
+    border-radius: 10px;  
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
