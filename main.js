@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 2
+const TIME_CHOOSE = 3
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -41,7 +41,7 @@ function min(a, b) {
   return (a > b) ? b : a
 }
 
-document.getElementsByClassName("timer-header")[0].textContent = current_timer
+document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
 document.getElementById("canvas").width = 1920;
 document.getElementById("canvas").height = 1080;
 
@@ -156,7 +156,29 @@ move_collider_tl.add({
   left: 460,
   top: 20
 })
-
+move_collider_tl.add({
+  targets: '.timer-header',
+  translateX: 730,
+  duration: 400,
+  translateY: -520,
+})
+move_collider_tl.add({
+  targets: '.timer-header-word',
+  translateX:-700,
+  duration: 1000,
+})
+// anime({
+//           targets: '.timer-header',
+//         translateX: 730,
+//         duration: 1000,
+//         translateY: -470,
+//         })
+//         anime({
+//           targets: '.timer-header-word',
+//           translateX: 500,
+//           duration: 1000,
+//           translateY: -380,
+//         })
 function hide_collider() {
   move_collider_tl.direction = "reverse"
   back_points()
@@ -319,31 +341,17 @@ function phase_timer_update() {
   current_timer -= 1
   switch (current_phase) {
     case 1:
-      document.getElementsByClassName("timer-header")[0].textContent = current_timer
+      document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_choose();
       animation_started = true
       break;
     case 2:
-      document.getElementsByClassName("timer-header")[0].textContent = current_timer
-      setTimeout(function(){
-        anime({
-          targets: '.timer-header',
-        translateX: 730,
-        duration: 1000,
-        translateY: -470,
-        })
-        anime({
-          targets: '.timer-header-word',
-          translateX: 500,
-          duration: 1000,
-          translateY: -380,
-        })
-      }, 2000);
+      document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_accelerating();
       animation_started = true
       break;
     case 3:
-      document.getElementsByClassName("timer-header")[0].textContent = current_timer
+      document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_reading();
       animation_started = true
       break;
