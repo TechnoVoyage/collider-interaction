@@ -89,6 +89,15 @@ body{
     font-family: 'Journal Sans New Bold';
     
 }
+.accelerating-countdown-header {
+    top: -230px;
+    position: absolute;
+    right: 860px;
+    text-align: center;
+    font-family: 'Journal Sans New Bold';
+    font-size: 50pt;
+    color: orangered;
+}
 
 .new-particle-text {
     position: absolute;
@@ -218,6 +227,7 @@ button:active {
     bottom: 0;
     z-index: -1;
   }
+
 .timer-header-word {
     font-family: 'Journal Sans New';
     font-weight: lighter;

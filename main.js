@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 23
+const TIME_CHOOSE = 5
 const TIME_ACCELERATING = 25
 const TIME_READ = 15
 const RUNNING_DURATION = 21000
@@ -163,13 +163,18 @@ move_collider_tl.add({
 })
 move_collider_tl.add({
   targets: '.timer-header',
-  translateX: 730,
+  translateX: 530,
   duration: 400,
-  translateY: -520,
+  translateY: -508,
 })
 move_collider_tl.add({
   targets: '.timer-header-word',
   translateX:-700,
+  duration: 1000,
+})
+move_collider_tl.add({
+  targets: '.accelerating-countdown-header',
+  translateY:200,
   duration: 1000,
 })
 // anime({
@@ -185,10 +190,11 @@ move_collider_tl.add({
 //           translateY: -380,
 //         })
 function hide_collider() {
-  document.getElementsByClassName("collider")[0].src = "images/collider.png";
   move_collider_tl.direction = "reverse"
   back_points()
   move_collider_tl.play()
+  document.getElementsByClassName("collider")[0].src = "images/collider.png";
+
 }
 
 function show_collider() {
