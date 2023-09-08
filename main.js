@@ -41,7 +41,10 @@ function min(a, b) {
   return (a > b) ? b : a
 }
 
-document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+if (current_timer < 10)
+  document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+else
+  document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
 document.getElementById("canvas").width = 1920;
 document.getElementById("canvas").height = 1080;
 
@@ -341,17 +344,26 @@ function phase_timer_update() {
   current_timer -= 1
   switch (current_phase) {
     case 1:
-      document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      if (current_timer < 10)
+        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      else
+        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_choose();
       animation_started = true
       break;
     case 2:
-      document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      if (current_timer < 10)
+        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      else
+        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_accelerating();
       animation_started = true
       break;
     case 3:
-      document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      if (current_timer < 10)
+        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      else
+        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_reading();
       animation_started = true
       break;
