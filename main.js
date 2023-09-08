@@ -39,8 +39,12 @@ function min(a, b) {
   return (a > b) ? b : a
 }
 
-document.getElementsByClassName("timer-header")[0].textContent = current_timer
-
+if (current_timer < 10)
+  document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+else
+  document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+document.getElementById("canvas").width = 1920;
+document.getElementById("canvas").height = 1080;
 
 
 var swiper = new Swiper(".swiper", {
@@ -159,7 +163,29 @@ move_collider_tl.add({
     document.getElementsByClassName("collider")[0].src = "images/collider_hole.png";
   }
 })
-
+move_collider_tl.add({
+  targets: '.timer-header',
+  translateX: 730,
+  duration: 400,
+  translateY: -520,
+})
+move_collider_tl.add({
+  targets: '.timer-header-word',
+  translateX:-700,
+  duration: 1000,
+})
+// anime({
+//           targets: '.timer-header',
+//         translateX: 730,
+//         duration: 1000,
+//         translateY: -470,
+//         })
+//         anime({
+//           targets: '.timer-header-word',
+//           translateX: 500,
+//           duration: 1000,
+//           translateY: -380,
+//         })
 function hide_collider() {
   document.getElementsByClassName("collider")[0].src = "images/collider.png";
   move_collider_tl.direction = "reverse"
@@ -312,7 +338,7 @@ function phase_reading() { //phase 3
 }
 function continue_button() {
   animation_started = false;
-  current_timer += TIME_CHOOSE;
+  current_timer = TIME_CHOOSE;
   current_phase = 1;
   hide_collider()
   console.log(current_phase)
@@ -323,31 +349,26 @@ function phase_timer_update() {
   current_timer -= 1
   switch (current_phase) {
     case 1:
-      document.getElementsByClassName("timer-header")[0].textContent = current_timer
+      if (current_timer < 10)
+        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      else
+        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_choose();
       animation_started = true
       break;
     case 2:
-      document.getElementsByClassName("timer-header")[0].textContent = current_timer
-      setTimeout(function(){
-        anime({
-          targets: '.timer-header',
-        translateX: 730,
-        duration: 1000,
-        translateY: -430,
-        })
-        anime({
-          targets: '.timer-header-word',
-          translateX: 700,
-          duration: 1000,
-          translateY: -380,
-        })
-      }, 2000);
+      if (current_timer < 10)
+        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      else
+        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_accelerating();
       animation_started = true
       break;
     case 3:
-      document.getElementsByClassName("timer-header")[0].textContent = current_timer
+      if (current_timer < 10)
+        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      else
+        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_reading();
       animation_started = true
       break;

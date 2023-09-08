@@ -72,6 +72,7 @@ body{
 }
 
 .selector {
+    right: 100px;
     margin: 0 auto;
     margin-top: 20px;
     width: 700px;
@@ -186,6 +187,12 @@ button:active {
     font-weight: lighter;
     font-size: 50pt;
     color: white;
+    font-size: 17pt;
+}
+
+.header1{
+    position: relative;
+    left: 320px;
 }
 
 .timer-header {
@@ -193,9 +200,8 @@ button:active {
     font-weight: lighter;
     font-size: 70pt;
     color: white;
-    bottom: 50px;
-    left: 160px;
-    text-align: center;
+    bottom: -60px;
+    left: 100px;
     /* left: 190px; */
     /* top: 150px; */
     position: absolute;
@@ -214,10 +220,10 @@ button:active {
 .timer-header-word {
     font-family: 'Journal Sans New';
     font-weight: lighter;
-    font-size: 70pt;
+    font-size: 50pt;
     color: white;
     bottom: 55px;
-    margin-left: 290px;
+    margin-left: 40px;
     /* left: 10px; */
     /* left: 140px; */
     /* top: 60px; */
@@ -233,13 +239,15 @@ button:active {
 }
 
 .swiper-slide-inside {
+    padding-left: 7px;
+    padding-right: 7px;
     background-color: transparent;
     font-size: 30pt;
     color: white;
     font-family: 'Journal Sans New';
 }
 
-swiper {
+.swiper {
     width: 100%;
     height: 100%;
 }
@@ -249,7 +257,7 @@ swiper {
     font-size: 18px;
     /* background: #fff; */
     display: flex;
-    height: 600px;
+    height: 650px;
     justify-content: center;
     align-items: center;
 }
@@ -268,10 +276,19 @@ swiper {
 }
 
 .swiper-button-prev {
+    top: 280px;
+    left: -210px;
+    height: 120px;
+    width: 120px;
     color: white;
 }
 
 .swiper-button-next {
+    /* left: 10px; */
+    right: -10px;
+    top: 280px;
+    height: 120px;
+    width: 120px;
     color: white;
 }
 
@@ -331,3 +348,18 @@ img.animated-gif-down{
     height: 200px;
     margin-top:-60px;
   }
+
+.swiper-info{
+    color: white;
+    font-family: 'Journal Sans New';
+    font-size: 17pt;
+    border: 2px solid white;
+    position: relative;
+    top: 20px;
+    right: 100px;  
+    border-radius: 10px;  
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
