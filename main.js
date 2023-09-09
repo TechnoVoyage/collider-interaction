@@ -4,15 +4,15 @@ const TIME_READ = 12
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
 const LOREMIPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Нижний", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Верхний", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Очарованный", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Истинный", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Странный", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Прелестный", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Глюон", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Фотон", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Z Бозон", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "W Бозон", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Электрон", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Мюон", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Тау", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Элейтронное Нейтрино", "link": "first_atom.gif", "text": LOREMIPSUM }, { "name": "Мюонное Нейтрино", "link": "first_atom.gif", "text": LOREMIPSUM },
-{ "name": "Тау Нейтрино", "link": "first_atom.gif", "text": LOREMIPSUM }
+const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Нижний", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Верхний", "link": "images/particles/verhniy.gif", "text": LOREMIPSUM }, { "name": "Очарованный", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Истинный", "link": "images/particles/istiniy.gif", "text": LOREMIPSUM }, { "name": "Странный", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Прелестный", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Глюон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Фотон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Z Бозон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "W Бозон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Электрон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Мюон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Тау", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Элейтронное Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Мюонное Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
+{ "name": "Тау Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }
 ]
 
 element_index = getRandomInt(17)
@@ -132,7 +132,7 @@ function new_particle_hide() {
 
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
-  translateX: 1000,
+  translateX: 10,
   easing: 'easeInOutExpo',
   autoplay: false
 })
@@ -178,7 +178,7 @@ move_collider_tl.add({
   translateY:200,
   duration: 1000,
 })
-// anime({
+// anime({selector
 //           targets: '.timer-header',
 //         translateX: 730,
 //         duration: 1000,
@@ -207,32 +207,46 @@ function hide_collider() {
 
 function show_collider() {
   console.log(swiper.realIndex)
-  
+  var particleTopName = document.getElementById("particle-top");
+  var particleBottomName = document.getElementById("particle-bottom");
+  var particleTopImg = document.getElementById("particle-top-img");
+  var particleBottomImg = document.getElementById("particle-bottom-img");
   switch (swiper.realIndex) {
     case 0:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
       particle_emoji2_color = PARTICLE_COLOR["antielectron"]
-      document.getElementById("particle-top").textContent = "Электрон";
-      document.getElementById("particle-bottom").textContent = "Позитрон";
+      particleTopName.textContent = "Электрон";
+      particleBottomName.textContent = "Позитрон";
+      particleTopImg.src = "images/particles/electron.gif"
+      particleBottomImg.src = "images/particles/antielectron.gif"
       break;
     case 1:
       particle_emoji1_color = PARTICLE_COLOR["proton"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
-      document.getElementById("particle-top").textContent = "Протон"
-      document.getElementById("particle-bottom").textContent = "Протон";
+      particleTopName.textContent = "Протон"
+      particleBottomName.textContent = "Протон";
+      particleTopImg.src = "images/particles/proton.gif"
+      particleBottomImg.src = "images/particles/proton.gif"
       break;
     case 2:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
-      document.getElementById("particle-top").textContent = "Электрон";
-      document.getElementById("particle-bottom").textContent = "Протон";
+      particleTopName.textContent = "Электрон";
+      particleBottomName.textContent = "Протон";
+      particleTopImg.src = "images/particles/electron.gif"
+      particleBottomImg.src = "images/particles/proton.gif"
       break;
     case 3:
       particle_emoji1_color = PARTICLE_COLOR["antielectron"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
-      document.getElementById("particle-top").textContent = "Позитрон";
-      document.getElementById("particle-bottom").textContent = "Протон";
+      particleTopName.textContent = "Позитрон";
+      particleBottomName.textContent = "Протон";
+      particleTopImg.src = "images/particles/antielectron.gif"
+      particleBottomImg.src = "images/particles/proton.gif"
       break;
+  }
+  for (gif in document.getElementsByClassName("atom-gif")) {
+    gif.disabled = false;
   }
   move_collider_tl.direction = "normal"
   right_selected_particles()

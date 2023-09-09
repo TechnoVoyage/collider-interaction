@@ -281,8 +281,8 @@ button:active {
 
 .swiper-slide img {
     display: inline-block;
-    width: 65%;
-    height: 65%;
+    width: 85%;
+    height: 85%;
     object-fit: cover;
 }
 
