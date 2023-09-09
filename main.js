@@ -15,10 +15,7 @@ const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "images/par
 { "name": "Тау Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }
 ]
 
-element_index = getRandomInt(17)
-document.getElementsByClassName('new-particle-header')[1].innerHTML = PARTICLE_NAMES[element_index]['name'];
-document.getElementsByClassName('new-particle-plain')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
-// document.getElementsByClassName('new-particle-image')[0].src = PARTICLE_NAMES[element_index]['link'];
+
 
 var current_timer = TIME_CHOOSE
 var current_phase = 1
@@ -99,6 +96,10 @@ function new_particle_popup() {
     duration: 2000,
     easing: 'easeInOutExpo',
     });
+    element_index = getRandomInt(17)
+    document.getElementById('new-particle-name').innerHTML = PARTICLE_NAMES[element_index]['name'];
+    document.getElementsByClassName('new-particle-plain')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
+    document.getElementById('new-particle-image').src = PARTICLE_NAMES[element_index]['link'];
   new_particle_tl.play()
 }
 function new_particle_hide() {
