@@ -21,8 +21,11 @@
 
 <body>
   
-  <video id="background-video" autoplay loop muted>
-  <source src="images/particles.mp4" type="video/mp4">
+  <video id="background-video"  class= "fullscreen-video" autoplay loop muted>
+  <source src="images/particles.mp4" class= "fullscreen" type="video/mp4">
+  </video>
+  <video id="explosion-video" class= "fullscreen-video" muted>
+    <source src="images/explosion.webm" type="video/webm">
   </video>
 
   <h1 class="header-name">Ускоритель частиц</h1>
@@ -134,8 +137,8 @@
     
 
     <div>
-      <img src="images/collider.png" class="collider">
-      
+      <img src="images/collider.png" id="collider-solid" class="collider">
+      <img src="images/collider_hole.png" id = "collider-hole" class="collider">
 
       <div id="point-wrapper1">
         <div style="position: absolute; bottom: 1007px; right: 1605px; opacity: 0;" class="emoji1"></div>

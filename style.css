@@ -60,14 +60,15 @@ body{
 }
 
 .main-space {
-    margin-top: 200px;
-    margin-left: 1150px;
+    margin-top: 180px;
+    margin-left: 1185px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    z-index: 1;
 }
 
 .left-space {
-    z-index: 3;
+    z-index: 1;
     right: 50px;
 }
 
@@ -216,7 +217,7 @@ button:active {
     /* top: 150px; */
     position: absolute;
 }
-#background-video {
+.fullscreen-video {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
@@ -225,9 +226,14 @@ button:active {
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: -1;
   }
-
+#background-video {
+    z-index: -1;
+}
+#explosion-video {
+    z-index: 2;
+    opacity: 0;
+}
 .timer-header-word {
     font-family: 'Journal Sans New';
     font-weight: lighter;

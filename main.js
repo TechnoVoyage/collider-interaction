@@ -1,6 +1,6 @@
 const TIME_CHOOSE = 5
-const TIME_ACCELERATING = 25
-const TIME_READ = 15
+const TIME_ACCELERATING = 27
+const TIME_READ = 12
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
 const LOREMIPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -152,14 +152,15 @@ move_collider_tl.add({
   easing: 'easeInOutExpo',
 }, 0)
 move_collider_tl.add({
-  targets: '.collider',
+  targets: '.collider ',
   width: 950,
   height: 950,
   left: 260,
   top: 50,
-  begin: function () {
-    document.getElementsByClassName("collider")[0].src = "images/collider_hole.png";
-  }
+})
+move_collider_tl.add({
+  targets: '#collider-solid',
+  opacity: 0,
 })
 move_collider_tl.add({
   targets: '.timer-header',
@@ -193,8 +194,15 @@ function hide_collider() {
   move_collider_tl.direction = "reverse"
   back_points()
   move_collider_tl.play()
-  document.getElementsByClassName("collider")[0].src = "images/collider.png";
+  anime({
+    targets: "#explosion-video",
+    duration: 500,
+    opacity: 0,
+    easing: 'easeInOutExpo',
 
+  }).finished.then( function () {
+    document.getElementById("explosion-video").pause()
+  })
 }
 
 function show_collider() {
@@ -322,10 +330,19 @@ function run_collider() {
     }
 
   }, no_delay)
+  run_collider_tl.add({
+    targets : "#explosion-video",
+    opacity: 1,
+    begin: function() {
+      document.getElementById("explosion-video").currentTime = 0;
+      document.getElementById("explosion-video").play();
+    }
+  })
   run_collider_tl.play()
   run_collider_tl.finished.then(function () {
     document.getElementsByClassName("emoji1")[0].style.visibility = "hidden";
     document.getElementsByClassName("emoji2")[0].style.visibility = "hidden";
+
   })
 }
 
@@ -346,6 +363,7 @@ function continue_button() {
   current_phase = 1;
   hide_collider()
   console.log(current_phase)
+
 }
 
 var animation_started = false
@@ -369,10 +387,11 @@ function phase_timer_update() {
       animation_started = true
       break;
     case 3:
-      if (current_timer < 10)
-        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-      else
-        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      // if (current_timer < 10)
+      //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      // else
+      //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      document.getElementsByClassName("timer-header")[0].textContent = '00:00'
       if (!animation_started) phase_reading();
       animation_started = true
       break;
