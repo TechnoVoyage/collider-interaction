@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 2
+const TIME_CHOOSE = 23
 const TIME_ACCELERATING = 27
 const TIME_READ = 12
 const RUNNING_DURATION = 21000
@@ -212,9 +212,6 @@ function show_collider() {
     case 0:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
       particle_emoji2_color = PARTICLE_COLOR["antielectron"]
-      // document.getElementsByClassName("particle-name")[0].setAttribute("name", "SFSDF")
-      // document.getElementsByClassName("particle-name")[1].setAttribute("name", "SFSDF")
-      // document.querySelector("particle-name").appendChild(document.createTextNode("My new text!"));
       document.getElementById("particle-top").textContent = "Электрон";
       document.getElementById("particle-bottom").textContent = "Позитрон";
       break;
