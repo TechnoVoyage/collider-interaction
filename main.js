@@ -1,5 +1,5 @@
 const TIME_CHOOSE = 23
-const TIME_ACCELERATING = 27
+const TIME_ACCELERATING = 25
 const TIME_READ = 12
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
@@ -62,7 +62,7 @@ var swiper = new Swiper(".swiper", {
 });
 
 var new_particle_tl = anime.timeline({
-  easing: 'easeInOutExpo',
+  easing: 'linear',
   duration: 1500,
   autoplay: false,
   begin: function () {
@@ -94,7 +94,7 @@ function new_particle_popup() {
     targets: '.right-space',
     translateX: 200,
     duration: 2000,
-    easing: 'easeInOutExpo',
+    easing: 'linear',
     });
     element_index = getRandomInt(17)
     document.getElementById('new-particle-name').innerHTML = PARTICLE_NAMES[element_index]['name'];
@@ -104,7 +104,7 @@ function new_particle_popup() {
 }
 function new_particle_hide() {
   var hide_tl = anime.timeline({
-    easing: 'easeInOutExpo',
+    easing: 'linear',
     duration: 1000,
   });
   hide_tl.add({
@@ -134,23 +134,23 @@ function new_particle_hide() {
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
   translateX: 1000,
-  easing: 'easeInOutExpo',
+  easing: 'linear',
   autoplay: false
 })
 move_collider_tl.add({
   targets: '.start-button',
   translateY: 300,
-  easing: 'easeInOutExpo',
+  easing: 'linear',
 }, 0)
 move_collider_tl.add({
   targets: '.header-name',
   translateY: -100,
-  easing: 'easeInOutExpo',
+  easing: 'linear',
 }, 0)
 move_collider_tl.add({
   targets: '.header-choose',
   translateY: -100,
-  easing: 'easeInOutExpo',
+  easing: 'linear',
 }, 0)
 move_collider_tl.add({
   targets: '.collider ',
@@ -199,14 +199,14 @@ function hide_collider() {
   // for (i in document.getElementsByClassName("atom-gif")) {
   //   gifs[i].src="/images/collider.png"
   // }
-  gifs[0].src="images/particles/electron.gif"
-  gifs[1].src="images/particles/antielectron.gif"
-  gifs[2].src="images/particles/proton.gif"
-  gifs[3].src="images/particles/proton.gif"
-  gifs[4].src="images/particles/electron.gif"
-  gifs[5].src="images/particles/proton.gif"
-  gifs[6].src="images/particles/antielectron.gif"
-  gifs[7].src="images/particles/proton.gif"
+  document.getElementById("particle1").src="images/particles/electron.gif"
+  document.getElementById("particle2").src="images/particles/antielectron.gif"
+  document.getElementById("particle3").src="images/particles/proton.gif"
+  document.getElementById("particle4").src="images/particles/proton.gif"
+  document.getElementById("particle5").src="images/particles/electron.gif"
+  document.getElementById("particle6").src="images/particles/proton.gif"
+  document.getElementById("particle7").src="images/particles/antielectron.gif"
+  document.getElementById("particle8").src="images/particles/proton.gif"
 
   // }
   back_points()
@@ -215,7 +215,7 @@ function hide_collider() {
     targets: "#explosion-video",
     duration: 500,
     opacity: 0,
-    easing: 'easeInOutExpo',
+    easing: 'linear',
 
   }).finished.then( function () {
     document.getElementById("explosion-video").pause()
@@ -269,8 +269,8 @@ function show_collider() {
   move_collider_tl.play()
   
   setTimeout(function() {
-    for (i in document.getElementsByClassName("atom-gif")) {
-      gifs[i].src="/images/collider.png"
+    for (i = 1; i < 9; i++) {
+      document.getElementById("particle"+String(i)).src="/images/collider.png"
     };
   }, 1000);
   
@@ -282,7 +282,7 @@ function back_points() {
 
   var back_points_tl = anime.timeline({
     targets: '.selector-box',
-    easing: 'easeInOutExpo',
+    easing: 'linear',
     autoplay: false
   })
   back_points_tl.add({
@@ -331,7 +331,7 @@ function run_collider() {
 
   var run_collider_tl = anime.timeline({
     targets: '.selector-box',
-    easing: 'easeInOutExpo',
+    easing: 'linear',
     autoplay: false
   })
   run_collider_tl.add({
