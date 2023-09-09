@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 5
+const TIME_CHOOSE = 2
 const TIME_ACCELERATING = 27
 const TIME_READ = 12
 const RUNNING_DURATION = 21000
@@ -212,18 +212,29 @@ function show_collider() {
     case 0:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
       particle_emoji2_color = PARTICLE_COLOR["antielectron"]
+      // document.getElementsByClassName("particle-name")[0].setAttribute("name", "SFSDF")
+      // document.getElementsByClassName("particle-name")[1].setAttribute("name", "SFSDF")
+      // document.querySelector("particle-name").appendChild(document.createTextNode("My new text!"));
+      document.getElementById("particle-top").textContent = "Электрон";
+      document.getElementById("particle-bottom").textContent = "Позитрон";
       break;
     case 1:
       particle_emoji1_color = PARTICLE_COLOR["proton"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
+      document.getElementById("particle-top").textContent = "Протон"
+      document.getElementById("particle-bottom").textContent = "Протон";
       break;
     case 2:
       particle_emoji1_color = PARTICLE_COLOR["electron"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
+      document.getElementById("particle-top").textContent = "Электрон";
+      document.getElementById("particle-bottom").textContent = "Протон";
       break;
     case 3:
       particle_emoji1_color = PARTICLE_COLOR["antielectron"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
+      document.getElementById("particle-top").textContent = "Позитрон";
+      document.getElementById("particle-bottom").textContent = "Протон";
       break;
   }
   move_collider_tl.direction = "normal"
