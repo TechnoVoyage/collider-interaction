@@ -1,4 +1,4 @@
-const TIME_CHOOSE = 23
+const TIME_CHOOSE = 2
 const TIME_ACCELERATING = 27
 const TIME_READ = 12
 const RUNNING_DURATION = 21000
@@ -132,7 +132,7 @@ function new_particle_hide() {
 
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
-  translateX: 10,
+  translateX: 100,
   easing: 'easeInOutExpo',
   autoplay: false
 })
@@ -245,8 +245,12 @@ function show_collider() {
       particleBottomImg.src = "images/particles/proton.gif"
       break;
   }
-  for (gif in document.getElementsByClassName("atom-gif")) {
-    gif.disabled = false;
+  gifs = document.getElementsByClassName("atom-gif")
+  for (i in document.getElementsByClassName("atom-gif")) {
+    // gif.disabled = false;
+    // console.log(gifs[i])
+    // gif[i].src="images/collider.png"
+    gifs[i].src="/images/collider.png"
   }
   move_collider_tl.direction = "normal"
   right_selected_particles()
