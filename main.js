@@ -4,15 +4,15 @@ const TIME_READ = 12
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
 const LOREMIPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Нижний", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Верхний", "link": "images/particles/verhniy.gif", "text": LOREMIPSUM }, { "name": "Очарованный", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Истинный", "link": "images/particles/istiniy.gif", "text": LOREMIPSUM }, { "name": "Странный", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Прелестный", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Глюон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Фотон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Z Бозон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "W Бозон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Электрон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Мюон", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Тау", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Элейтронное Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Мюонное Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM },
-{ "name": "Тау Нейтрино", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }
+const PARTICLE_NAMES = [{ "name": "Бозон Хиггса", "link": "images/particles/bozon.gif", "text": LOREMIPSUM }, { "name": "Нижний", "link": "images/particles/nizhniy.gif", "text": LOREMIPSUM },
+{ "name": "Верхний", "link": "images/particles/verhniy.gif", "text": LOREMIPSUM }, { "name": "Очарованный", "link": "images/particles/ocharovany.gif", "text": LOREMIPSUM },
+{ "name": "Истинный", "link": "images/particles/istiniy.gif", "text": LOREMIPSUM }, { "name": "Странный", "link": "images/particles/stranii.gif", "text": LOREMIPSUM },
+{ "name": "Прелестный", "link": "images/particles/prelestni.gif", "text": LOREMIPSUM }, { "name": "Глюон", "link": "images/particles/gluon.gif", "text": LOREMIPSUM },
+{ "name": "Фотон", "link": "images/particles/photon.gif", "text": LOREMIPSUM }, { "name": "Z Бозон", "link": "images/particles/zbozon.gif", "text": LOREMIPSUM },
+{ "name": "W Бозон", "link": "images/particles/wbozon.gif", "text": LOREMIPSUM }, { "name": "Электрон", "link": "images/particles/electron.gif", "text": LOREMIPSUM },
+{ "name": "Мюон", "link": "images/particles/muon.gif", "text": LOREMIPSUM }, { "name": "Тау", "link": "images/particles/tau.gif", "text": LOREMIPSUM },
+{ "name": "Элейтронное Нейтрино", "link": "images/particles/eneitrino.gif", "text": LOREMIPSUM }, { "name": "Мюонное Нейтрино", "link": "images/particles/muneitrino.gif", "text": LOREMIPSUM },
+{ "name": "Тау Нейтрино", "link": "images/particles/tauneitrino.gif", "text": LOREMIPSUM }
 ]
 
 
