@@ -1,6 +1,6 @@
-const TIME_CHOOSE = 3
-const TIME_ACCELERATING = 25
-const TIME_READ = 12
+const TIME_CHOOSE = 23
+const TIME_ACCELERATING = 26
+const TIME_READ = 17
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
 const LOREMIPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
@@ -63,80 +63,84 @@ var swiper = new Swiper(".swiper", {
 var ctx = document.getElementById('canvas').getContext('2d');
 var start_time = Date.now() / 1000; // start time in seconds
 
-function init(){
-    window.requestAnimationFrame(draw);
+function init() {
+  window.requestAnimationFrame(draw);
 }
 
-class Particle{
-    constructor (x, y, angle, distance_to_pass, time_to_pass, radius){
-        this.x = x;
-        this.y = y;
-        this.angle = angle;
-        this.radius = radius
-        this.angle_speed = 0;
-        this.distance_to_pass = distance_to_pass;
-        this.time_to_pass = time_to_pass;
-        this.epsilon = 2 * distance_to_pass / time_to_pass / time_to_pass;
-    }   
+class Particle {
+  constructor(x, y, angle, distance_to_pass, time_to_pass, radius, color) {
+    this.x = x;
+    this.y = y;
+    this.angle = angle;
+    this.radius = radius;
+    this.color = color;
+    this.angle_speed = 0;
+    this.distance_to_pass = distance_to_pass;
+    this.time_to_pass = time_to_pass;
+    this.epsilon = 2 * distance_to_pass / time_to_pass / time_to_pass;
+  }
 
-    move(time_delta){
-        this.angle_speed += this.epsilon * time_delta;
-        this.angle += this.angle_speed;
-        this.x = 475 + this.radius * Math.cos(this.angle);
-        this.y = 475 + this.radius * Math.sin(this.angle);
-    }
+  move(time_delta) {
+    this.angle_speed += this.epsilon * time_delta;
+    this.angle += this.angle_speed;
+    this.x = 475 + this.radius * Math.cos(this.angle);
+    this.y = 475 + this.radius * Math.sin(this.angle);
+  }
 
-    draw(){
-        ctx.beginPath();
-        
-        ctx.arc(this.x, this.y, 20, 0, 2 * Math.PI);
-        ctx.fillStyle = "#FF0000"
-        ctx.fill();
-        
-    }
+  draw() {
+    ctx.beginPath();
+
+    ctx.arc(this.x, this.y, 20, 0, 2 * Math.PI);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+
+  }
 }
 
 var r = 335;
 
-particle1 = new Particle(0, r, Math.PI, 12.5 * 2 * Math.PI, 200, r);
-particle2 = new Particle(r * 2, r, 0, 12 * 2 * Math.PI, 200, r);
-function draw(){
-    
-    ctx.clearRect(0, 0, 900, 900);
+var particle1 = new Particle(0, r, Math.PI, 12.5 * 2 * Math.PI, 200, r, particle_emoji1_color);
+var particle2 = new Particle(r * 2, r, 0, 12 * 2 * Math.PI, 200, r, particle_emoji2_color);
+function draw() {
 
-    // updating time
-    var time_delta = Date.now() / 1000 - start_time;
-    start_time = Date.now() / 1000;
-    ctx.fillStyle = "#00FF00"
-    ctx.beginPath()
-    ctx.arc(475, 475, 20, 0, 2 * Math.PI);
-    ctx.fill()
-    
-    particle1.draw();
-    particle2.draw();
-    particle1.move(time_delta);
-    particle2.move(time_delta);
-    
-    
+  ctx.clearRect(0, 0, 900, 900);
 
-    window.requestAnimationFrame(draw)
+  // updating time
+  var time_delta = Date.now() / 1000 - start_time;
+  start_time = Date.now() / 1000;
+  ctx.fillStyle = "#00FF00"
+  ctx.beginPath()
+  ctx.arc(475, 475, 20, 0, 2 * Math.PI);
+  ctx.fill()
+
+  particle1.draw();
+  particle2.draw();
+  particle1.move(time_delta);
+  particle2.move(time_delta);
+
+
+
+  window.requestAnimationFrame(draw)
 }
 
-function animate_collider_balls(){
-    start_time = Date.now() / 1000;
-    
-    init()
+function animate_collider_balls() {
+  start_time = Date.now() / 1000;
+  console.log("moving ballz")
+  console.log(particle_emoji1_color, particle_emoji2_color)
+  init()
 }
-function reset_balls(){
+function reset_balls() {
   particle1.x = 0;
-  particle1.y = 450;
+  particle1.y = r;
   particle1.angle = Math.PI;
   particle1.angle_speed = 0;
+  particle1.color = particle_emoji1_color
 
-  particle2.x = 900;
-  particle2.y = 450;
+  particle2.x = r * 2;
+  particle2.y = r;
   particle2.angle = 0;
   particle2.angle_speed = 0;
+  particle2.color = particle_emoji2_color
 }
 
 var new_particle_tl = anime.timeline({
@@ -146,9 +150,17 @@ var new_particle_tl = anime.timeline({
   begin: function () {
     document.querySelector(".new-particle-text").style.top = "1000px"
     document.getElementById("continue-new-particle").disabled = true
+    document.getElementById("canvas").style.visibility = "hidden"
   }
 });
-
+new_particle_tl.add({
+  targets: "#explosion-video",
+  opacity: 1,
+  begin: function () {
+    document.getElementById("explosion-video").currentTime = 0;
+    document.getElementById("explosion-video").play();
+  }
+})
 new_particle_tl.add({
   targets: ".new-particle-window",
   scale: 10,
@@ -173,11 +185,11 @@ function new_particle_popup() {
     translateX: 200,
     duration: 2000,
     easing: 'easeInOutExpo',
-    });
-    element_index = getRandomInt(17)
-    document.getElementById('new-particle-name').innerHTML = PARTICLE_NAMES[element_index]['name'];
-    document.getElementsByClassName('new-particle-plain')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
-    document.getElementById('new-particle-image').src = PARTICLE_NAMES[element_index]['link'];
+  });
+  element_index = getRandomInt(17)
+  document.getElementById('new-particle-name').innerHTML = PARTICLE_NAMES[element_index]['name'];
+  document.getElementsByClassName('new-particle-plain')[0].innerHTML = PARTICLE_NAMES[element_index]['text'];
+  document.getElementById('new-particle-image').src = PARTICLE_NAMES[element_index]['link'];
   new_particle_tl.play()
 }
 function new_particle_hide() {
@@ -204,10 +216,6 @@ function new_particle_hide() {
 
 
 
-//     const explode_gif = document.getElementById("explode");
-//     if (!hide) explode_gif.src = "images/boom.gif";
-//     else explode_gif.src = "images/boom.gif";
-// }
 
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
@@ -240,6 +248,11 @@ move_collider_tl.add({
 move_collider_tl.add({
   targets: '#collider-solid',
   opacity: 0,
+
+}).finished.then(function () {
+  reset_balls()
+  document.getElementById("canvas").style.visibility = "visible"
+  animate_collider_balls()
 })
 move_collider_tl.add({
   targets: '.timer-header',
@@ -249,45 +262,26 @@ move_collider_tl.add({
 })
 move_collider_tl.add({
   targets: '.timer-header-word',
-  translateX:-700,
+  translateX: -700,
   duration: 1000,
 })
 move_collider_tl.add({
   targets: '.accelerating-countdown-header',
-  translateY:200,
+  translateY: 200,
   duration: 1000,
 })
-// anime({selector
-//           targets: '.timer-header',
-//         translateX: 730,
-//         duration: 1000,
-//         translateY: -470,
-//         })
-//         anime({
-//           targets: '.timer-header-word',
-//           translateX: 500,
-//           duration: 1000,
-//           translateY: -380,
-//         })
-gifs = document.getElementsByClassName("atom-gif")
+
 function hide_collider() {
   move_collider_tl.direction = "reverse"
-    // // gifs = document.getElementsByClassName("atom-gif")
-  // gifs = document.getElementsByClassName("atom-gif")
-  // for (i in document.getElementsByClassName("atom-gif")) {
-  //   gifs[i].src="/images/collider.png"
-  // }
-  document.getElementById("particle1").src="images/particles/electron.gif"
-  document.getElementById("particle2").src="images/particles/antielectron.gif"
-  document.getElementById("particle3").src="images/particles/proton.gif"
-  document.getElementById("particle4").src="images/particles/proton.gif"
-  document.getElementById("particle5").src="images/particles/electron.gif"
-  document.getElementById("particle6").src="images/particles/proton.gif"
-  document.getElementById("particle7").src="images/particles/antielectron.gif"
-  document.getElementById("particle8").src="images/particles/proton.gif"
+  document.getElementById("particle1").src = "images/particles/electron.gif"
+  document.getElementById("particle2").src = "images/particles/antielectron.gif"
+  document.getElementById("particle3").src = "images/particles/proton.gif"
+  document.getElementById("particle4").src = "images/particles/proton.gif"
+  document.getElementById("particle5").src = "images/particles/electron.gif"
+  document.getElementById("particle6").src = "images/particles/proton.gif"
+  document.getElementById("particle7").src = "images/particles/antielectron.gif"
+  document.getElementById("particle8").src = "images/particles/proton.gif"
 
-  // }
-  back_points()
   move_collider_tl.play()
   anime({
     targets: "#explosion-video",
@@ -295,7 +289,7 @@ function hide_collider() {
     opacity: 0,
     easing: 'easeInOutExpo',
 
-  }).finished.then( function () {
+  }).finished.then(function () {
     document.getElementById("explosion-video").pause()
   })
 }
@@ -341,133 +335,61 @@ function show_collider() {
       break;
   }
 
-  
+
   move_collider_tl.direction = "normal"
   right_selected_particles()
   move_collider_tl.play()
-  
-  setTimeout(function() {
+
+  setTimeout(function () {
     for (i = 1; i < 9; i++) {
-      document.getElementById("particle"+String(i)).src="/images/collider.png"
+      document.getElementById("particle" + String(i)).src = "/images/collider.png"
     };
   }, 1000);
-  
+
   setTimeout(() => { run_collider(); }, 1000);
 
 }
 
-function back_points() {
+// function back_points() {
 
-  var back_points_tl = anime.timeline({
-    targets: '.selector-box',
-    easing: 'easeInOutExpo',
-    autoplay: false
-  })
-  back_points_tl.add({
-    targets: '.emoji1',
-    opacity: [1, 0],
-    backgroundColor: particle_emoji1_color,
-    duration: 1000,
+//   var back_points_tl = anime.timeline({
+//     targets: '.selector-box',
+//     easing: 'easeInOutExpo',
+//     autoplay: false
+//   })
+//   back_points_tl.add({
+//     targets: '.emoji1',
+//     opacity: [1, 0],
+//     backgroundColor: particle_emoji1_color,
+//     duration: 1000,
 
-  })
-  back_points_tl.add({
-    targets: '.emoji2',
-    opacity: [1, 0],
-    backgroundColor: particle_emoji2_color,
-    duration: 1000,
-  }, '-=1000')
-  back_points_tl.play()
-  document.getElementsByClassName("emoji1")[0].style.visibility = "visible";
-  document.getElementsByClassName("emoji2")[0].style.visibility = "visible";
-}
+//   })
+//   back_points_tl.add({
+//     targets: '.emoji2',
+//     opacity: [1, 0],
+//     backgroundColor: particle_emoji2_color,
+//     duration: 1000,
+//   }, '-=1000')
+//   back_points_tl.play()
+//   document.getElementsByClassName("emoji1")[0].style.visibility = "visible";
+//   document.getElementsByClassName("emoji2")[0].style.visibility = "visible";
+// }
 
 
-let right_selected_particles = function() {
-  setTimeout(function(){
+let right_selected_particles = function () {
+  setTimeout(function () {
     anime({
       targets: '.right-space',
       translateX: -350,
-      });
-    }, 1500);
+    });
+  }, 1500);
 }
 
 function run_collider() {
-  document.getElementsByClassName("emoji1")[0].style.backgroundColor = particle_emoji1_color;
-  document.getElementsByClassName("emoji2")[0].style.backgroundColor = particle_emoji2_color;
 
-  document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
-  document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
-
-  document.getElementsByClassName("selected-arrow-down")[0].style.stroke = particle_emoji1_color;
-  document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
+  console.log("bebr")
 
 
-  document.getElementById("EMOJI_PATH_1").setAttribute('d', "M 436 118 A 50 50 0 1 1 450 780 A 50 50 0 1 1 436 118 ".repeat(12) + "A 50 50 0 1 1 450 780")
-  document.getElementById("EMOJI_PATH_2").setAttribute('d', "M 450 780 A 50 50 0 1 1 436 118 A 50 50 0 1 1 450 780 ".repeat(12))
-  let path1 = anime.path('#point-svg1 path');
-  let path2 = anime.path('#point-svg2 path');
-
-  var run_collider_tl = anime.timeline({
-    targets: '.selector-box',
-    easing: 'easeInOutExpo',
-    autoplay: false
-  })
-  run_collider_tl.add({
-    targets: '.emoji1',
-    opacity: [0, 1],
-    duration: 1000,
-
-  })
-
-  run_collider_tl.add({
-    targets: '.emoji2',
-    opacity: [0, 1],
-    duration: 1000,
-  })
-
-  run_collider_tl.add({
-    targets: '.emoji1',
-    translateX: path1('x'),
-    translateY: path1('y'),
-    duration: RUNNING_DURATION,
-    backgroundColor: '#FFF',
-    easing: function (el, i, total) {
-      return function (t) {
-        // return Math.pow(Math.tan(t*Math.PI/4), 3)
-        return Math.pow(t, 5)
-      }
-    }
-
-  })
-  var no_delay = '-=' + RUNNING_DURATION;
-  run_collider_tl.add({
-    targets: '.emoji2',
-    translateX: path2('x'),
-    translateY: path2('y'),
-    duration: RUNNING_DURATION,
-    backgroundColor: '#FFF',
-    easing: function (el, i, total) {
-      return function (t) {
-        return Math.pow(t, 5)
-      }
-    }
-
-  }, no_delay)
-  run_collider_tl.add({
-    targets : "#explosion-video",
-    opacity: 1,
-    begin: function() {
-      document.getElementById("explosion-video").currentTime = 0;
-      document.getElementById("explosion-video").play();
-    }
-  })
-  animate_collider_balls()
-  // run_collider_tl.play()
-  // run_collider_tl.finished.then(function () {
-  //   document.getElementsByClassName("emoji1")[0].style.visibility = "hidden";
-  //   document.getElementsByClassName("emoji2")[0].style.visibility = "hidden";
-
-  // })
 }
 
 function phase_choose() { //phase 1
@@ -485,6 +407,8 @@ function continue_button() {
   animation_started = false;
   current_timer = TIME_CHOOSE;
   current_phase = 1;
+  reset_balls()
+  document.getElementById("canvas").style.visibility = "hidden"
   hide_collider()
   console.log(current_phase)
 
