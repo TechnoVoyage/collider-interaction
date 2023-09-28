@@ -154,10 +154,8 @@ function draw() {
   ctx.clearRect(0, 0, 900, 900);
   var time_delta = Date.now() / 1000 - start_time;
   start_time = Date.now() / 1000;
-  ctx.fillStyle = "#00FF00"
   ctx.beginPath()
-  ctx.arc(475, 475, 20, 0, 2 * Math.PI);
-  ctx.fill()
+  
 
   particle1.draw();
   particle2.draw();
