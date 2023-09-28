@@ -259,10 +259,6 @@ function new_particle_hide() {
 
 
 
-
-
-
-
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
   translateX: 1000,
@@ -435,7 +431,11 @@ function run_collider() {
 
   console.log("bebr")
 
+  document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
+  document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
 
+  document.getElementsByClassName("selected-arrow-down")[0].style.stroke = particle_emoji1_color;
+  document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
 }
 
 function phase_choose() { //phase 1
