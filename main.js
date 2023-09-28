@@ -257,8 +257,6 @@ function new_particle_hide() {
   })
 }
 
-
-
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
   translateX: 1000,
@@ -430,6 +428,8 @@ let right_selected_particles = function () {
 function run_collider() {
 
   console.log("bebr")
+  reset_balls();
+  document.getElementById("canvas").style.visibility = "visible"
 
   document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
