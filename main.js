@@ -62,11 +62,40 @@ var swiper = new Swiper(".swiper", {
 });
 var ctx = document.getElementById('canvas').getContext('2d');
 var start_time = Date.now() / 1000; // start time in seconds
-
+var bg_ctx = document.getElementById('background').getContext('2d');
+const canvas_width = 1920;
+const canvas_height = 1080;
 function init() {
   window.requestAnimationFrame(draw);
 }
-
+window.requestAnimationFrame(draw_bg)
+class BackParticle {
+  constructor(x, y, r, speed, angle) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    this.speed = speed;
+    this.angle = angle;
+    this.color = 255;
+  }
+  move() {
+    this.x += this.speed * Math.cos(this.angle);
+    this.y += this.speed * Math.sin(this.angle);
+    this.r *= 0.99;
+    this.speed *= 0.99;
+    this.color = this.color * 0.99;
+  }
+  draw() {
+    bg_ctx.beginPath();
+    bg_ctx.fillStyle = `rgb(${this.color}, ${this.color}, ${this.color})`
+    bg_ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    bg_ctx.fill()
+  }
+  check() {
+    if (this.x < canvas_width && this.x >= 0 && this.y >= 0 && this.y < canvas_height && this.r >= 1) return true;
+    return false;
+  }
+}
 class Particle {
   constructor(x, y, angle, distance_to_pass, time_to_pass, radius, color) {
     this.x = x;
@@ -101,11 +130,28 @@ var r = 335;
 
 var particle1 = new Particle(0, r, Math.PI, 12.5 * 2 * Math.PI, 200, r, particle_emoji1_color);
 var particle2 = new Particle(r * 2, r, 0, 12 * 2 * Math.PI, 200, r, particle_emoji2_color);
+var backParticles = []
+function draw_bg() {
+  bg_ctx.fillStyle = 'rgb(0, 0, 0)';
+  bg_ctx.fillRect(0, 0, canvas_width, canvas_height);
+  var new_backParticles = []
+  for (var i = 0; i < backParticles.length; ++i) {
+    backParticles[i].draw();
+    backParticles[i].move();
+    if (backParticles[i].check()) new_backParticles.push(backParticles[i]);
+  }
+  backParticles = new_backParticles;
+
+  if (backParticles.length < 40) backParticles.push(new BackParticle(getRandomInt(canvas_width),
+    getRandomInt(canvas_height),
+    6*Math.random(),
+    3*Math.random(),
+    Math.random() * 2 * Math.PI))
+    window.requestAnimationFrame(draw_bg)
+}
 function draw() {
 
   ctx.clearRect(0, 0, 900, 900);
-
-  // updating time
   var time_delta = Date.now() / 1000 - start_time;
   start_time = Date.now() / 1000;
   ctx.fillStyle = "#00FF00"

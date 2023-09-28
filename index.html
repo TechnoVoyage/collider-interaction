@@ -24,6 +24,7 @@
   <!-- <video id="background-video"  class= "fullscreen-video" autoplay loop muted>
   <source src="images/particles.mp4" class= "fullscreen" type="video/mp4">
   </video> -->
+  <canvas id="background" width="1920" height="1080" style="position: absolute; left: 0px; top:0px; width: 1920px; height: 1080px; z-index: -1;"></canvas>
   <video id="explosion-video" class= "fullscreen-video" muted>
     <source src="images/explosion.webm" type="video/webm">
   </video>
@@ -175,7 +176,7 @@
       </p>
     </div>
     <h2 class="new-particle-header">Получена новая частица!</h2>
-    <img id = "new-particle-image" style="width: 50%; left:170px; top: 70px; position: relative;" src="first_atom.gif">
+    <img id = "new-particle-image" style="width: 50%; left:170px; top: 70px; position: relative;" >
     <h2 style="position: relative; top: 70px; font-size: 30pt;" id="new-particle-name" class="new-particle-header">Бозон Хиггса</h2>
     <button style="width: 370px; height: 90px; position: relative; top: 60px; font-family: 'Journal Sans New';
         font-weight: lighter;" onclick="continue_button()" disabled="true"
