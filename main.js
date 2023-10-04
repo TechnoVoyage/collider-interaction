@@ -1,5 +1,5 @@
-const TIME_CHOOSE = 23
-const TIME_ACCELERATING = 26
+const TIME_CHOOSE = 11
+const TIME_ACCELERATING = 25
 const TIME_READ = 17
 const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
@@ -21,7 +21,7 @@ const PARTICLE_NAMES = [
         { "name": "Электрон", "link": "images/particles/electron.gif", "text": TEXT["ЭЛЕКТРОН"] },
         { "name": "Мюон", "link": "images/particles/muon.gif", "text": TEXT["МЮОН"] }, 
         { "name": "Тау", "link": "images/particles/tau.gif", "text": TEXT["ЭЛЕКТРОН"] },
-        { "name": "Элейтронное Нейтрино", "link": "images/particles/eneitrino.gif", "text": TEXT["ЭЛЕКТРОННОЕ НЕЙТРИНО"] }, 
+        { "name": "Электронное Нейтрино", "link": "images/particles/eneitrino.gif", "text": TEXT["ЭЛЕКТРОННОЕ НЕЙТРИНО"] }, 
         { "name": "Мюонное Нейтрино", "link": "images/particles/muneitrino.gif", "text": TEXT["МЮОННОЕ НЕЙТРИНО"] },
         { "name": "Тау Нейтрино", "link": "images/particles/tauneitrino.gif", "text": TEXT["ТАУ НЕЙТРИНО"] }
 ]
@@ -123,7 +123,7 @@ class Particle {
     this.angle_speed += this.epsilon * time_delta;
     this.angle += this.angle_speed;
     this.x = 475 + this.radius * Math.cos(this.angle);
-    this.y = 475 + this.radius * Math.sin(this.angle);
+    this.y = 525 + this.radius * Math.sin(this.angle);
   }
 
   draw() {
@@ -237,7 +237,7 @@ function new_particle_popup() {
   anime({
     targets: '.right-space',
     translateX: 200,
-    duration: 2000,
+    duration: 1000,
     easing: 'easeInOutExpo',
   });
   element_index = getRandomInt(17)
@@ -264,39 +264,42 @@ function new_particle_hide() {
     }
   })
 }
-
+var dur = 800
 var move_collider_tl = anime.timeline({
   targets: '.selector-box',
   translateX: 1000,
   easing: 'easeInOutExpo',
-  autoplay: false
+  autoplay: false,
+  duration: dur,
 })
 move_collider_tl.add({
   targets: '.start-button',
   translateY: 300,
   easing: 'easeInOutExpo',
-}, 0)
+  duration: dur,
+}, `-=${dur}`)
 move_collider_tl.add({
-  targets: '.header-name',
+  targets: ['.header-name',  '.header-choose'],
   translateY: -100,
   easing: 'easeInOutExpo',
-}, 0)
-move_collider_tl.add({
-  targets: '.header-choose',
-  translateY: -100,
-  easing: 'easeInOutExpo',
-}, 0)
+})
+// move_collider_tl.add({
+//   targets: '.header-choose',
+//   translateY: -100,
+//   easing: 'easeInOutExpo',
+// })
 move_collider_tl.add({
   targets: '.collider ',
   width: 950,
   height: 950,
   left: 260,
-  top: 50,
+  top: 100,
+  duration: dur,
 })
 move_collider_tl.add({
   targets: '#collider-solid',
   opacity: 0,
-
+  duration: dur,
 }).finished.then(function () {
   reset_balls()
   document.getElementById("canvas").style.visibility = "visible"
@@ -305,18 +308,17 @@ move_collider_tl.add({
 move_collider_tl.add({
   targets: '.timer-header',
   translateX: 530,
-  duration: 400,
-  translateY: -508,
-})
+  duration: dur,
+  translateY: -458,
+}, `-=${dur}`)
 move_collider_tl.add({
   targets: '.timer-header-word',
   translateX: -700,
-  duration: 1000,
-})
+  duration: dur,
+}, `-=${dur * 2}`)
 move_collider_tl.add({
   targets: '.accelerating-countdown-header',
   translateY: 200,
-  duration: 1000,
 })
 
 function hide_collider() {
@@ -385,7 +387,7 @@ function show_collider() {
 
 
   move_collider_tl.direction = "normal"
-  right_selected_particles()
+  // right_selected_particles()
   move_collider_tl.play()
 
   setTimeout(function () {
@@ -430,7 +432,7 @@ let right_selected_particles = function () {
       targets: '.right-space',
       translateX: -350,
     });
-  }, 1500);
+  }, 400);
 }
 
 function run_collider() {
@@ -444,6 +446,7 @@ function run_collider() {
 
   document.getElementsByClassName("selected-arrow-down")[0].style.stroke = particle_emoji1_color;
   document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
+  right_selected_particles()
 }
 
 function phase_choose() { //phase 1
@@ -459,7 +462,7 @@ function phase_reading() { //phase 3
 }
 function continue_button() {
   animation_started = false;
-  current_timer = TIME_CHOOSE;
+  current_timer += TIME_CHOOSE;
   current_phase = 1;
   reset_balls()
   document.getElementById("canvas").style.visibility = "hidden"
