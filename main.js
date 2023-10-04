@@ -32,6 +32,7 @@ var current_phase = 1
 const particle_id = { 1: 2 }
 var particle_emoji1_color = PARTICLE_COLOR["electron"]
 var particle_emoji2_color = PARTICLE_COLOR["proton"]
+var isClicked = false
 
 
 function getRandomInt(max) {
@@ -234,6 +235,7 @@ new_particle_tl.add({
   translateY: -1050
 })
 function new_particle_popup() {
+  isClicked = false
   anime({
     targets: '.right-space',
     translateX: 200,
@@ -431,22 +433,27 @@ let right_selected_particles = function () {
     anime({
       targets: '.right-space',
       translateX: -350,
-    });
+    }).finished.then(function() {
+        document.getElementById("canvas").style.visibility = "visible"
+        reset_balls();
+    })
   }, 400);
 }
 
 function run_collider() {
 
   console.log("bebr")
-  reset_balls();
-  document.getElementById("canvas").style.visibility = "visible"
+
+  // document.getElementById("canvas").style.visibility = "visible"
 
   document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
 
   document.getElementsByClassName("selected-arrow-down")[0].style.stroke = particle_emoji1_color;
   document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
-  right_selected_particles()
+
+  right_selected_particles();
+  // reset_balls();
 }
 
 function phase_choose() { //phase 1
@@ -460,15 +467,24 @@ function phase_reading() { //phase 3
   //document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
   new_particle_popup()
 }
+// var isCliced = false
+// document.getElementById('continue-new-particle').onclick = function() {
+//   if (isCliced == false)
+//     continue_button();
+// }
 function continue_button() {
-  animation_started = false;
-  current_timer += TIME_CHOOSE;
-  current_phase = 1;
-  reset_balls()
-  document.getElementById("canvas").style.visibility = "hidden"
-  hide_collider()
-  console.log(current_phase)
+  if (isClicked == false) {
+    current_timer += TIME_CHOOSE;
 
+    animation_started = false;
+
+    current_phase = 1;
+    reset_balls()
+    document.getElementById("canvas").style.visibility = "hidden"
+    hide_collider()
+    console.log(current_phase)
+    isClicked = true
+  }
 }
 
 var animation_started = false
