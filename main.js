@@ -169,7 +169,6 @@ function draw() {
   ctx.clearRect(0, 0, 900, 900);
   
   ctx.beginPath()
-
   particle1.draw();
   particle2.draw();
   particle1.move();
@@ -181,6 +180,7 @@ function animate_collider_balls() {
   init()
 }
 function reset_balls() {
+  
   particle1.x = 0;
   particle1.y = r;
   particle1.angle = Math.PI;
@@ -192,6 +192,7 @@ function reset_balls() {
   particle2.angle = 0;
   particle2.angle_speed = 0;
   particle2.color = particle_emoji2_color
+  
 }
 
 var new_particle_tl = anime.timeline({
@@ -202,7 +203,7 @@ var new_particle_tl = anime.timeline({
     document.querySelector(".new-particle-text").style.top = "1000px"
     document.getElementById("continue-new-particle").disabled = true
     document.getElementById("canvas").style.visibility = "hidden"
-    clearInterval(intervalId);
+    //clearInterval(intervalId);
   }
 });
 new_particle_tl.add({
@@ -344,6 +345,7 @@ function hide_collider() {
 }
 
 function show_collider() {
+  reset_balls()
   var particleTopName = document.getElementById("particle-top");
   var particleBottomName = document.getElementById("particle-bottom");
   var particleTopImg = document.getElementById("particle-top-img");
