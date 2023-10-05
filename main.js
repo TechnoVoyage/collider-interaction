@@ -77,7 +77,9 @@ var bg_ctx = document.getElementById('background').getContext('2d');
 const canvas_width = 1920;
 const canvas_height = 1080;
 function init() {
-  window.requestAnimationFrame(draw);
+  intervalId = setInterval(() => window.requestAnimationFrame(draw), 16.6)
+
+  //window.requestAnimationFrame(draw);
 }
 window.requestAnimationFrame(draw_bg)
 class BackParticle {
@@ -120,11 +122,12 @@ class Particle {
     this.epsilon = 2 * distance_to_pass / time_to_pass / time_to_pass;
   }
 
-  move(time_delta) {
-    this.angle_speed += this.epsilon * time_delta;
+  move() {
+    this.angle_speed += this.epsilon / 60;
     this.angle += this.angle_speed;
     this.x = 475 + this.radius * Math.cos(this.angle);
     this.y = 525 + this.radius * Math.sin(this.angle);
+
   }
 
   draw() {
@@ -160,28 +163,21 @@ function draw_bg() {
     Math.random() * 2 * Math.PI))
     window.requestAnimationFrame(draw_bg)
 }
+
 function draw() {
 
   ctx.clearRect(0, 0, 900, 900);
-  var time_delta = Date.now() / 1000 - start_time;
-  start_time = Date.now() / 1000;
-  ctx.beginPath()
   
+  ctx.beginPath()
 
   particle1.draw();
   particle2.draw();
-  particle1.move(time_delta);
-  particle2.move(time_delta);
-
-
-
-  window.requestAnimationFrame(draw)
+  particle1.move();
+  particle2.move();
+  //window.requestAnimationFrame(draw)
 }
 
 function animate_collider_balls() {
-  start_time = Date.now() / 1000;
-  console.log("moving ballz")
-  console.log(particle_emoji1_color, particle_emoji2_color)
   init()
 }
 function reset_balls() {
@@ -206,6 +202,7 @@ var new_particle_tl = anime.timeline({
     document.querySelector(".new-particle-text").style.top = "1000px"
     document.getElementById("continue-new-particle").disabled = true
     document.getElementById("canvas").style.visibility = "hidden"
+    clearInterval(intervalId);
   }
 });
 new_particle_tl.add({
@@ -347,7 +344,6 @@ function hide_collider() {
 }
 
 function show_collider() {
-  console.log(swiper.realIndex)
   var particleTopName = document.getElementById("particle-top");
   var particleBottomName = document.getElementById("particle-bottom");
   var particleTopImg = document.getElementById("particle-top-img");
@@ -442,8 +438,6 @@ let right_selected_particles = function () {
 
 function run_collider() {
 
-  console.log("bebr")
-
   // document.getElementById("canvas").style.visibility = "visible"
 
   document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
@@ -482,7 +476,6 @@ function continue_button() {
     reset_balls()
     document.getElementById("canvas").style.visibility = "hidden"
     hide_collider()
-    console.log(current_phase)
     isClicked = true
   }
 }
@@ -542,4 +535,5 @@ function phase_timer_update() {
   }
 }
 setInterval(() => phase_timer_update(), 1000)
+
 
