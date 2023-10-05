@@ -17,6 +17,8 @@
       position: relative;
     }
   </style>
+
+
 </head>
 
 <body>
@@ -162,19 +164,24 @@
 
   </div>
     
-  <h1 class="timer-header">00:10</h1>  
+  <h1 class="timer-header">00:10</h1>   
   <h1 class="timer-header-word">До запуска:</h1>
   <h1 class="accelerating-countdown-header">Столкновение через</h1>
   <div class="new-particle-window" style="opacity: 0%; scale: 0.1">
     <div style="visibility: hidden;" class="new-particle-text">
-      <p style="color: white; width: 80%; position: relative; left: 10%;" class="new-particle-plain">Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <p style="color: white; width: 80%; position: relative; left: 10%;" class="new-particle-plain">
 
       </p>
     </div>
+    <script>
+      MathJax = {
+        loader: {load: ['input/asciimath', 'output/chtml']}
+      }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js">
+    </script>
     <h2 class="new-particle-header">Получена новая частица!</h2>
     <img id = "new-particle-image" style="width: 50%; left:170px; top: 70px; position: relative;" >
     <h2 style="position: relative; top: 70px; font-size: 30pt;" id="new-particle-name" class="new-particle-header">Бозон Хиггса</h2>
@@ -190,6 +197,8 @@
   </script>
   <script src="constants.js"></script>
   <script src="main.js"></script>
+
+  
 
 
   
