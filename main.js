@@ -476,36 +476,34 @@ function phase_reading() { //phase 3
 //     continue_button();
 // }
 function continue_button() {
-  if (isClicked == false) {
-    current_timer += TIME_CHOOSE;
+  current_timer += TIME_CHOOSE;
 
-    animation_started = false;
+  animation_started = false;
 
-    current_phase = 1;
-    reset_balls()
-    document.getElementById("canvas").style.visibility = "hidden"
-    hide_collider()
-    isClicked = true
-  }
+  current_phase = 1;
+  reset_balls()
+  document.getElementById("canvas").style.visibility = "hidden"
+  hide_collider()
+  new_particle_hide();
 }
 
 var animation_started = false
 function phase_timer_update() {
-  current_timer -= 1
+  // current_timer -= 1
   switch (current_phase) {
     case 1:
-      if (current_timer < 10)
-        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-      else
-        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      // if (current_timer < 10)
+      //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      // else
+      //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_choose();
       animation_started = true
       break;
     case 2:
-      if (current_timer < 10)
-        document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-      else
-        document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+      // if (current_timer < 10)
+      //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+      // else
+      //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
       if (!animation_started) phase_accelerating();
       animation_started = true
       break;
@@ -514,12 +512,11 @@ function phase_timer_update() {
       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
       // else
       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-      document.getElementsByClassName("timer-header")[0].textContent = '00:00'
+      // document.getElementsByClassName("timer-header")[0].textContent = '00:00'
       if (!animation_started) phase_reading();
       animation_started = true
       break;
   }
-
 
 
   if (current_timer == 0) {
@@ -543,6 +540,34 @@ function phase_timer_update() {
     animation_started = false
   }
 }
-setInterval(() => phase_timer_update(), 1000)
+// setInterval(() => phase_timer_update(), 1000)
+
+document.getElementById('start_button').addEventListener('click', function() {
+
+  document.getElementById('start_button').disabled = true
+  document.getElementById('start_button').style.display="none"
 
 
+  send_uart();
+
+  take_signal();
+
+  document.getElementById('continue-new-particle').onclick = function() {
+    continue_button();
+    document.getElementById('start_button').disabled = false
+    document.getElementById('start_button').style.display="block"
+  }
+})
+
+
+function send_uart() {
+    //TODO uart to exponant
+  phase_accelerating();
+}
+
+function take_signal() {
+    //TODO: take to boom
+
+  setTimeout(() => phase_reading(), 3000)
+
+}
