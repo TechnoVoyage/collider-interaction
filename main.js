@@ -471,11 +471,7 @@ function phase_reading() { //phase 3
   new_particle_popup()
 }
 // var isCliced = false
-// document.getElementById('continue-new-particle').onclick = function() {
-//   if (isCliced == false)
-//     continue_button();
-// }
-function continue_button() {
+document.getElementById('continue-new-particle').onclick = function() {
   if (isClicked == false) {
     current_timer += TIME_CHOOSE;
 
