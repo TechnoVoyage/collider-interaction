@@ -1,39 +1,35 @@
-const TIME_CHOOSE = 10
-const TIME_ACCELERATING = 28
-const TIME_READ = 15
-const RUNNING_DURATION = 21000
 const PARTICLE_COLOR = { "electron": '#0000FF', "antielectron": "#7902b5", "proton": "#FF0000" }
 // const LOREMIPSUM = "b-кварк, прелестный кварк, красивый кварк — кварк с зарядом -1/3 e, принадлежащий к третьему поколению. Он является более лёгким членом третьего поколения, в который входит также значительно более тяжёлый t-кварк. Имеет массу порядка  4,5 ГэВ , что  почти в 5 раз тяжелее нуклона. Время жизни b-кварка составляет около 10^-12 c<br> Существование третьего поколения кварков, включающего b- и t-кварки, было предсказано в 1973 году Макото Кобаяси и Тосихидэ Маскавой для объяснения явления нарушения CP-симметрии. <br>Экспериментальное подтверждение данное предсказание получило в 1977 году в лаборатории Фермилаб коллаборацией Колумбия.<br>Кварки - бесструктурные точечные частицы со спином  1/2 ћ, участвующие в сильном взаимодействии (как и во всех остальных) и являющиеся элементарными составляющими всех адронов.<br>Адроны - связанные системы кварков и антикварков. Существуют адроны двух типов – барионы (барионный заряд B=1), состоящие из трёх кварков (qqq), и являющиеся фермионами и мезоны (B=0), состоящие из кварка и антикварка (-qq) и являющиеся бозонами.<br>Существует шесть типов кварков, обозначаемых буквами u, d, s, c, b, t (от английских слов up, down, strange, charmed, bottom, top). Говорят о шести “ароматах” кварков. Каждый кварк имеет барионное число В =  1/3 и дробный электрический заряд. Кварки u, c, t имеют заряд +2/3, а кварки d, s, b, - заряд       -1/3 (в единицах элементарного заряда e = 1.6*10^-19 Кл). Кварки имеют массы. Самый лёгкий кварк u (масса 2 МэВ), самый тяжёлый – t (его масса 174 ГэВ). <br>Одно из уникальных свойств кварков это конфаймент. Конфайнмент− удержание цветных кварков и глюонов внутри бесцветных адронов. Согласно модели кварков все адроны состоят из кварков. Переносчиками сильного взаимодействия между кварками являются глюоны. Кварки и глюоны характеризуются квантовым числом цвет. Однако ни в природе, ни в экспериментах при высоких энергиях кварки и глюоны в свободном состоянии в виде цветных объектов не обнаружены. ";
 
 
 const PARTICLE_NAMES = [
-        { "name": "Бозон Хиггса", "link": "images/particles/bozon.gif", "text": TEXT["БОЗОН ХИГГСА"] }, 
-        { "name": "Нижний", "link": "images/particles/nizhniy.gif", "text": TEXT['D-КВАРК'] },
-        { "name": "Верхний", "link": "images/particles/verhniy.gif", "text": TEXT["U-КВАРК"] }, 
-        { "name": "Очарованный", "link": "images/particles/ocharovany.gif", "text": TEXT["C-КВАРК"] },
-        { "name": "Истинный", "link": "images/particles/istiniy.gif", "text": TEXT["T-КВАРК"] }, 
-        { "name": "Странный", "link": "images/particles/stranii.gif", "text": TEXT["ЭЛЕКТРОН"] },
-        { "name": "Прелестный", "link": "images/particles/prelestni.gif", "text": TEXT["B-КВАРК"] }, 
-        { "name": "Глюон", "link": "images/particles/gluon.gif", "text": TEXT["ГЛЮОН"] },
-        { "name": "Фотон", "link": "images/particles/photon.gif", "text": TEXT["ФОТОН"] }, 
-        { "name": "Z Бозон", "link": "images/particles/zbozon.gif", "text": TEXT["Z-БОЗОН"] },
-        { "name": "W Бозон", "link": "images/particles/wbozon.gif", "text": TEXT["W-БОЗОН"] }, 
-        { "name": "Электрон", "link": "images/particles/electron.gif", "text": TEXT["ЭЛЕКТРОН"] },
-        { "name": "Мюон", "link": "images/particles/muon.gif", "text": TEXT["МЮОН"] }, 
-        { "name": "Тау", "link": "images/particles/tau.gif", "text": TEXT["ЭЛЕКТРОН"] },
-        { "name": "Электронное Нейтрино", "link": "images/particles/eneitrino.gif", "text": TEXT["ЭЛЕКТРОННОЕ НЕЙТРИНО"] }, 
-        { "name": "Мюонное Нейтрино", "link": "images/particles/muneitrino.gif", "text": TEXT["МЮОННОЕ НЕЙТРИНО"] },
-        { "name": "Тау Нейтрино", "link": "images/particles/tauneitrino.gif", "text": TEXT["ТАУ НЕЙТРИНО"] }
+  { "name": "Бозон Хиггса", "link": "images/particles/bozon.gif", "text": TEXT["БОЗОН ХИГГСА"] },
+  { "name": "Нижний", "link": "images/particles/nizhniy.gif", "text": TEXT['D-КВАРК'] },
+  { "name": "Верхний", "link": "images/particles/verhniy.gif", "text": TEXT["U-КВАРК"] },
+  { "name": "Очарованный", "link": "images/particles/ocharovany.gif", "text": TEXT["C-КВАРК"] },
+  { "name": "Истинный", "link": "images/particles/istiniy.gif", "text": TEXT["T-КВАРК"] },
+  { "name": "Странный", "link": "images/particles/stranii.gif", "text": TEXT["ЭЛЕКТРОН"] },
+  { "name": "Прелестный", "link": "images/particles/prelestni.gif", "text": TEXT["B-КВАРК"] },
+  { "name": "Глюон", "link": "images/particles/gluon.gif", "text": TEXT["ГЛЮОН"] },
+  { "name": "Фотон", "link": "images/particles/photon.gif", "text": TEXT["ФОТОН"] },
+  { "name": "Z Бозон", "link": "images/particles/zbozon.gif", "text": TEXT["Z-БОЗОН"] },
+  { "name": "W Бозон", "link": "images/particles/wbozon.gif", "text": TEXT["W-БОЗОН"] },
+  { "name": "Электрон", "link": "images/particles/electron.gif", "text": TEXT["ЭЛЕКТРОН"] },
+  { "name": "Мюон", "link": "images/particles/muon.gif", "text": TEXT["МЮОН"] },
+  { "name": "Тау", "link": "images/particles/tau.gif", "text": TEXT["ЭЛЕКТРОН"] },
+  { "name": "Электронное Нейтрино", "link": "images/particles/eneitrino.gif", "text": TEXT["ЭЛЕКТРОННОЕ НЕЙТРИНО"] },
+  { "name": "Мюонное Нейтрино", "link": "images/particles/muneitrino.gif", "text": TEXT["МЮОННОЕ НЕЙТРИНО"] },
+  { "name": "Тау Нейтрино", "link": "images/particles/tauneitrino.gif", "text": TEXT["ТАУ НЕЙТРИНО"] }
 ]
 
 
-var current_timer = TIME_CHOOSE
+
 var current_phase = 1
 const particle_id = { 1: 2 }
 var particle_emoji1_color = PARTICLE_COLOR["electron"]
 var particle_emoji2_color = PARTICLE_COLOR["proton"]
 var isClicked = false
-
+var uartSocket = new WebSocket("ws://127.0.0.1:8000")
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -46,11 +42,6 @@ function max(a, b) {
 function min(a, b) {
   return (a > b) ? b : a
 }
-
-if (current_timer < 10)
-  document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-else
-  document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
 
 
 var swiper = new Swiper(".swiper", {
@@ -158,16 +149,16 @@ function draw_bg() {
 
   if (backParticles.length < 40) backParticles.push(new BackParticle(getRandomInt(canvas_width),
     getRandomInt(canvas_height),
-    6*Math.random(),
-    3*Math.random(),
+    6 * Math.random(),
+    3 * Math.random(),
     Math.random() * 2 * Math.PI))
-    window.requestAnimationFrame(draw_bg)
+  window.requestAnimationFrame(draw_bg)
 }
 
 function draw() {
 
   ctx.clearRect(0, 0, 900, 900);
-  
+
   ctx.beginPath()
   particle1.draw();
   particle2.draw();
@@ -180,7 +171,7 @@ function animate_collider_balls() {
   init()
 }
 function reset_balls() {
-  
+
   particle1.x = 0;
   particle1.y = r;
   particle1.angle = Math.PI;
@@ -192,7 +183,7 @@ function reset_balls() {
   particle2.angle = 0;
   particle2.angle_speed = 0;
   particle2.color = particle_emoji2_color
-  
+
 }
 
 var new_particle_tl = anime.timeline({
@@ -244,9 +235,9 @@ function new_particle_popup() {
   document.getElementById('new-particle-name').innerHTML = PARTICLE_NAMES[element_index]['name'];
   const node = document.getElementsByClassName('new-particle-plain')[0];
   MathJax.typesetClear([node]);
-  node.innerHTML = PARTICLE_NAMES[element_index]['text'] ;
+  node.innerHTML = PARTICLE_NAMES[element_index]['text'];
   MathJax.typesetPromise([node]).then(() => {
-  // the new content is has been typeset
+    // the new content is has been typeset
     PARTICLE_NAMES[element_index]['text']
   });
   //PARTICLE_NAMES[element_index]['text'];
@@ -286,8 +277,13 @@ move_collider_tl.add({
   duration: dur,
 }, `-=${dur}`)
 move_collider_tl.add({
-  targets: ['.header-name',  '.header-choose'],
+  targets: ['.header-name', '.header-choose'],
   translateY: -100,
+  easing: 'easeInOutExpo',
+})
+move_collider_tl.add({
+  targets: "#start_button",
+  translateY: 300,
   easing: 'easeInOutExpo',
 })
 // move_collider_tl.add({
@@ -302,27 +298,13 @@ move_collider_tl.add({
   left: 260,
   top: 100,
   duration: dur,
-})
-move_collider_tl.add({
-  targets: '#collider-solid',
-  opacity: 0,
-  duration: dur,
 }).finished.then(function () {
   reset_balls()
   document.getElementById("canvas").style.visibility = "visible"
   animate_collider_balls()
 })
-move_collider_tl.add({
-  targets: '.timer-header',
-  translateX: 530,
-  duration: dur,
-  translateY: -458,
-}, `-=${dur}`)
-move_collider_tl.add({
-  targets: '.timer-header-word',
-  translateX: -700,
-  duration: dur,
-}, `-=${dur * 2}`)
+
+
 move_collider_tl.add({
   targets: '.accelerating-countdown-header',
   translateY: 200,
@@ -438,9 +420,9 @@ let right_selected_particles = function () {
     anime({
       targets: '.right-space',
       translateX: -350,
-    }).finished.then(function() {
-        document.getElementById("canvas").style.visibility = "visible"
-        reset_balls();
+    }).finished.then(function () {
+      document.getElementById("canvas").style.visibility = "visible"
+      reset_balls();
     })
   }, 400);
 }
@@ -471,100 +453,115 @@ function phase_reading() { //phase 3
   new_particle_popup()
 }
 // var isCliced = false
-document.getElementById('continue-new-particle').onclick = function() {
+document.getElementById('continue-new-particle').onclick = function () {
   if (isClicked == false) {
-    current_timer += TIME_CHOOSE;
+    // current_timer += TIME_CHOOSE;
+    document.getElementById("collider-hole").src = "images/collider.png"
+    animation_started = false;
 
-  animation_started = false;
-
-  current_phase = 1;
-  reset_balls()
-  document.getElementById("canvas").style.visibility = "hidden"
-  hide_collider()
-  new_particle_hide();
+    current_phase = 1;
+    reset_balls()
+    document.getElementById("canvas").style.visibility = "hidden"
+    hide_collider()
+    new_particle_hide();
+  }
 }
-
 var animation_started = false
-function phase_timer_update() {
-  // current_timer -= 1
-  switch (current_phase) {
-    case 1:
-      // if (current_timer < 10)
-      //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-      // else
-      //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-      if (!animation_started) phase_choose();
-      animation_started = true
-      break;
-    case 2:
-      // if (current_timer < 10)
-      //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-      // else
-      //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-      if (!animation_started) phase_accelerating();
-      animation_started = true
-      break;
-    case 3:
-      // if (current_timer < 10)
-      //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-      // else
-      //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-      // document.getElementsByClassName("timer-header")[0].textContent = '00:00'
-      if (!animation_started) phase_reading();
-      animation_started = true
-      break;
-  }
+// function phase_timer_update() {
+//   // current_timer -= 1
+//   switch (current_phase) {
+//     case 1:
+//       // if (current_timer < 10)
+//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+//       // else
+//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+//       if (!animation_started) phase_choose();
+//       animation_started = true
+//       break;
+//     case 2:
+//       // if (current_timer < 10)
+//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+//       // else
+//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+//       if (!animation_started) phase_accelerating();
+//       animation_started = true
+//       break;
+//     case 3:
+//       // if (current_timer < 10)
+//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
+//       // else
+//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
+//       // document.getElementsByClassName("timer-header")[0].textContent = '00:00'
+//       if (!animation_started) phase_reading();
+//       animation_started = true
+//       break;
+//   }
 
 
-  if (current_timer == 0) {
-    current_phase += 1
-    switch (current_phase) {
-      case 1:
-        current_timer = TIME_CHOOSE;
-        break;
-      case 2:
-        current_timer = TIME_ACCELERATING;
-        break;
-      case 3:
-        current_timer = TIME_READ;
-        break;
-      case 4:
-        current_timer = TIME_CHOOSE;
-        hide_collider()
-        current_phase = 1;
-        break;
-    }
-    animation_started = false
-  }
-}
+//   if (current_timer == 0) {
+//     current_phase += 1
+//     switch (current_phase) {
+//       case 1:
+//         current_timer = TIME_CHOOSE;
+//         break;
+//       case 2:
+//         current_timer = TIME_ACCELERATING;
+//         break;
+//       case 3:
+//         current_timer = TIME_READ;
+//         break;
+//       case 4:
+//         current_timer = TIME_CHOOSE;
+//         hide_collider()
+//         current_phase = 1;
+//         break;
+//     }
+//     animation_started = false
+//   }
+// }
 // setInterval(() => phase_timer_update(), 1000)
 
-document.getElementById('start_button').addEventListener('click', function() {
+document.getElementById('start_button').addEventListener('click', function () {
 
-  document.getElementById('start_button').disabled = true
-  document.getElementById('start_button').style.display="none"
-
+  const start_button = document.getElementById('start_button')
+  start_button.disabled = "disabled"
+  start_button.style.backgroundColor = "#292929"
+  start_button.style.borderColor = "#121212"
+  start_button.innerHTML = "Ожидайте..."
 
   send_uart();
 
-  take_signal();
+  // take_signal();
 
-  document.getElementById('continue-new-particle').onclick = function() {
-    continue_button();
-    document.getElementById('start_button').disabled = false
-    document.getElementById('start_button').style.display="block"
-  }
+  // document.getElementById('continue-new-particle').onclick = function() {
+  //   continue_button();
+  //   document.getElementById('start_button').disabled = "enabled"
+  // }
 })
 
 
 function send_uart() {
-    //TODO uart to exponant
-  phase_accelerating();
-}
-
-function take_signal() {
-    //TODO: take to boom
-
-  setTimeout(() => phase_reading(), 3000)
+  //TODO uart to exponant
+  uartSocket.send("start")
 
 }
+
+uartSocket.onmessage = (event) => {
+  console.log(event.data)
+  if(event.data >= 1 && event.data <=8) {
+    document.getElementById("collider-hole").src = "images/"+event.data+".png"
+  }
+  if(event.data == 8) {
+    phase_reading()
+  }
+  if (event.data == 11) {
+    phase_accelerating();
+    const start_button = document.getElementById('start_button')
+    start_button.disabled = false;
+    start_button.style.backgroundColor = "black"
+    start_button.style.borderColor = "white"
+    start_button.innerHTML = "Запуск"
+  }
+
+};
+
