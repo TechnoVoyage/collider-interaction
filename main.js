@@ -70,7 +70,6 @@ const canvas_height = 1080;
 function init() {
   intervalId = setInterval(() => window.requestAnimationFrame(draw), 16.6)
 
-  //window.requestAnimationFrame(draw);
 }
 window.requestAnimationFrame(draw_bg)
 class BackParticle {
@@ -164,7 +163,6 @@ function draw() {
   particle2.draw();
   particle1.move();
   particle2.move();
-  //window.requestAnimationFrame(draw)
 }
 
 function animate_collider_balls() {
@@ -194,7 +192,6 @@ var new_particle_tl = anime.timeline({
     document.querySelector(".new-particle-text").style.top = "1000px"
     document.getElementById("continue-new-particle").disabled = true
     document.getElementById("canvas").style.visibility = "hidden"
-    //clearInterval(intervalId);
   }
 });
 new_particle_tl.add({
@@ -286,11 +283,7 @@ move_collider_tl.add({
   translateY: 300,
   easing: 'easeInOutExpo',
 })
-// move_collider_tl.add({
-//   targets: '.header-choose',
-//   translateY: -100,
-//   easing: 'easeInOutExpo',
-// })
+
 move_collider_tl.add({
   targets: '.collider ',
   width: 950,
@@ -376,7 +369,6 @@ function show_collider() {
 
 
   move_collider_tl.direction = "normal"
-  // right_selected_particles()
   move_collider_tl.play()
 
   setTimeout(function () {
@@ -388,31 +380,6 @@ function show_collider() {
   setTimeout(() => { run_collider(); }, 1000);
 
 }
-
-// function back_points() {
-
-//   var back_points_tl = anime.timeline({
-//     targets: '.selector-box',
-//     easing: 'easeInOutExpo',
-//     autoplay: false
-//   })
-//   back_points_tl.add({
-//     targets: '.emoji1',
-//     opacity: [1, 0],
-//     backgroundColor: particle_emoji1_color,
-//     duration: 1000,
-
-//   })
-//   back_points_tl.add({
-//     targets: '.emoji2',
-//     opacity: [1, 0],
-//     backgroundColor: particle_emoji2_color,
-//     duration: 1000,
-//   }, '-=1000')
-//   back_points_tl.play()
-//   document.getElementsByClassName("emoji1")[0].style.visibility = "visible";
-//   document.getElementsByClassName("emoji2")[0].style.visibility = "visible";
-// }
 
 
 let right_selected_particles = function () {
@@ -429,7 +396,6 @@ let right_selected_particles = function () {
 
 function run_collider() {
 
-  // document.getElementById("canvas").style.visibility = "visible"
 
   document.getElementsByClassName("animated-gif-up")[0].style.backgroundColor = particle_emoji1_color;
   document.getElementsByClassName("animated-gif-down")[0].style.backgroundColor = particle_emoji2_color;
@@ -438,24 +404,19 @@ function run_collider() {
   document.getElementsByClassName("selected-arrow-up")[0].style.stroke = particle_emoji2_color;
 
   right_selected_particles();
-  // reset_balls();
 }
 
 function phase_choose() { //phase 1
-  //hide_collider()
   new_particle_hide()
 }
 function phase_accelerating() { //phase 2
   show_collider()
 }
 function phase_reading() { //phase 3
-  //document.getElementById("new-particle-image").src = PARTICLE_NAMES.random()
   new_particle_popup()
 }
-// var isCliced = false
 document.getElementById('continue-new-particle').onclick = function () {
   if (isClicked == false) {
-    // current_timer += TIME_CHOOSE;
     document.getElementById("collider-hole").src = "images/collider.png"
     animation_started = false;
 
@@ -467,60 +428,6 @@ document.getElementById('continue-new-particle').onclick = function () {
   }
 }
 var animation_started = false
-// function phase_timer_update() {
-//   // current_timer -= 1
-//   switch (current_phase) {
-//     case 1:
-//       // if (current_timer < 10)
-//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-//       // else
-//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-//       if (!animation_started) phase_choose();
-//       animation_started = true
-//       break;
-//     case 2:
-//       // if (current_timer < 10)
-//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-//       // else
-//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-//       if (!animation_started) phase_accelerating();
-//       animation_started = true
-//       break;
-//     case 3:
-//       // if (current_timer < 10)
-//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:0' + current_timer
-//       // else
-//       //   document.getElementsByClassName("timer-header")[0].textContent = '00:' + current_timer
-//       // document.getElementsByClassName("timer-header")[0].textContent = '00:00'
-//       if (!animation_started) phase_reading();
-//       animation_started = true
-//       break;
-//   }
-
-
-//   if (current_timer == 0) {
-//     current_phase += 1
-//     switch (current_phase) {
-//       case 1:
-//         current_timer = TIME_CHOOSE;
-//         break;
-//       case 2:
-//         current_timer = TIME_ACCELERATING;
-//         break;
-//       case 3:
-//         current_timer = TIME_READ;
-//         break;
-//       case 4:
-//         current_timer = TIME_CHOOSE;
-//         hide_collider()
-//         current_phase = 1;
-//         break;
-//     }
-//     animation_started = false
-//   }
-// }
-// setInterval(() => phase_timer_update(), 1000)
-
 document.getElementById('start_button').addEventListener('click', function () {
 
   const start_button = document.getElementById('start_button')
@@ -529,29 +436,16 @@ document.getElementById('start_button').addEventListener('click', function () {
   start_button.style.borderColor = "#121212"
   start_button.innerHTML = "Ожидайте..."
 
-  send_uart();
-
-  // take_signal();
-
-  // document.getElementById('continue-new-particle').onclick = function() {
-  //   continue_button();
-  //   document.getElementById('start_button').disabled = "enabled"
-  // }
-})
-
-
-function send_uart() {
-  //TODO uart to exponant
   uartSocket.send("start")
 
-}
+})
 
 uartSocket.onmessage = (event) => {
   console.log(event.data)
-  if(event.data >= 1 && event.data <=8) {
-    document.getElementById("collider-hole").src = "images/"+event.data+".png"
+  if (event.data >= 1 && event.data <= 8) {
+    document.getElementById("collider-hole").src = "images/" + event.data + ".png"
   }
-  if(event.data == 8) {
+  if (event.data == 8) {
     phase_reading()
   }
   if (event.data == 11) {
