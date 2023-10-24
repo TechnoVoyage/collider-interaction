@@ -201,7 +201,7 @@ new_particle_tl.add({
     document.getElementById("explosion-video").currentTime = 0;
     document.getElementById("explosion-video").play();
   }
-})
+}).finished.then()
 new_particle_tl.add({
   targets: ".new-particle-window",
   scale: 10,
@@ -323,6 +323,7 @@ function hide_collider() {
 
   }).finished.then(function () {
     document.getElementById("explosion-video").pause()
+    new_particle_hide();
   })
 }
 
@@ -424,7 +425,6 @@ document.getElementById('continue-new-particle').onclick = function () {
     reset_balls()
     document.getElementById("canvas").style.visibility = "hidden"
     hide_collider()
-    new_particle_hide();
   }
 }
 var animation_started = false
@@ -439,7 +439,6 @@ document.getElementById('start_button').addEventListener('click', function () {
   uartSocket.send("start")
 
 })
-
 uartSocket.onmessage = (event) => {
   console.log(event.data)
   if (event.data >= 1 && event.data <= 8) {
@@ -458,4 +457,13 @@ uartSocket.onmessage = (event) => {
   }
 
 };
-
+uartSocket.onerror = function(err) {
+  console.error('Socket encountered error: ', err.message, 'Closing socket');
+  uartSocket.close();
+};
+uartSocket.onclose = function(e) {
+  console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+  setTimeout(function() {
+    uartSocket = new WebSocket("ws://127.0.0.1:8000")
+  }, 1000);
+};

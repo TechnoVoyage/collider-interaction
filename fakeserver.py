@@ -6,24 +6,14 @@ import asyncio
 
     
 async def handler(websocket):
-    global init
-    if(not init):
-        th = threading.Thread(target=asyncio.run, args=(uart_listener(websocket),))
-        th.start()
-        init = True
+    print("wait")
+    print(await websocket.recv())
+    input()
+    await websocket.send("11")
     while True:
-        try: 
-            message = await websocket.recv()
-            if(message=="start"):
-                print("start")
-                GPIO.output(11, 0)
-        except websockets.exceptions.ConnectionClosed:
-            global closed
-            closed = True
-            init = False
-            break
-        except Exception as e:
-            print(e, "error")
+        a = input()
+        await websocket.send(a)
+        print("sent", a)
 
 start_server = websockets.serve(handler, "localhost", 8000)
  
