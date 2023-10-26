@@ -50,6 +50,8 @@ var swiper = new Swiper(".swiper", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: 2,
+  noSwiping: true,
+  noSwipingClass: 'swiper-slide',
   coverflowEffect: {
     rotate: 0,
     stretch: 25,
