@@ -261,12 +261,19 @@ function new_particle_hide() {
   })
 }
 var dur = 800
-var move_collider_tl = anime.timeline({
+var move_swiper_right = anime({
   targets: '.selector-box',
   translateX: 1000,
   easing: 'easeInOutExpo',
   autoplay: false,
   duration: dur,
+})
+var move_collider_tl = anime.timeline({
+  targets: '.left-space',
+  translateX: 0,
+  easing: 'easeInOutExpo',
+  duration: dur,
+  autoplay: false,
 })
 move_collider_tl.add({
   targets: '.start-button',
@@ -274,11 +281,11 @@ move_collider_tl.add({
   easing: 'easeInOutExpo',
   duration: dur,
 }, `-=${dur}`)
-move_collider_tl.add({
-  targets: ['.header-name', '.header-choose'],
-  translateY: -100,
-  easing: 'easeInOutExpo',
-})
+// move_collider_tl.add({
+//   targets: ['.header-name', '.header-choose'],
+//   translateY: -100,
+//   easing: 'easeInOutExpo',
+// })
 move_collider_tl.add({
   targets: "#start_button",
   translateY: 300,
@@ -305,7 +312,7 @@ move_collider_tl.add({
 })
 
 function hide_collider() {
-  move_collider_tl.direction = "reverse"
+
   document.getElementById("particle1").src = "images/particles/electron.gif"
   document.getElementById("particle2").src = "images/particles/antielectron.gif"
   document.getElementById("particle3").src = "images/particles/proton.gif"
@@ -315,7 +322,15 @@ function hide_collider() {
   document.getElementById("particle7").src = "images/particles/antielectron.gif"
   document.getElementById("particle8").src = "images/particles/proton.gif"
 
+  
+  setTimeout(function () {
+    move_swiper_right.direction = "reverse"
+    move_swiper_right.play()
+  },1000)
+  move_collider_tl.direction = "reverse"
   move_collider_tl.play()
+
+  
   anime({
     targets: "#explosion-video",
     duration: 500,
@@ -378,8 +393,13 @@ function show_collider() {
   }
 
 
-  move_collider_tl.direction = "normal"
-  move_collider_tl.play()
+    move_swiper_right.play()
+
+    move_collider_tl.direction = "normal"
+    move_collider_tl.play()
+
+
+
 
   setTimeout(function () {
     for (i = 1; i < 9; i++) {
@@ -448,6 +468,7 @@ document.getElementById('start_button').addEventListener('click', function () {
   uartSocket.send("start")
 
 })
+
 uartSocket.onmessage = (event) => {
   console.log(event.data)
   if (event.data >= 1 && event.data < 8) {
