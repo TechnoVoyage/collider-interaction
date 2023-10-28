@@ -443,10 +443,11 @@ document.getElementById('start_button').addEventListener('click', function () {
 })
 uartSocket.onmessage = (event) => {
   console.log(event.data)
-  if (event.data >= 1 && event.data <= 8) {
+  if (event.data >= 1 && event.data < 8) {
     document.getElementById("collider-hole").src = "images/" + event.data + ".png"
   }
-  if (event.data == 8) {
+  if (event.data == 9) {
+    document.getElementById("collider-hole").src = "images/8.png"
     phase_reading()
   }
   if (event.data == 1) {
