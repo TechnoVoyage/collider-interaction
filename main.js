@@ -29,6 +29,7 @@ const particle_id = { 1: 2 }
 var particle_emoji1_color = PARTICLE_COLOR["electron"]
 var particle_emoji2_color = PARTICLE_COLOR["proton"]
 var isClicked = false
+// var uartSocket = new WebSocket("ws://127.0.0.1:8000")
 var uartSocket = new WebSocket("ws://192.168.1.10:8000")
 
 function getRandomInt(max) {
@@ -50,8 +51,6 @@ var swiper = new Swiper(".swiper", {
   grabCursor: true,
   centeredSlides: true,
   slidesPerView: 2,
-  noSwiping: true,
-  noSwipingClass: 'swiper-slide',
   coverflowEffect: {
     rotate: 0,
     stretch: 25,
@@ -344,6 +343,14 @@ function show_collider() {
       particleTopImg.src = "images/particles/electron.gif"
       particleBottomImg.src = "images/particles/antielectron.gif"
       break;
+    case 3:
+      particle_emoji1_color = PARTICLE_COLOR["electron"]
+      particle_emoji2_color = PARTICLE_COLOR["antielectron"]
+      particleTopName.textContent = "Электрон";
+      particleBottomName.textContent = "Позитрон";
+      particleTopImg.src = "images/particles/electron.gif"
+      particleBottomImg.src = "images/particles/antielectron.gif"
+      break;
     case 1:
       particle_emoji1_color = PARTICLE_COLOR["proton"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
@@ -360,7 +367,7 @@ function show_collider() {
       particleTopImg.src = "images/particles/electron.gif"
       particleBottomImg.src = "images/particles/proton.gif"
       break;
-    case 3:
+    case 4:
       particle_emoji1_color = PARTICLE_COLOR["antielectron"]
       particle_emoji2_color = PARTICLE_COLOR["proton"]
       particleTopName.textContent = "Позитрон";
@@ -468,5 +475,6 @@ uartSocket.onclose = function(e) {
   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
   setTimeout(function() {
     uartSocket = new WebSocket("ws://192.168.1.10:8000")
+    // uartSocket = new WebSocket("ws://127.0.0.1:8000")
   }, 1000);
 };
