@@ -11,19 +11,19 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT)
 GPIO.output(11, 1)
 
-def uart_listener(websocket):
+async def uart_listener(websocket):
     while True:
         received_data = ser.read()  
         print(received_data)  
         print(int.from_bytes(received_data, byteorder='little'))
-        websocket.send(str(int.from_bytes(received_data, byteorder='little')))
+        await  websocket.send(str(int.from_bytes(received_data, byteorder='little')))
         if (int.from_bytes(received_data, byteorder='little') == 1):
             GPIO.output(11, 1)
 
         
     
 async def handler(websocket):
-    th = threading.Thread(target=uart_listener, args=(websocket,))
+    th = threading.Thread(target=asyncio.run, args=(uart_listener(websocket),))
     th.start()
     while True:
         try: 
@@ -33,9 +33,13 @@ async def handler(websocket):
                 GPIO.output(11, 0)
         except Exception as e:
             print(e, "error")
-start_server = websockets.serve(handler, "localhost", 8000)
+start_server = websockets.serve(handler, "192.168.1.10", 8000)
  
- 
-asyncio.get_event_loop().run_until_complete(start_server)
- 
-asyncio.get_event_loop().run_forever()
+while True:
+ try: 
+  asyncio.get_event_loop().run_until_complete(start_server)
+  asyncio.get_event_loop().run_forever()
+  break
+ except BaseException as e:
+  print(e)
+  continue
