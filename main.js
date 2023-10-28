@@ -29,7 +29,7 @@ const particle_id = { 1: 2 }
 var particle_emoji1_color = PARTICLE_COLOR["electron"]
 var particle_emoji2_color = PARTICLE_COLOR["proton"]
 var isClicked = false
-var uartSocket = new WebSocket("ws://127.0.0.1:8000")
+var uartSocket = new WebSocket("ws://192.168.1.10:8000")
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -449,7 +449,7 @@ uartSocket.onmessage = (event) => {
   if (event.data == 8) {
     phase_reading()
   }
-  if (event.data == 11) {
+  if (event.data == 1) {
     phase_accelerating();
     const start_button = document.getElementById('start_button')
     start_button.disabled = false;
@@ -466,6 +466,6 @@ uartSocket.onerror = function(err) {
 uartSocket.onclose = function(e) {
   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
   setTimeout(function() {
-    uartSocket = new WebSocket("ws://127.0.0.1:8000")
+    uartSocket = new WebSocket("ws://192.168.1.10:8000")
   }, 1000);
 };
