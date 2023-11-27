@@ -31,7 +31,7 @@ var particle_emoji2_color = PARTICLE_COLOR["proton"]
 var isClicked = false
 // var uartSocket = new WebSocket("ws://127.0.0.1:8000")
 var uartSocket = new WebSocket("ws://192.168.1.10:8000")
-
+var refreshTimeout;
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -442,9 +442,13 @@ function phase_accelerating() { //phase 2
 }
 function phase_reading() { //phase 3
   new_particle_popup()
+  refreshTimeout = setTimeout(function(){
+    location.reload();
+}, 90000);
 }
 document.getElementById('continue-new-particle').onclick = function () {
   if (isClicked == false) {
+    clearTimeout(refreshTimeout)
     document.getElementById("collider-hole").src = "images/collider.png"
     animation_started = false;
     current_phase = 1;
