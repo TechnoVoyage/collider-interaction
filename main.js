@@ -281,11 +281,11 @@ move_collider_tl.add({
   easing: 'easeInOutExpo',
   duration: dur,
 }, `-=${dur}`)
-// move_collider_tl.add({
-//   targets: ['.header-name', '.header-choose'],
-//   translateY: -100,
-//   easing: 'easeInOutExpo',
-// })
+ move_collider_tl.add({
+   targets: ['.header-name', '.header-choose'],
+   translateY: -100,
+   easing: 'easeInOutExpo',
+ })
 move_collider_tl.add({
   targets: "#start_button",
   translateY: 300,
@@ -326,11 +326,9 @@ function hide_collider() {
   setTimeout(function () {
     move_swiper_right.direction = "reverse"
     move_swiper_right.play()
-  },1000)
+  },3000)
   move_collider_tl.direction = "reverse"
   move_collider_tl.play()
-
-  
   anime({
     targets: "#explosion-video",
     duration: 500,
@@ -392,7 +390,7 @@ function show_collider() {
       break;
   }
 
-
+    move_swiper_right.direction = "normal"
     move_swiper_right.play()
 
     move_collider_tl.direction = "normal"
@@ -403,7 +401,7 @@ function show_collider() {
 
   setTimeout(function () {
     for (i = 1; i < 9; i++) {
-      document.getElementById("particle" + String(i)).src = "/images/collider.png"
+      document.getElementById("particle" + String(i)).src = "images/collider.png"
     };
   }, 1000);
 
@@ -449,7 +447,6 @@ document.getElementById('continue-new-particle').onclick = function () {
   if (isClicked == false) {
     document.getElementById("collider-hole").src = "images/collider.png"
     animation_started = false;
-
     current_phase = 1;
     reset_balls()
     document.getElementById("canvas").style.visibility = "hidden"
