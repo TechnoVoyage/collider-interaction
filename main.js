@@ -31,7 +31,6 @@ var particle_emoji2_color = PARTICLE_COLOR["proton"]
 var isClicked = false
 // var uartSocket = new WebSocket("ws://127.0.0.1:8000")
 var uartSocket = new WebSocket("ws://192.168.1.10:8000")
-var refreshTimeout;
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
