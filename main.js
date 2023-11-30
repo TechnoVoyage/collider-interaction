@@ -442,13 +442,10 @@ function phase_accelerating() { //phase 2
 }
 function phase_reading() { //phase 3
   new_particle_popup()
-  refreshTimeout = setTimeout(function(){
-    location.reload();
-}, 90000);
+  
 }
 document.getElementById('continue-new-particle').onclick = function () {
   if (isClicked == false) {
-    clearTimeout(refreshTimeout)
     document.getElementById("collider-hole").src = "images/collider.png"
     animation_started = false;
     current_phase = 1;
@@ -489,14 +486,20 @@ uartSocket.onmessage = (event) => {
   }
 
 };
+
 uartSocket.onerror = function(err) {
   console.error('Socket encountered error: ', err.message, 'Closing socket');
   uartSocket.close();
 };
 uartSocket.onclose = function(e) {
   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-  setTimeout(function() {
+  setInterval(function() {
     uartSocket = new WebSocket("ws://192.168.1.10:8000")
     // uartSocket = new WebSocket("ws://127.0.0.1:8000")
   }, 1000);
 };
+let refreshTimeout = setInterval(() => location.reload(), 60000);
+document.getElementsByTagName("body")[0].addEventListener("click", function () {
+  clearInterval(refreshTimeout)
+  refreshTimeout = setInterval(() => location.reload(), 60000);
+})
