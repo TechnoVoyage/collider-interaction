@@ -497,8 +497,8 @@ uartSocket.onclose = function(e) {
     // uartSocket = new WebSocket("ws://127.0.0.1:8000")
   }, 1000);
 };
-let refreshTimeout = setInterval(() => location.reload(), 60000);
+let refreshTimeout = setInterval(() => location.reload(),120000);
 document.getElementsByTagName("body")[0].addEventListener("click", function () {
   clearInterval(refreshTimeout)
-  refreshTimeout = setInterval(() => location.reload(), 60000);
+  refreshTimeout = setInterval(() => location.reload(), 120000);
 })
