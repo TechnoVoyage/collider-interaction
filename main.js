@@ -485,7 +485,9 @@ uartSocket.onmessage = (event) => {
   }
 
 };
-
+uartSocket.onopen() = (event) => {
+  setInterval(uartSocket.send("ping"), 2000)
+}
 uartSocket.onerror = function(err) {
   console.error('Socket encountered error: ', err.message, 'Closing socket');
   uartSocket.close();
