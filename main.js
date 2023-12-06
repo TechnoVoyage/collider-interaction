@@ -497,6 +497,7 @@ uartSocket.onclose = function(e) {
   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
   socketInterval = setInterval(function() {
     uartSocket = new WebSocket("ws://192.168.1.10:8000")
+    console.log("socket interval")
     // uartSocket = new WebSocket("ws://127.0.0.1:8000")
   }, 1000);
 };
