@@ -466,7 +466,13 @@ document.getElementById('start_button').addEventListener('click', function () {
 
 })
 let socketInterval;
+let dataInterval;
 uartSocket.onmessage = (event) => {
+  clearInterval(dataInterval);
+  dataInterval = setInterval(function() {
+    console.log("no data. closing")
+    uartSocket.close()
+  }, 15000)
   console.log(event.data)
   if (event.data >= 1 && event.data < 8) {
     document.getElementById("collider-hole").src = "images/" + event.data + ".png"
@@ -488,6 +494,10 @@ uartSocket.onmessage = (event) => {
 
 uartSocket.onopen = (event) => {
   clearInterval(socketInterval)
+  dataInterval = setInterval(function() {
+    console.log("no data. closing")
+    uartSocket.close()
+  }, 15000)
 }
 uartSocket.onerror = function(err) {
   console.error('Socket encountered error: ', err.message, 'Closing socket');
