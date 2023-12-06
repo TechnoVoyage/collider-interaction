@@ -496,6 +496,7 @@ uartSocket.onopen = (event) => {
   clearInterval(socketInterval)
   dataInterval = setInterval(function() {
     console.log("no data. closing")
+    location.reload()
     uartSocket.close()
   }, 15000)
 }
