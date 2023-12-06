@@ -485,7 +485,7 @@ uartSocket.onmessage = (event) => {
   }
 
 };
-uartSocket.onopen() = (event) => {
+uartSocket.onopen = (event) => {
   setInterval(uartSocket.send("ping"), 2000)
 }
 uartSocket.onerror = function(err) {
