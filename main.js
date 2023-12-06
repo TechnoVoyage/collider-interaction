@@ -490,10 +490,7 @@ uartSocket.onmessage = (event) => {
 function refreshSocket() {
   console.log("refreshing socket")
   uartSocket.close()
-  setInterval(function() {
-    uartSocket = new WebSocket("ws://192.168.1.10:8000")
-    // uartSocket = new WebSocket("ws://127.0.0.1:8000")
-  }, 1000);
+  uartSocket = new WebSocket("ws://192.168.1.10:8000")
 }
 uartSocket.onopen = (event) => {
   setInterval(uartSocket.send("ping"), 2000)
