@@ -509,7 +509,7 @@ uartSocket.onclose = function(e) {
     uartSocket = new WebSocket("ws://192.168.1.10:8000")
     console.log("socket interval")
     // uartSocket = new WebSocket("ws://127.0.0.1:8000")
-  }, 1000);
+  }, 5000);
 };
 let refreshTimeout = setInterval(() => location.reload(),120000);
 document.getElementsByTagName("body")[0].addEventListener("click", function () {
