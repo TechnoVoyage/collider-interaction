@@ -465,10 +465,8 @@ document.getElementById('start_button').addEventListener('click', function () {
   uartSocket.send("start")
 
 })
-let socketTimeout;
+let socketInterval;
 uartSocket.onmessage = (event) => {
-  clearTimeout(socketTimeout)
-  socketTimeout = setTimeout(refreshSocket, 15000)
   console.log(event.data)
   if (event.data >= 1 && event.data < 8) {
     document.getElementById("collider-hole").src = "images/" + event.data + ".png"
@@ -487,14 +485,9 @@ uartSocket.onmessage = (event) => {
   }
 
 };
-function refreshSocket() {
-  console.log("refreshing socket")
-  uartSocket.close()
-  uartSocket = new WebSocket("ws://192.168.1.10:8000")
-}
+
 uartSocket.onopen = (event) => {
-  setInterval(uartSocket.send("ping"), 2000)
-  socketTimeout = setTimeout(refreshSocket, 15000)
+  clearInterval(socketInterval)
 }
 uartSocket.onerror = function(err) {
   console.error('Socket encountered error: ', err.message, 'Closing socket');
@@ -502,8 +495,8 @@ uartSocket.onerror = function(err) {
 };
 uartSocket.onclose = function(e) {
   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-  setInterval(function() {
-    refreshSocket()
+  socketInterval = setInterval(function() {
+    uartSocket = new WebSocket("ws://192.168.1.10:8000")
     // uartSocket = new WebSocket("ws://127.0.0.1:8000")
   }, 1000);
 };
