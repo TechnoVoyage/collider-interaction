@@ -1,2 +1,3 @@
 images/particles/**
 client.py
+node_modules/**

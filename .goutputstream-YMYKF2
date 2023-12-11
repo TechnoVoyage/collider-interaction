@@ -34,7 +34,7 @@ async def handler(websocket):
                 GPIO.output(11, 0)
             if(time.time()-okTimer >= 2):
                 okTimer = time.time()
-                await websocket.send(str(99))
+                websocket.send("ok")
         except Exception as e:
             print(e, "error")
 start_server = websockets.serve(handler, "192.168.1.10", 8000)
