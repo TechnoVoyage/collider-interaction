@@ -474,14 +474,16 @@ uartSocket.onmessage = (event) => {
     uartSocket.close()
   }, 15000)
   console.log(event.data)
-  if (event.data >= 1 && event.data < 8) {
-    document.getElementById("collider-hole").src = "images/" + event.data + ".png"
+  let num = Number("0x"+event.data)
+  console.log(num)
+  if (num >= 1 && num < 8) {
+    document.getElementById("collider-hole").src = "images/" + String(num) + ".png"
   }
-  if (event.data == 9) {
+  if (num == 9) {
     document.getElementById("collider-hole").src = "images/8.png"
     phase_reading()
   }
-  if (event.data == 1) {
+  if (num == 1) {
     phase_accelerating();
     const start_button = document.getElementById('start_button')
     start_button.disabled = false;
@@ -492,27 +494,27 @@ uartSocket.onmessage = (event) => {
 
 };
 
-uartSocket.onopen = (event) => {
-  clearInterval(socketInterval)
-  dataInterval = setInterval(function() {
-    console.log("no data. closing")
-    location.reload()
-    uartSocket.close()
-  }, 15000)
-}
+// uartSocket.onopen = (event) => {
+//   clearInterval(socketInterval)
+//   dataInterval = setInterval(function() {
+//     console.log("no data. closing")
+//     location.reload()
+//     uartSocket.close()
+//   }, 15000)
+// }
 uartSocket.onerror = function(err) {
   console.error('Socket encountered error: ', err.message, 'Closing socket');
   uartSocket.close();
 };
 uartSocket.onclose = function(e) {
   console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-  socketInterval = setInterval(function() {
+  socketInterval = setTimeout(function() {
     uartSocket = new WebSocket("ws://192.168.1.10:8000")
     console.log("socket interval")
     // uartSocket = new WebSocket("ws://127.0.0.1:8000")
   }, 5000);
 };
-let refreshTimeout = setInterval(() => location.reload(),120000);
+// let refreshTimeout = setInterval(() => location.reload(),120000);
 document.getElementsByTagName("body")[0].addEventListener("click", function () {
   clearInterval(refreshTimeout)
   refreshTimeout = setInterval(() => location.reload(), 120000);
